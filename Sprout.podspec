@@ -15,4 +15,5 @@ Pod::Spec.new do |s|
   s.frameworks = 'Foundation'
   s.requires_arc = true
   s.dependency 'CocoaLumberjack', '~> 1.6'
+  s.dependency 'SSZipArchive', :git => 'https://github.com/levigroker/ssziparchive.git'
 end
