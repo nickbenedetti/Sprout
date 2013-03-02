@@ -18,10 +18,7 @@
 #include <execinfo.h>
 #import "Sprout.h"
 #import "CustomLogFormatter.h"
-
-#ifdef _SSZIPARCHIVE_H
 #import "SSZipArchive.h"
-#endif
 
 #ifdef TESTFLIGHT
 #import "TestFlightLogger.h"
@@ -168,6 +165,8 @@ void signalHandler(int signal)
             [self.fileManager removeItemAtPath:tempDir error:nil];
         }
     }
+#else
+#warning SSZipArchive framework not found in project, or not included in precompiled header. `logsAsZippedData` will return `nil`.
 #endif
     
     return retVal;

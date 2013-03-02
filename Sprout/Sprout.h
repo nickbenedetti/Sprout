@@ -77,10 +77,6 @@
     #define SPROUT_TESTFLIGHT_LOGGING
 #endif
 
-#ifndef _SSZIPARCHIVE_H
-#warning SSZipArchive framework not found in project, or not included in precompiled header. `logsAsZippedData` will return `nil`.
-#endif
-
 @interface Sprout : NSObject
 
 /**
