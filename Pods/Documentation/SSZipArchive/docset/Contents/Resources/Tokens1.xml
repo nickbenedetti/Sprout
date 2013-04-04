@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SSZipArchive.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SSZipArchive</TokenIdentifier>
+			<Abstract></Abstract>
+			<DeclaredIn>SSZipArchive.h</DeclaredIn>
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/SSZipArchive/unzipFileAtPath:toDestination:</TokenIdentifier>
+			<Abstract></Abstract>
+			<DeclaredIn>SSZipArchive.h</DeclaredIn>			
+			
+			<Declaration>+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination</Declaration>
+			
+			
+			<Anchor>//api/name/unzipFileAtPath:toDestination:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/SSZipArchive/unzipFileAtPath:toDestination:overwrite:password:error:</TokenIdentifier>
+			<Abstract></Abstract>
+			<DeclaredIn>SSZipArchive.h</DeclaredIn>			
+			
+			<Declaration>+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination overwrite:(BOOL)overwrite password:(NSString *)password error:(NSError **)error</Declaration>
+			
+			
+			<Anchor>//api/name/unzipFileAtPath:toDestination:overwrite:password:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/SSZipArchive/unzipFileAtPath:toDestination:delegate:</TokenIdentifier>
+			<Abstract></Abstract>
+			<DeclaredIn>SSZipArchive.h</DeclaredIn>			
+			
+			<Declaration>+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination delegate:(id&lt;SSZipArchiveDelegate&gt;)delegate</Declaration>
+			
+			
+			<Anchor>//api/name/unzipFileAtPath:toDestination:delegate:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/SSZipArchive/unzipFileAtPath:toDestination:overwrite:password:error:delegate:</TokenIdentifier>
+			<Abstract></Abstract>
+			<DeclaredIn>SSZipArchive.h</DeclaredIn>			
+			
+			<Declaration>+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination overwrite:(BOOL)overwrite password:(NSString *)password error:(NSError **)error delegate:(id&lt;SSZipArchiveDelegate&gt;)delegate</Declaration>
+			
+			
+			<Anchor>//api/name/unzipFileAtPath:toDestination:overwrite:password:error:delegate:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/SSZipArchive/createZipFileAtPath:withFilesAtPaths:</TokenIdentifier>
+			<Abstract></Abstract>
+			<DeclaredIn>SSZipArchive.h</DeclaredIn>			
+			
+			<Declaration>+ (BOOL)createZipFileAtPath:(NSString *)path withFilesAtPaths:(NSArray *)filenames</Declaration>
+			
+			
+			<Anchor>//api/name/createZipFileAtPath:withFilesAtPaths:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SSZipArchive/initWithPath:</TokenIdentifier>
+			<Abstract></Abstract>
+			<DeclaredIn>SSZipArchive.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithPath:(NSString *)path</Declaration>
+			
+			
+			<Anchor>//api/name/initWithPath:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SSZipArchive/open</TokenIdentifier>
+			<Abstract></Abstract>
+			<DeclaredIn>SSZipArchive.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)open</Declaration>
+			
+			
+			<Anchor>//api/name/open</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SSZipArchive/writeFile:</TokenIdentifier>
+			<Abstract></Abstract>
+			<DeclaredIn>SSZipArchive.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)writeFile:(NSString *)path</Declaration>
+			
+			
+			<Anchor>//api/name/writeFile:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SSZipArchive/writeData:filename:</TokenIdentifier>
+			<Abstract></Abstract>
+			<DeclaredIn>SSZipArchive.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)writeData:(NSData *)data filename:(NSString *)filename</Declaration>
+			
+			
+			<Anchor>//api/name/writeData:filename:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SSZipArchive/close</TokenIdentifier>
+			<Abstract></Abstract>
+			<DeclaredIn>SSZipArchive.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)close</Declaration>
+			
+			
+			<Anchor>//api/name/close</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>
