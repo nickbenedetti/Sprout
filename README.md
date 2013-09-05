@@ -6,7 +6,7 @@ Sprout
 
 If you're using [CocoPods](http://cocopods.org) it's as simple as adding this to your `Podfile`:
 
-	pod 'Sprout', :git => 'https://github.com/levigroker/Sprout.git'
+	pod 'Sprout', '~> 1.0'
 
 ### Documentation
 
@@ -59,8 +59,8 @@ Please see the included LICENSE.txt for complete details.
 A professional iOS engineer by day, my name is Levi Brown. Authoring a technical
 blog [grokin.gs](http://grokin.gs), I am reachable via:
 
-Twitter [@levigroker](https://twitter.com/levigroker)
-App.net [@levigroker](https://alpha.app.net/levigroker)
-EMail [levigroker@gmail.com](mailto:levigroker@gmail.com).
+Twitter [@levigroker](https://twitter.com/levigroker)  
+App.net [@levigroker](https://alpha.app.net/levigroker)  
+EMail [levigroker@gmail.com](mailto:levigroker@gmail.com)  
 
 Your constructive comments and feedback are always welcome.
