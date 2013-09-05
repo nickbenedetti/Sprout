@@ -15,5 +15,5 @@ Pod::Spec.new do |s|
   s.frameworks = 'Foundation'
   s.requires_arc = true
   s.dependency 'CocoaLumberjack', '~> 1.6'
-  s.dependency 'SSZipArchive', '~> 0.2.4'
+  s.dependency 'SSZipArchive', '~> 0.2.5'
 end
