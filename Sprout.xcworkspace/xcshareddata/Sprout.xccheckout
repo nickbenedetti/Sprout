@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A289B8DC-96A7-4A92-8F99-8991E8D864AB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Sprout</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C6FB3173-FAF9-4875-8CCC-1BA0C5155E86</key>
+		<string>ssh://github.com/levigroker/Sprout.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Sprout.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C6FB3173-FAF9-4875-8CCC-1BA0C5155E86</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/levigroker/Sprout.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C6FB3173-FAF9-4875-8CCC-1BA0C5155E86</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C6FB3173-FAF9-4875-8CCC-1BA0C5155E86</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Sprout</string>
+		</dict>
+	</array>
+</dict>
+</plist>
