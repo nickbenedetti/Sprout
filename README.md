@@ -40,8 +40,7 @@ After the above setup, you should be able to run and see:
 
 appear in your console.
 
-TestFlight Usage
----
+#### TestFlight Usage
 [TestFlight](http://testflightapp.com) is a great tool, and Sprout has support for it.
 
 If you `#define TESTFLIGHT` (or define `TESTFLIGHT` in your build settings), Sprout will add the `TestFlightLogger` to send log messages to the `TFLog` TestFlight SDK logger at your current log level.
@@ -50,12 +49,20 @@ __NOTE:__ If you define `TESTFLIGHT` you must have `libTestFlight.a` linked or y
 
 __NOTE:__ If you're using TestFlight you should initialize Sprout before calling `TestFlight takeOff:`
 
-#### Licence
+### Version History
+
+* 1.0 - March 1, 2013
+ * Initial public release.
+* 1.1 - September 20, 2013
+  * Added dynamic log level support.
+  * Added basic app, device, and OS logging functionality.
+
+### Licence
 
 This work is licensed under the [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
 Please see the included LICENSE.txt for complete details.
 
-#### About
+### About
 A professional iOS engineer by day, my name is Levi Brown. Authoring a technical
 blog [grokin.gs](http://grokin.gs), I am reachable via:
 
