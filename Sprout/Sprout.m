@@ -16,6 +16,7 @@
 //
 
 #include <execinfo.h>
+#import <UIKit/UIKit.h>
 #import "Sprout.h"
 #import "CustomLogFormatter.h"
 #import "SSZipArchive.h"
@@ -148,6 +149,26 @@ void signalHandler(int signal)
     }
 }
 
+#ifndef SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
+- (void)setLogLevel:(int)logLevel
+{
+    ddLogLevel = logLevel;
+}
+#endif
+
+- (void)logAppAndDeviceInfo
+{
+    NSString *appName = [self appName];
+    NSString *appVersion = [self appVersion];
+    NSString *appIdentifier = [self appIdentifier];
+    NSString *appBuildNumber = [self appBuildNumber];
+    NSString *deviceModel = [UIDevice currentDevice].model;
+    NSString *systemName = [UIDevice currentDevice].systemName;
+    NSString *systemVersion = [UIDevice currentDevice].systemVersion;
+    
+    DDLogInfo(@"%@ %@ (%@ %@) %@, %@ %@", appName, appVersion, appIdentifier, appBuildNumber, deviceModel, systemName, systemVersion);
+}
+
 - (NSData *)logsAsZippedData
 {
     NSData *retVal = nil;
@@ -235,6 +256,36 @@ void signalHandler(int signal)
 }
 
 #pragma mark - Helpers
+
+- (NSString *)appVersion
+{
+    NSString *retVal = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    return retVal;
+}
+
+- (NSString *)appBuildNumber
+{
+    NSString *retVal = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    return retVal;
+}
+
+- (NSString *)appName
+{
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+    NSString *name = [info objectForKey:@"CFBundleDisplayName"];
+    if (!name)
+    {
+        name = [info objectForKey:@"CFBundleName"];
+    }
+
+    return name;
+}
+
+- (NSString *)appIdentifier
+{
+    NSString *retVal = [[NSBundle mainBundle] bundleIdentifier];
+    return retVal;
+}
 
 - (NSString *)tempDirectory
 {

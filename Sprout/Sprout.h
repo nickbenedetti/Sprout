@@ -67,10 +67,18 @@
 #define SPROUT_FILE_LOGGING
 
 #ifdef DEBUG
-    static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+    #ifndef SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
+        static int ddLogLevel = LOG_LEVEL_VERBOSE;
+    #else
+        static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+    #endif
     #define SPROUT_CONSOLE_LOGGING
 #else
-    static const int ddLogLevel = LOG_LEVEL_WARN;
+    #ifndef SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
+        static int ddLogLevel = LOG_LEVEL_WARN;
+    #else
+        static const int ddLogLevel = LOG_LEVEL_WARN;
+    #endif
 #endif
 
 #ifdef TESTFLIGHT
@@ -105,6 +113,26 @@
  * After this is called, `started` will be `YES`
  */
 - (void)startLogging;
+#ifndef SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
+/**
+ * Sets the logging level to that specified.
+ * @param logLevel The new log level to be used. Takes affect immediately.
+ * @warning If `SPROUT_DISABLE_DYNAMIC_LOG_LEVEL` is defined, this functionality is disabled.
+ * @see https://github.com/robbiehanson/CocoaLumberjack/wiki/DynamicLogLevels
+ * Default CocoaLumberjack has these log levels defined:
+ *
+ *   LOG_LEVEL_OFF
+ *   LOG_LEVEL_ERROR
+ *   LOG_LEVEL_WARN
+ *   LOG_LEVEL_INFO
+ *   LOG_LEVEL_VERBOSE
+ */
+- (void)setLogLevel:(int)logLevel;
+#endif
+/**
+ * Outputs a log statement at LOG_LEVEL_INFO with the app name, bundle identifier, versions (CFBundleShortVersionString and CFBundleVersion), device model, OS name and version.
+ */
+- (void)logAppAndDeviceInfo;
 /**
  * @return All file logs as an `NSData` representing a zip archive of the log files.
  */
