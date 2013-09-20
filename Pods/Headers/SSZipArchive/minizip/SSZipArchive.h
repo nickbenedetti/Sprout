@@ -1,1 +1,1 @@
-../../../SSZipArchive/SSZipArchive.h
+../../../SSZipArchive/SSZipArchive/SSZipArchive.h
