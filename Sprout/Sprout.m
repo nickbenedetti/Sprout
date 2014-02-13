@@ -21,7 +21,7 @@
 #import "CustomLogFormatter.h"
 #import "SSZipArchive.h"
 
-#ifdef TESTFLIGHT
+#ifdef SPROUT_TESTFLIGHT_LOGGING
 #import "TestFlightLogger.h"
 #endif
 
@@ -37,6 +37,9 @@ void signalHandler(int signal);
 @property (nonatomic,strong) DDFileLogger *fileLogger;
 @property (nonatomic,strong) DDTTYLogger *ttyLogger;
 @property (nonatomic,strong) NSFileManager *fileManager;
+#ifdef SPROUT_TESTFLIGHT_LOGGING
+@property (nonatomic,strong) TestFlightLogger *testFlightLogger;
+#endif
 
 @end
 
@@ -240,13 +243,11 @@ void signalHandler(int signal)
 - (void)setupTestFlightLogger
 {
     #ifdef SPROUT_TESTFLIGHT_LOGGING
-    //File logging
-    self.fileLogger = [[DDFileLogger alloc] init];
-    self.fileLogger.rollingFrequency = 60 * 60 * 24; // 24 hour rolling
-    self.fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
+    //TestFlight logging
+    self.testFlightLogger = [[TestFlightLogger alloc] init];
     CustomLogFormatter *fileFormatter = [[CustomLogFormatter alloc] init];
-    [self.fileLogger setLogFormatter:fileFormatter];
-    [DDLog addLogger:self.fileLogger];
+    [self.testFlightLogger setLogFormatter:fileFormatter];
+    [DDLog addLogger:self.testFlightLogger];
     #endif
 }
 
