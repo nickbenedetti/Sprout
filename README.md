@@ -6,7 +6,7 @@ Sprout
 
 If you're using [CocoPods](http://cocopods.org) it's as simple as adding this to your `Podfile`:
 
-	pod 'Sprout', '~> 1.0'
+	pod 'Sprout', '~> 1.2'
 
 ### Documentation
 
@@ -56,7 +56,11 @@ __NOTE:__ If you're using TestFlight you should initialize Sprout before calling
 * 1.1 - September 20, 2013
   * Added dynamic log level support.
   * Added basic app, device, and OS logging functionality.
-
+* 1.2 - February 13, 2014
+  * Fixing use of TestFlightLogger
+* 1.2.1 - March 11, 2014
+  * Fixing deadlock issue when logging exceptions.
+  
 ### Licence
 
 This work is licensed under the [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
