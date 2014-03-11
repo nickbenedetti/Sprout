@@ -1,17 +1,17 @@
 PODS:
-  - CocoaLumberjack (1.8.0):
+  - CocoaLumberjack (1.8.1):
     - CocoaLumberjack/Extensions
-  - CocoaLumberjack/Core (1.8.0)
-  - CocoaLumberjack/Extensions (1.8.0):
+  - CocoaLumberjack/Core (1.8.1)
+  - CocoaLumberjack/Extensions (1.8.1):
     - CocoaLumberjack/Core
   - SSZipArchive (0.3.1)
 
 DEPENDENCIES:
-  - CocoaLumberjack (~> 1.6)
+  - CocoaLumberjack (~> 1.8)
   - SSZipArchive (~> 0.3.1)
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: 6ed94046d2ca7fde03a73b3d01b8cfc56574b314
+  CocoaLumberjack: 020378ec400d658923bf5887178394f65f052c90
   SSZipArchive: 47d0589a15452311749a4eeecb97e12800d127de
 
 COCOAPODS: 0.29.0
