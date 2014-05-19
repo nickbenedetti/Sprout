@@ -16,7 +16,22 @@
 //
 
 #include <execinfo.h>
+
+#if TARGET_OS_MAC
+#include <sys/sysctl.h>
+
+static NSString * const kSystemVersionPlistLocation = @"/System/Library/CoreServices/SystemVersion.plist";
+static NSString * const kSystemVersionKeyProductName = @"ProductName";
+static NSString * const kSystemVersionKeyProductUserVisibleVersion = @"ProductUserVisibleVersion";
+static NSString * const kSystemVersionKeyProductBuildVersion = @"ProductBuildVersion";
+
+static NSString * const kSysInfoKeyHardwarePlatform = @"hw.model";
+#endif
+
+#if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#endif
+
 #import "Sprout.h"
 #import "CustomLogFormatter.h"
 #import "SSZipArchive.h"
@@ -165,11 +180,13 @@ void signalHandler(int signal)
     NSString *appVersion = [self appVersion];
     NSString *appIdentifier = [self appIdentifier];
     NSString *appBuildNumber = [self appBuildNumber];
-    NSString *deviceModel = [UIDevice currentDevice].model;
-    NSString *systemName = [UIDevice currentDevice].systemName;
-    NSString *systemVersion = [UIDevice currentDevice].systemVersion;
+    NSString *deviceModel;
+    NSString *systemName;
+    NSString *systemVersion;
     
-    DDLogInfo(@"%@ %@ (%@ %@) %@, %@ %@", appName, appVersion, appIdentifier, appBuildNumber, deviceModel, systemName, systemVersion);
+    [self deviceModel:&deviceModel systemName:&systemName systemVersion:&systemVersion];
+
+    DDLogInfo(@"%@ %@ (%@ %@) %@, %@ %@", appName ?: @"<unknown_app_name>", appVersion ?: @"<unknown_app_version>", appIdentifier ?: @"<unknown_app_identifier>", appBuildNumber ?: @"<unknown_app_build_number>", deviceModel ?: @"<unknown_device_model>", systemName ?: @"<unknown_system_name>", systemVersion ?: @"<unknown_system_version>");
 }
 
 - (NSData *)logsAsZippedData
@@ -287,6 +304,80 @@ void signalHandler(int signal)
     NSString *retVal = [[NSBundle mainBundle] bundleIdentifier];
     return retVal;
 }
+
+- (void)deviceModel:(NSString **)deviceModel systemName:(NSString **)systemName systemVersion:(NSString **)systemVersion
+{
+#if TARGET_OS_IPHONE
+    [self iosDeviceModel:deviceModel systemName:systemName systemVersion:systemVersion];
+#elif TARGET_OS_MAC
+    [self osxDeviceModel:deviceModel systemName:systemName systemVersion:systemVersion];
+#endif
+}
+
+#if TARGET_OS_IPHONE
+
+- (void)iosDeviceModel:(NSString **)deviceModel systemName:(NSString **)systemName systemVersion:(NSString **)systemVersion
+{
+    if (deviceModel)
+    {
+        *deviceModel = [UIDevice currentDevice].model;
+    }
+    if (systemName)
+    {
+        *systemName = [UIDevice currentDevice].systemName;
+    }
+    if (systemVersion)
+    {
+        *systemVersion = [UIDevice currentDevice].systemVersion;
+    }
+}
+
+#endif //iOS
+
+#if TARGET_OS_MAC
+
+- (void)osxDeviceModel:(NSString **)deviceModel systemName:(NSString **)systemName systemVersion:(NSString **)systemVersion
+{
+    if (deviceModel)
+    {
+        *deviceModel = [self sysInfoByName:kSysInfoKeyHardwarePlatform];
+    }
+    
+    //See http://stackoverflow.com/questions/11072804/mac-os-x-10-8-replacement-for-gestalt-for-testing-os-version-at-runtime
+    NSDictionary *systemVersionDict = [NSDictionary dictionaryWithContentsOfFile:kSystemVersionPlistLocation];
+    
+    if (systemName)
+    {
+        *systemName = systemVersionDict[kSystemVersionKeyProductName];
+    }
+    if (systemVersion)
+    {
+        NSString *version = systemVersionDict[kSystemVersionKeyProductName];
+        NSString *buildNumber = systemVersionDict[kSystemVersionKeyProductBuildVersion];
+        *systemVersion = [NSString stringWithFormat:@"%@ (%@)", version ?: @"<unknown_system_version", buildNumber ?: @"<unknown_system_build_number>"];
+    }
+}
+
+- (NSString *)sysInfoByName:(NSString *)name
+{
+    NSString *retVal = nil;
+    
+    if (name.length > 0)
+    {
+        const char *cName = [name cStringUsingEncoding:NSUTF8StringEncoding];
+        
+        size_t size;
+        sysctlbyname(cName, NULL, &size, NULL, 0);
+        char *buffer = malloc(size);
+        sysctlbyname(cName, buffer, &size, NULL, 0);
+        retVal = [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
+        free(buffer);
+    }
+    
+    return retVal;
+}
+
+#endif //Mac OS
 
 - (NSString *)tempDirectory
 {
