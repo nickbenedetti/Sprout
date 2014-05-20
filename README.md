@@ -97,6 +97,12 @@ __NOTE:__ If you define `TESTFLIGHT` you must have `libTestFlight.a` linked or y
 
 __NOTE:__ If you're using TestFlight you should initialize Sprout before calling `TestFlight takeOff:`
 
+__NOTE:__ You may wish to disable TestFlight's direct logging to the console so you do not see double messages printed to the console. You can add these lines before your `TestFlight takeOff:`
+
+		//Disable TestFlight from logging to the console directly. Sprout (CocoaLumberjack) handles this for us.
+		[TestFlight setOptions:@{ TFOptionLogToConsole : @NO }];
+		[TestFlight setOptions:@{ TFOptionLogToSTDERR : @NO }];
+
 ### Version History
 
 * 1.0 - March 1, 2013
