@@ -48,13 +48,22 @@ Here's an example `post_install` hook which adds the `DEBUG`, `TESTFLIGHT` and `
 		#import "Sprout.h"
 		#endif
 
-* Start Logging in your `application:didFinishLaunchingWithOptions:` UIApplicationDelegate
+* For iOS, start Logging in your `application:didFinishLaunchingWithOptions:` UIApplicationDelegate
 
 		- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 		{
 			//Initialize logging
 			[[Sprout sharedInstance] startLogging];
 			...
+
+* For MacOS, start Logging in your `applicationWillFinishLaunching:` NSApplicationDelegate
+
+		- (void)applicationWillFinishLaunching:(NSNotification *)notification
+		{
+			//Initialize logging
+			[[Sprout sharedInstance] startLogging];
+			...
+
 
 * Define `DEBUG`
  In your Preprocessor Macros target build settings, define `DEBUG=1` (this may not be needed, as it is a default setting in later XCode project templates).
