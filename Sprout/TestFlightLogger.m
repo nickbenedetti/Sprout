@@ -26,8 +26,8 @@ void TFLog(NSString *format, ...) {
 };
 
 //Similarlly, define TestFlight constants we use, as weak.
-NSString *const TFOptionLogToConsole __attribute__((weak));
-NSString *const TFOptionLogToSTDERR __attribute__((weak));
+NSString *const TFOptionLogToConsole __attribute__((weak)) = @"";
+NSString *const TFOptionLogToSTDERR __attribute__((weak)) = @"";
 
 @implementation TestFlightLogger
 
