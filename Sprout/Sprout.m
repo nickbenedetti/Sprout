@@ -1,8 +1,8 @@
 //
 //  Sprout.m
 //
-//  Created by Levi Brown on 10/4/12.
-//  Copyright (c) 2012, 2013 Levi Brown <mailto:levigroker@gmail.com>
+//  Created by Levi Brown on October 4, 2012.
+//  Copyright (c) 2012, 2013, 2014 Levi Brown <mailto:levigroker@gmail.com>
 //  This work is licensed under the Creative Commons Attribution 3.0
 //  Unported License. To view a copy of this license, visit
 //  http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
@@ -33,12 +33,8 @@ static NSString * const kSysInfoKeyHardwarePlatform = @"hw.model";
 #endif
 
 #import "Sprout.h"
-#import "CustomLogFormatter.h"
+#import "SproutCustomLogFormatter.h"
 #import "SSZipArchive.h"
-
-#ifdef SPROUT_TESTFLIGHT_LOGGING
-#import "TestFlightLogger.h"
-#endif
 
 #define DDLogException(frmt, ...)   LOG_MAYBE(YES, ddLogLevel, LOG_FLAG_ERROR, 0, "Exception Handler", frmt, ##__VA_ARGS__)
 #define DDLogSignal(frmt, ...)   LOG_MAYBE(LOG_ASYNC_ERROR, ddLogLevel, LOG_FLAG_ERROR, 0, "Signal Handler", frmt, ##__VA_ARGS__)
@@ -51,10 +47,9 @@ void signalHandler(int signal);
 @property (nonatomic,assign) BOOL started;
 @property (nonatomic,strong) DDFileLogger *fileLogger;
 @property (nonatomic,strong) DDTTYLogger *ttyLogger;
-@property (nonatomic,strong) NSFileManager *fileManager;
-#ifdef SPROUT_TESTFLIGHT_LOGGING
 @property (nonatomic,strong) TestFlightLogger *testFlightLogger;
-#endif
+@property (nonatomic,strong) CrashlyticsLogger *crashlyticsLogger;
+@property (nonatomic,strong) NSFileManager *fileManager;
 
 @end
 
@@ -105,6 +100,7 @@ void signalHandler(int signal)
     if ((self = [super init]))
     {
         self.fileManager = [[NSFileManager alloc] init];
+        self.defaultLogFormatterClass = [SproutCustomLogFormatter class];
     }
     
     return self;
@@ -156,12 +152,9 @@ void signalHandler(int signal)
         sigaction(SIGBUS, &signalAction, NULL);
         sigaction(SIGSEGV, &signalAction, NULL);
         
-        [self setupTTYLogger];
-        [self setupFileLogger];
-        [self setupTestFlightLogger];
-        [self setupAdditionalLoggers];
-        
-        DDLogInfo(@"CocoaLumberjack loggers initialized!");
+        [self addDefaultLoggers];
+
+        DDLogInfo(@"[Sprout] CocoaLumberjack loggers initialized!");
         
         self.started = YES;
     }
@@ -232,45 +225,140 @@ void signalHandler(int signal)
 
 #pragma mark - Logging Setup
 
-- (void)setupTTYLogger
+- (void)addDefaultLoggers
 {
+    NSArray *loggers = self.defaultLoggers;
+    for (id<DDLogger> logger in loggers)
+    {
+        [self addLogger:logger];
+        DDLogVerbose(@"[Sprout] Added logger: '%@'", [logger loggerName]);
+    }
+}
+
+- (id<DDLogFormatter>)createDefaultLogFormatter
+{
+    Class formatterClass = self.defaultLogFormatterClass;
+    id<DDLogFormatter> formatter = [[formatterClass alloc] init];
+    if (![formatter conformsToProtocol:@protocol(DDLogFormatter)])
+    {
+        formatter = [[SproutCustomLogFormatter alloc] init];
+    }
+    
+    return formatter;
+}
+
+- (NSArray *)defaultLoggers
+{
+    if (!_defaultLoggers)
+    {
+        NSMutableArray *loggers = [NSMutableArray arrayWithCapacity:4];
+        
+        id<DDLogger> logger = nil;
+        
+        logger = [self setupTTYLogger];
+        if (logger)
+        {
+            self.ttyLogger = logger;
+            [loggers addObject:logger];
+        }
+        
+        logger = [self setupFileLogger];
+        if (logger)
+        {
+            self.fileLogger = logger;
+            [loggers addObject:logger];
+        }
+        
+        logger = [self setupTestFlightLogger];
+        if (logger)
+        {
+            self.testFlightLogger = logger;
+            [loggers addObject:logger];
+        }
+        
+        logger = [self setupCrashlyticsLogger];
+        if (logger)
+        {
+            self.crashlyticsLogger = logger;
+            [loggers addObject:logger];
+        }
+        
+        _defaultLoggers = loggers;
+    }
+
+    return _defaultLoggers;
+}
+
+- (void)addLogger:(id <DDLogger>)logger
+{
+    [self addLogger:logger withLogLevel:LOG_LEVEL_ALL];
+}
+
+- (void)addLogger:(id <DDLogger>)logger withLogLevel:(int)logLevel
+{
+    if (logger)
+    {
+        id<DDLogFormatter> formatter = [self createDefaultLogFormatter];
+        [logger setLogFormatter:formatter];
+        
+        [DDLog addLogger:logger];
+    }
+}
+
+- (void)removeLogger:(id <DDLogger>)logger
+{
+    [DDLog removeLogger:logger];
+}
+
+- (void)removeAllLoggers
+{
+    [DDLog removeAllLoggers];
+}
+
+- (NSArray *)allLoggers
+{
+    return [DDLog allLoggers];
+}
+
+- (DDTTYLogger *)setupTTYLogger
+{
+    DDTTYLogger *logger = nil;
+    
     #ifdef SPROUT_CONSOLE_LOGGING
     //Console
-    self.ttyLogger = [DDTTYLogger sharedInstance];
-    CustomLogFormatter *ttyFormatter = [[CustomLogFormatter alloc] init];
-    [self.ttyLogger setLogFormatter:ttyFormatter];
-    [self.ttyLogger setColorsEnabled:YES];
-    [DDLog addLogger:self.ttyLogger];
+    logger = [DDTTYLogger sharedInstance];
+    [logger setColorsEnabled:YES];
     #endif
+    
+    return logger;
 }
 
-- (void)setupFileLogger
+- (DDFileLogger *)setupFileLogger
 {
+    DDFileLogger *logger = nil;
+    
     #ifdef SPROUT_FILE_LOGGING
     //File logging
-    self.fileLogger = [[DDFileLogger alloc] init];
-    self.fileLogger.rollingFrequency = 60 * 60 * 24; // 24 hour rolling
-    self.fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
-    CustomLogFormatter *fileFormatter = [[CustomLogFormatter alloc] init];
-    [self.fileLogger setLogFormatter:fileFormatter];
-    [DDLog addLogger:self.fileLogger];
+    logger = [[DDFileLogger alloc] init];
+    logger.rollingFrequency = 60 * 60 * 24; // 24 hour rolling
+    logger.logFileManager.maximumNumberOfLogFiles = 7;
     #endif
+
+    return logger;
 }
 
-- (void)setupTestFlightLogger
+- (TestFlightLogger *)setupTestFlightLogger
 {
-    #ifdef SPROUT_TESTFLIGHT_LOGGING
-    //TestFlight logging
-    self.testFlightLogger = [[TestFlightLogger alloc] init];
-    CustomLogFormatter *fileFormatter = [[CustomLogFormatter alloc] init];
-    [self.testFlightLogger setLogFormatter:fileFormatter];
-    [DDLog addLogger:self.testFlightLogger];
-    #endif
+    TestFlightLogger *logger = [TestFlightLogger sharedInstance];
+    
+    return logger;
 }
 
-- (void)setupAdditionalLoggers
+- (CrashlyticsLogger *)setupCrashlyticsLogger
 {
-    //No implementation here; just for subclasses
+    CrashlyticsLogger *logger = [CrashlyticsLogger sharedInstance];
+    
+    return logger;
 }
 
 #pragma mark - Helpers

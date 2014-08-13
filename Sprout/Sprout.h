@@ -1,8 +1,8 @@
 //
 //  Sprout.h
 //
-//  Created by Levi Brown on 10/4/12.
-//  Copyright (c) 2012, 2013 Levi Brown <mailto:levigroker@gmail.com>
+//  Created by Levi Brown on October 4, 2012.
+//  Copyright (c) 2012, 2013, 2014 Levi Brown <mailto:levigroker@gmail.com>
 //  This work is licensed under the Creative Commons Attribution 3.0
 //  Unported License. To view a copy of this license, visit
 //  http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
@@ -48,10 +48,14 @@
  
  To use with TestFlight http://testflightapp.com :
  
- If you `#define TESTFLIGHT` (or define TESTFLIGHT in your build settings), Sprout will add the `TestFlightLogger` to send log messages to the `TFLog` TestFlight SDK logger at your current log level.
- @warning If you define `TESTFLIGHT` you must have libTestFlight.a linked or you'll get a linker error (see https://testflightapp.com/sdk/doc/ for information on installing TestFlight)
+ If you have TestFlight installed, Sprout will automatically add the `TestFlightLogger` to send log messages to the `TFLog` TestFlight SDK logger at your current log level.
  @warning If you're using TestFlight you should initialize Sprout before calling `TestFlight takeOff:`
- */
+
+ To use with Crashlytics http://crashlytics.com :
+ 
+ If you have Crashlytics installed, Sprout will automatically add the `CrashlyticsLogger` to send log messages to the `CLSLog` Crashlytics SDK logger at your current log level.
+ @warning If you're using Crashlytics you should initialize Sprout before calling `Crashlytics startWithAPIKey:`
+*/
 
 #ifndef _SPROUT_H
 #define _SPROUT_H
@@ -61,6 +65,8 @@
 #import "DDLog.h"
 #import "DDFileLogger.h"
 #import "DDTTYLogger.h"
+#import "TestFlightLogger.h"
+#import "CrashlyticsLogger.h"
 
 //Set the logging level and optional loggers
 
@@ -81,10 +87,6 @@
     #endif
 #endif
 
-#ifdef TESTFLIGHT
-    #define SPROUT_TESTFLIGHT_LOGGING
-#endif
-
 @interface Sprout : NSObject
 
 /**
@@ -100,6 +102,26 @@
  */
 @property (nonatomic,strong,readonly) DDTTYLogger *ttyLogger;
 /**
+ * @return The `TestFlightLogger` used to write log statements to TestFlight, or `nil` if TestFlight logging is disabled.
+ */
+@property (nonatomic,strong,readonly) TestFlightLogger *testFlightLogger;
+/**
+ * @return The `CrashlyticsLogger` used to write log statements to Crashlytics, or `nil` if Crashlytics logging is disabled.
+ */
+@property (nonatomic,strong,readonly) CrashlyticsLogger *crashlyticsLogger;
+/**
+ * An NSArray of objects conforming to the DDLogger protocol which are the default installed loggers.
+ * Set this to an empty array to have no default loggers. Setting it to `nil` will use the defaults.
+ * Changes to this property should be made before a call to `startLogging`.
+ */
+@property (nonatomic,strong) NSArray *defaultLoggers;
+/**
+ * The default log formatter.
+ * Set this to a class implementing the `DDLogFormatter` protocol prior to calling `startLogging` to set a custom log formatter.
+ * This defaults to `SproutCustomLogFormatter.class`
+ */
+@property (nonatomic,strong) Class<DDLogFormatter> defaultLogFormatterClass;
+/**
  * @return The `NSFileManager` used to perform file based operations.
  */
 @property (nonatomic,strong,readonly) NSFileManager *fileManager;
@@ -108,11 +130,13 @@
  * @return The singleton instance of `Sprout`
  */
 + (Sprout *)sharedInstance;
+
 /**
  * Configures CocoaLumberjack for logging, and attaches signal handlers, etc.
  * After this is called, `started` will be `YES`
  */
 - (void)startLogging;
+
 #ifndef SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
 /**
  * Sets the logging level to that specified.
@@ -129,36 +153,85 @@
  */
 - (void)setLogLevel:(int)logLevel;
 #endif
+
 /**
  * Outputs a log statement at LOG_LEVEL_INFO with the app name, bundle identifier, versions (CFBundleShortVersionString and CFBundleVersion), device model, OS name and version.
  */
 - (void)logAppAndDeviceInfo;
+
 /**
  * @return All file logs as an `NSData` representing a zip archive of the log files.
  */
 - (NSData *)logsAsZippedData;
+
 /**
  * @return An `NSArray` of `NSString` objects containing the full path to the most recent (up to 10) log files.
  */
 - (NSArray *)logFiles;
 
-//Setup various loggers (primarity for subclasses to override)
+//Loggers
+
+/**
+ * Adds the given logger to CocoaLumberjack, with log level `LOG_LEVEL_ALL`, after configuring it with an instance of the default log formatter specified by the `defaultLogFormatterClass` property.
+ *
+ * @param logger The logger to add.
+ */
+- (void)addLogger:(id <DDLogger>)logger;
+
+/**
+ * Adds the given logger to CocoaLumberjack, with the specified log level, after configuring it with an instance of the default log formatter specified by the `defaultLogFormatterClass` property.
+ *
+ * @param logger The logger to add.
+ */
+- (void)addLogger:(id <DDLogger>)logger withLogLevel:(int)logLevel;
+
+/**
+ * Removes the given logger from CocoaLumberjack
+ *
+ * @param logger The logger to remove.
+ */
+- (void)removeLogger:(id <DDLogger>)logger;
+
+/**
+ * Removes all loggers from CocoaLumberjack
+ */
+- (void)removeAllLoggers;
+
+/**
+ * Gets all currently installed loggers.
+ *
+ * @return An NSArray of DDLogger objects which are currently installed into CocoaLumberjack
+ */
+- (NSArray *)allLoggers;
+
+//Potential Overrides
+
+/**
+ * Adds the loggers from the `defaultLoggers` property to CocoaLumberjack
+ */
+- (void)addDefaultLoggers;
+/**
+ * Creates a new instance of the DDLogFormatter specified by the `defaultLogFormatterClass` property.
+ *
+ * @return A new instance of the default DDLogFormatter
+ */
+- (id<DDLogFormatter>)createDefaultLogFormatter;
 /**
  * Setup the console (TTY) logger
  */
-- (void)setupTTYLogger;
+- (DDTTYLogger *)setupTTYLogger;
 /**
  * Setup the File logger
  */
-- (void)setupFileLogger;
+- (DDFileLogger *)setupFileLogger;
 /**
  * Setup the TestsFlight logger
  */
-- (void)setupTestFlightLogger;
+- (TestFlightLogger *)setupTestFlightLogger;
 /**
- * Setup any additional loggers. Meant for subclasses to override. Current implementation does nothing.
+ * Setup the Crashlytics logger
  */
-- (void)setupAdditionalLoggers;
+- (CrashlyticsLogger *)setupCrashlyticsLogger;
 
 //Helper implementation
 + (NSString *)backtraceSkipping:(int)skip length:(int)length;

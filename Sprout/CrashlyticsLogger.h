@@ -1,8 +1,8 @@
 //
-//  CustomLogFormatter.h
+//  CrashlyticsLogger.h
 //
-//  Created by Levi Brown on 10/4/12.
-//  Copyright (c) 2012, 2013 Levi Brown <mailto:levigroker@gmail.com>
+//  Created by Levi Brown on August 12, 2014.
+//  Copyright (c) 2014 Levi Brown <mailto:levigroker@gmail.com>
 //  This work is licensed under the Creative Commons Attribution 3.0
 //  Unported License. To view a copy of this license, visit
 //  http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
@@ -16,10 +16,16 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import "DDLog.h"
 
-@interface CustomLogFormatter : NSObject <DDLogFormatter>
+@interface CrashlyticsLogger : DDAbstractLogger <DDLogger>
 
-@property (nonatomic,strong) NSDateFormatter *dateFormatter;
++ (instancetype)sharedInstance;
+
+// Inherited from DDAbstractLogger
+
+// - (id <DDLogFormatter>)logFormatter;
+// - (void)setLogFormatter:(id <DDLogFormatter>)formatter;
 
 @end

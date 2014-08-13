@@ -1,5 +1,5 @@
 //
-//  TestFlightLogger.h
+//  SproutCustomLogFormatter.h
 //
 //  Created by Levi Brown on October 4, 2012.
 //  Copyright (c) 2012, 2013, 2014 Levi Brown <mailto:levigroker@gmail.com>
@@ -16,16 +16,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import "DDLog.h"
 
-@interface TestFlightLogger : DDAbstractLogger <DDLogger>
+@interface SproutCustomLogFormatter : NSObject <DDLogFormatter>
 
-+ (instancetype)sharedInstance;
-
-// Inherited from DDAbstractLogger
-
-// - (id <DDLogFormatter>)logFormatter;
-// - (void)setLogFormatter:(id <DDLogFormatter>)formatter;
+@property (nonatomic,strong) NSDateFormatter *dateFormatter;
 
 @end

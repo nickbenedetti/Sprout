@@ -1,8 +1,8 @@
 //
-//  CustomLogFormatter.m
+//  SproutCustomLogFormatter.m
 //
-//  Created by Levi Brown on 10/4/12.
-//  Copyright (c) 2012, 2013 Levi Brown <mailto:levigroker@gmail.com>
+//  Created by Levi Brown on October 4, 2012.
+//  Copyright (c) 2012, 2013, 2014 Levi Brown <mailto:levigroker@gmail.com>
 //  This work is licensed under the Creative Commons Attribution 3.0
 //  Unported License. To view a copy of this license, visit
 //  http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
@@ -15,9 +15,9 @@
 //  appreciated.
 //
 
-#import "CustomLogFormatter.h"
+#import "SproutCustomLogFormatter.h"
 
-@implementation CustomLogFormatter
+@implementation SproutCustomLogFormatter
 
 - (id)init
 {
@@ -37,7 +37,7 @@
     {
         case LOG_FLAG_ERROR : logLevel = @"[ERROR]"; break;
         case LOG_FLAG_WARN  : logLevel = @" [WARN]"; break;
-        case LOG_FLAG_INFO  : logLevel = @" [INfO]"; break;
+        case LOG_FLAG_INFO  : logLevel = @" [INFO]"; break;
         default             : logLevel = @"[DEBUG]"; break;
     }
     NSString *file = [NSString stringWithCString:logMessage->file encoding:NSASCIIStringEncoding];

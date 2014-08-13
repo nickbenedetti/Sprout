@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		086E70AB16E026FB00C510A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086E70AA16E026FB00C510A7 /* Foundation.framework */; };
-		086E70D616E02FFE00C510A7 /* CustomLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 086E70D316E02FFE00C510A7 /* CustomLogFormatter.m */; };
+		086E70D616E02FFE00C510A7 /* SproutCustomLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 086E70D316E02FFE00C510A7 /* SproutCustomLogFormatter.m */; };
 		086E70D716E02FFE00C510A7 /* Sprout.m in Sources */ = {isa = PBXBuildFile; fileRef = 086E70D516E02FFE00C510A7 /* Sprout.m */; };
 		086E70DA16E15F2200C510A7 /* TestFlightLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 086E70D916E15F2200C510A7 /* TestFlightLogger.m */; };
+		DB659862199AAEBE006ED4A5 /* CrashlyticsLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DB659861199AAEBE006ED4A5 /* CrashlyticsLogger.m */; };
 		F0A5343F35EB49F39F69DEEB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4703F39D186544078E9ED2B0 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -31,14 +32,16 @@
 		086E70AA16E026FB00C510A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		086E70AE16E026FB00C510A7 /* Sprout-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Sprout-Prefix.pch"; path = "../Sprout-Prefix.pch"; sourceTree = "<group>"; };
 		086E70BB16E026FB00C510A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		086E70D216E02FFE00C510A7 /* CustomLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLogFormatter.h; sourceTree = "<group>"; };
-		086E70D316E02FFE00C510A7 /* CustomLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLogFormatter.m; sourceTree = "<group>"; };
+		086E70D216E02FFE00C510A7 /* SproutCustomLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SproutCustomLogFormatter.h; sourceTree = "<group>"; };
+		086E70D316E02FFE00C510A7 /* SproutCustomLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SproutCustomLogFormatter.m; sourceTree = "<group>"; };
 		086E70D416E02FFE00C510A7 /* Sprout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprout.h; sourceTree = "<group>"; };
 		086E70D516E02FFE00C510A7 /* Sprout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sprout.m; sourceTree = "<group>"; };
 		086E70D816E15F0900C510A7 /* TestFlightLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlightLogger.h; sourceTree = "<group>"; };
 		086E70D916E15F2200C510A7 /* TestFlightLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFlightLogger.m; sourceTree = "<group>"; };
 		4703F39D186544078E9ED2B0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06C78F9E7664BB4B28E8A9B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		DB659860199AAEBE006ED4A5 /* CrashlyticsLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashlyticsLogger.h; sourceTree = "<group>"; };
+		DB659861199AAEBE006ED4A5 /* CrashlyticsLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrashlyticsLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +90,10 @@
 			children = (
 				086E70D416E02FFE00C510A7 /* Sprout.h */,
 				086E70D516E02FFE00C510A7 /* Sprout.m */,
-				086E70D216E02FFE00C510A7 /* CustomLogFormatter.h */,
-				086E70D316E02FFE00C510A7 /* CustomLogFormatter.m */,
+				DB659860199AAEBE006ED4A5 /* CrashlyticsLogger.h */,
+				DB659861199AAEBE006ED4A5 /* CrashlyticsLogger.m */,
+				086E70D216E02FFE00C510A7 /* SproutCustomLogFormatter.h */,
+				086E70D316E02FFE00C510A7 /* SproutCustomLogFormatter.m */,
 				086E70D816E15F0900C510A7 /* TestFlightLogger.h */,
 				086E70D916E15F2200C510A7 /* TestFlightLogger.m */,
 				086E70AD16E026FB00C510A7 /* Supporting Files */,
@@ -173,9 +178,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				086E70D616E02FFE00C510A7 /* CustomLogFormatter.m in Sources */,
+				086E70D616E02FFE00C510A7 /* SproutCustomLogFormatter.m in Sources */,
 				086E70D716E02FFE00C510A7 /* Sprout.m in Sources */,
 				086E70DA16E15F2200C510A7 /* TestFlightLogger.m in Sources */,
+				DB659862199AAEBE006ED4A5 /* CrashlyticsLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
