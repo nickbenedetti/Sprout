@@ -39,8 +39,9 @@ static NSString * const kSysInfoKeyHardwarePlatform = @"hw.model";
 #define DDLogException(frmt, ...)   LOG_MAYBE(YES, ddLogLevel, LOG_FLAG_ERROR, 0, "Exception Handler", frmt, ##__VA_ARGS__)
 #define DDLogSignal(frmt, ...)   LOG_MAYBE(LOG_ASYNC_ERROR, ddLogLevel, LOG_FLAG_ERROR, 0, "Signal Handler", frmt, ##__VA_ARGS__)
 
-void exceptionHandler(NSException *exception);
-void signalHandler(int signal);
+void sproutExceptionHandler(NSException *exception);
+void sproutSignalHandler(int signal);
+NSUncaughtExceptionHandler *priorHandler;
 
 @interface Sprout ()
 
@@ -53,12 +54,16 @@ void signalHandler(int signal);
 
 @end
 
-void exceptionHandler(NSException *exception)
+void sproutExceptionHandler(NSException *exception)
 {
     DDLogException(@"Exception: %@\nCall stack:\n%@", exception, [exception callStackSymbols]);
+    if (priorHandler && priorHandler != &sproutExceptionHandler)
+    {
+        (*priorHandler)(exception);
+    }
 }
 
-void signalHandler(int signal)
+void sproutSignalHandler(int signal)
 {
     NSString *signalSring = @"unknown";
     switch (signal)
@@ -135,8 +140,10 @@ void signalHandler(int signal)
     {
         //Initialize logging
         
-        //Register our handler for uncaught exceptions
-        NSSetUncaughtExceptionHandler(&exceptionHandler);
+        //Store any prior handler so we can chain call to it.
+        priorHandler = NSGetUncaughtExceptionHandler();
+        //Register our handler for uncaught exceptions.
+        NSSetUncaughtExceptionHandler(&sproutExceptionHandler);
         
         //Register our handler for signals
         
@@ -145,7 +152,7 @@ void signalHandler(int signal)
         //Initialize the signal action structure
         memset(&signalAction, 0, sizeof(signalAction));
         //Set 'signalHandler' as the handler in the signal action structure
-        signalAction.sa_handler = &signalHandler;
+        signalAction.sa_handler = &sproutSignalHandler;
         //Set 'signalHandler' as the handlers for SIGABRT, SIGILL and SIGBUS
         sigaction(SIGABRT, &signalAction, NULL);
         sigaction(SIGILL, &signalAction, NULL);

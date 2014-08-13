@@ -140,7 +140,10 @@ __NOTE:__ If you're using Crashlytics you should initialize Sprout before callin
   * Added capability to override the default log formatter.
   * Renamed `CustomLogFormatter` to `SproutCustomLogFormatter`.
   * Added documentation for new features.
-  
+* 2.0.1 - August 13, 2014
+  * Adding provisions for calling any previously installed exception handler.
+  * Avoiding namespace conflicts for exception and signal handlers.
+   
 ### Licence
 
 This work is licensed under the [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
