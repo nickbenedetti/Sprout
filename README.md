@@ -143,6 +143,8 @@ __NOTE:__ If you're using Crashlytics you should initialize Sprout before callin
 * 2.0.1 - August 13, 2014
   * Adding provisions for calling any previously installed exception handler.
   * Avoiding namespace conflicts for exception and signal handlers.
+* 2.0.2 - August 13, 2014
+  * Adding empty strings to TestFlight weak constants to avoid weak linking issues.
    
 ### Licence
 
