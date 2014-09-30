@@ -70,20 +70,44 @@
 
 //Set the logging level and optional loggers
 
+//File logging is always enabled
 #define SPROUT_FILE_LOGGING
+
+//Here we set the default log levels
+//If `SPROUT_LOG_LEVEL` is defined, then it will be used,
+//otherwise the log level defaults to `LOG_LEVEL_VERBOSE` if `DEBUG` is defined and
+//the log level defaults to `LOG_LEVEL_WARN` if `DEBUG` is not defined.
+//By default, dynamic log levels are enabled, and `setLogLevel:` can be used to set the log level at runtime dynamically,
+//however if `SPROUT_DISABLE_DYNAMIC_LOG_LEVEL` is defined, the log level is static.
 
 #ifdef DEBUG
     #ifndef SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
-        static int ddLogLevel = LOG_LEVEL_VERBOSE;
+        #ifdef SPROUT_LOG_LEVEL
+            static int ddLogLevel = SPROUT_LOG_LEVEL;
+        #else
+            static int ddLogLevel = LOG_LEVEL_VERBOSE;
+        #endif
     #else
-        static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+        #ifdef SPROUT_LOG_LEVEL
+            static const int ddLogLevel = SPROUT_LOG_LEVEL;
+        #else
+            static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+        #endif
     #endif
     #define SPROUT_CONSOLE_LOGGING
 #else
     #ifndef SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
-        static int ddLogLevel = LOG_LEVEL_WARN;
+        #ifdef SPROUT_LOG_LEVEL
+            static int ddLogLevel = SPROUT_LOG_LEVEL;
+        #else
+            static int ddLogLevel = LOG_LEVEL_WARN;
+        #endif
     #else
-        static const int ddLogLevel = LOG_LEVEL_WARN;
+        #ifdef SPROUT_LOG_LEVEL
+            static const int ddLogLevel = SPROUT_LOG_LEVEL;
+        #else
+            static const int ddLogLevel = LOG_LEVEL_WARN;
+        #endif
     #endif
 #endif
 
