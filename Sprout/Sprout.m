@@ -39,6 +39,12 @@ static NSString * const kSysInfoKeyHardwarePlatform = @"hw.model";
 #define DDLogException(frmt, ...)   LOG_MAYBE(YES, ddLogLevel, LOG_FLAG_ERROR, 0, "Exception Handler", frmt, ##__VA_ARGS__)
 #define DDLogSignal(frmt, ...)   LOG_MAYBE(LOG_ASYNC_ERROR, ddLogLevel, LOG_FLAG_ERROR, 0, "Signal Handler", frmt, ##__VA_ARGS__)
 
+#define SproutLogError(frmt, ...)    SYNC_LOG_OBJC_MAYBE(sproutInternalLogLevel,  LOG_FLAG_ERROR,   SPROUT_LOG_CONTEXT, @"[Sprout] "frmt, ##__VA_ARGS__)
+#define SproutLogWarn(frmt, ...)     ASYNC_LOG_OBJC_MAYBE(sproutInternalLogLevel, LOG_FLAG_WARN,    SPROUT_LOG_CONTEXT, @"[Sprout] "frmt, ##__VA_ARGS__)
+#define SproutLogInfo(frmt, ...)     ASYNC_LOG_OBJC_MAYBE(sproutInternalLogLevel, LOG_FLAG_INFO,    SPROUT_LOG_CONTEXT, @"[Sprout] "frmt, ##__VA_ARGS__)
+#define SproutLogDebug(frmt, ...)    ASYNC_LOG_OBJC_MAYBE(sproutInternalLogLevel, LOG_FLAG_DEBUG,   SPROUT_LOG_CONTEXT, @"[Sprout] "frmt, ##__VA_ARGS__)
+#define SproutLogVerbose(frmt, ...)  ASYNC_LOG_OBJC_MAYBE(sproutInternalLogLevel, LOG_FLAG_VERBOSE, SPROUT_LOG_CONTEXT, @"[Sprout] "frmt, ##__VA_ARGS__)
+
 void sproutExceptionHandler(NSException *exception);
 void sproutSignalHandler(int signal);
 NSUncaughtExceptionHandler *priorHandler;
@@ -132,6 +138,40 @@ void sproutSignalHandler(int signal)
     return retVal;
 }
 
++ (NSString *)stringForLogLevel:(int)logLevel
+{
+    NSString *retVal = nil;
+    
+    switch (logLevel) {
+        case LOG_LEVEL_OFF:
+            retVal = @"LOG_LEVEL_OFF";
+            break;
+        case LOG_LEVEL_ERROR:
+            retVal = @"LOG_LEVEL_ERROR";
+            break;
+        case LOG_LEVEL_WARN:
+            retVal = @"LOG_LEVEL_WARN";
+            break;
+        case LOG_LEVEL_INFO:
+            retVal = @"LOG_LEVEL_INFO";
+            break;
+        case LOG_LEVEL_DEBUG:
+            retVal = @"LOG_LEVEL_DEBUG";
+            break;
+        case LOG_LEVEL_VERBOSE:
+            retVal = @"LOG_LEVEL_VERBOSE";
+            break;
+        case LOG_LEVEL_ALL:
+            retVal = @"LOG_LEVEL_ALL";
+            break;
+        default:
+            retVal = @"<Unkown>";
+            break;
+    }
+    
+    return retVal;
+}
+
 #pragma mark - Implementation
 
 - (void)startLogging
@@ -161,13 +201,25 @@ void sproutSignalHandler(int signal)
         
         [self addDefaultLoggers];
 
-        DDLogInfo(@"[Sprout] CocoaLumberjack loggers initialized!");
+        BOOL defaultLogLevel = YES;
+        #ifdef SPROUT_LOG_LEVEL
+        defaultLogLevel = NO;
+        #endif
+        
+        BOOL dynamicLogLevel = YES;
+        #if SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
+        dynamicLogLevel = NO;
+        #endif
+
+        SproutLogDebug(@"Log level %@ '%@'. Dynamic log level is %@abled.", defaultLogLevel ? @"defaulted to" : @"set by 'SPROUT_LOG_LEVEL' to", [self.class stringForLogLevel:LOG_LEVEL_DEF], dynamicLogLevel ? @"en" : @"dis");
+        
+        SproutLogInfo(@"CocoaLumberjack loggers initialized!");
         
         self.started = YES;
     }
 }
 
-#ifndef SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
+#if !SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
 - (void)setLogLevel:(int)logLevel
 {
     ddLogLevel = logLevel;
@@ -238,7 +290,7 @@ void sproutSignalHandler(int signal)
     for (id<DDLogger> logger in loggers)
     {
         [self addLogger:logger];
-        DDLogVerbose(@"[Sprout] Added logger: '%@'", [logger loggerName]);
+        SproutLogVerbose(@"Added logger: '%@'", [logger loggerName]);
     }
 }
 
@@ -331,7 +383,7 @@ void sproutSignalHandler(int signal)
 {
     DDTTYLogger *logger = nil;
     
-    #ifdef SPROUT_CONSOLE_LOGGING
+    #if SPROUT_CONSOLE_LOGGING
     //Console
     logger = [DDTTYLogger sharedInstance];
     [logger setColorsEnabled:YES];
@@ -344,7 +396,7 @@ void sproutSignalHandler(int signal)
 {
     DDFileLogger *logger = nil;
     
-    #ifdef SPROUT_FILE_LOGGING
+    #if SPROUT_FILE_LOGGING
     //File logging
     logger = [[DDFileLogger alloc] init];
     logger.rollingFrequency = 60 * 60 * 24; // 24 hour rolling
@@ -506,4 +558,3 @@ void sproutSignalHandler(int signal)
 }
 
 @end
-

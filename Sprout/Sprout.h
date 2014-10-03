@@ -71,7 +71,7 @@
 //Set the logging level and optional loggers
 
 //File logging is always enabled
-#define SPROUT_FILE_LOGGING
+#define SPROUT_FILE_LOGGING 1
 
 //Here we set the default log levels
 //If `SPROUT_LOG_LEVEL` is defined, then it will be used,
@@ -80,35 +80,45 @@
 //By default, dynamic log levels are enabled, and `setLogLevel:` can be used to set the log level at runtime dynamically,
 //however if `SPROUT_DISABLE_DYNAMIC_LOG_LEVEL` is defined, the log level is static.
 
-#ifdef DEBUG
-    #ifndef SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
-        #ifdef SPROUT_LOG_LEVEL
-            static int ddLogLevel = SPROUT_LOG_LEVEL;
-        #else
-            static int ddLogLevel = LOG_LEVEL_VERBOSE;
-        #endif
-    #else
+#if DEBUG
+    #if SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
         #ifdef SPROUT_LOG_LEVEL
             static const int ddLogLevel = SPROUT_LOG_LEVEL;
         #else
             static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         #endif
-    #endif
-    #define SPROUT_CONSOLE_LOGGING
-#else
-    #ifndef SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
+    #else
         #ifdef SPROUT_LOG_LEVEL
             static int ddLogLevel = SPROUT_LOG_LEVEL;
         #else
-            static int ddLogLevel = LOG_LEVEL_WARN;
+            static int ddLogLevel = LOG_LEVEL_VERBOSE;
         #endif
-    #else
+    #endif
+    #define SPROUT_CONSOLE_LOGGING 1
+#else
+    #if SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
         #ifdef SPROUT_LOG_LEVEL
             static const int ddLogLevel = SPROUT_LOG_LEVEL;
         #else
             static const int ddLogLevel = LOG_LEVEL_WARN;
         #endif
+    #else
+        #ifdef SPROUT_LOG_LEVEL
+            static int ddLogLevel = SPROUT_LOG_LEVEL;
+        #else
+            static int ddLogLevel = LOG_LEVEL_WARN;
+        #endif
     #endif
+#endif
+
+//Sprout's internal loggers use this context.
+#define SPROUT_LOG_CONTEXT 60221413
+
+//Sprout's internal logging level
+#if DEBUG
+    static const int sproutInternalLogLevel = LOG_LEVEL_VERBOSE;
+#else
+    static const int sproutInternalLogLevel = LOG_LEVEL_INFO;
 #endif
 
 @interface Sprout : NSObject
@@ -161,7 +171,7 @@
  */
 - (void)startLogging;
 
-#ifndef SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
+#if !SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
 /**
  * Sets the logging level to that specified.
  * @param logLevel The new log level to be used. Takes affect immediately.

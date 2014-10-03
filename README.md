@@ -10,13 +10,15 @@ If you're using [CocoPods](http://cocopods.org) it's as simple as adding this to
 
 Sprout makes use of some preprocessor defines to configure the logging level and some functionality. These preprocessor definitions need to be added to the Pods target for Sprout, as opposed to your own project build settings, because the Pods library gets compiled without being exposed to your project build settings. To do this, you can add a `post_install` hook to your `Podfile` (as seen below).
 
-* `DEBUG=1` If defined, this sets the logging level to be verbose (`ddLogLevel = LOG_LEVEL_VERBOSE`) and enables the TTY (console) logger,
+* `DEBUG=1` If defined, this sets the default logging level to be verbose (`ddLogLevel = LOG_LEVEL_VERBOSE`) and enables the TTY (console) logger,
 otherwise the default is the warning level (`ddLogLevel = LOG_LEVEL_WARN`) and no TTY logger.
+* `SPROUT_LOG_LEVEL` can be used to override the default log level. Define `SPROUT_LOG_LEVEL` to whatever log level is appropriate for your configuration. See the **Log Levels** section below.
 * `SPROUT_DISABLE_DYNAMIC_LOG_LEVEL=1` By default, Sprout supports CocoaLumberjack's dynamic log level usage by declaring `ddLogLevel` as `const` (`static const int ddLogLevel`). If you don't need dynamic log level support, and would like the extra speed disabling it will provide, you can disable this by defining `SPROUT_DISABLE_DYNAMIC_LOG_LEVEL=1`
 
 #### Podfile post_install
 
 Here's an example `post_install` hook which adds the `DEBUG`, `TESTFLIGHT` and `SPROUT_DISABLE_DYNAMIC_LOG_LEVEL` preprocessor definitions to the `Pods-Sprout` target of the `Pods` project. *Note* `DEBUG` is not added to the `Release` configuration.
+This also overrides the default log level by setting `SPROUT_LOG_LEVEL` to a different log level for `Release` vs. other Schemes. 
 
 		post_install do |installer_representation|
 		  installer_representation.project.targets.each do |target|
@@ -24,11 +26,16 @@ Here's an example `post_install` hook which adds the `DEBUG`, `TESTFLIGHT` and `
 			  target.build_configurations.each do |config|
 				config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
 				config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'SPROUT_DISABLE_DYNAMIC_LOG_LEVEL=1'
-				if config.name != 'Release' and !config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'].include? 'DEBUG=1'
-					config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'DEBUG=1'
+				if config.name == 'Release'
+					config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'SPROUT_LOG_LEVEL=LOG_LEVEL_WARN'
+				else
+					config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'SPROUT_LOG_LEVEL=LOG_LEVEL_VERBOSE'
+					if !config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'].include? 'DEBUG=1'
+						config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'DEBUG=1'
+					end
 				end
 			  end
-			  break
+			  break #Done with 'Pods-Sprout' target
 			end
 		  end
 		end
@@ -73,6 +80,18 @@ After the above setup, you should be able to run and see:
 		CocoaLumberjack loggers initialized!
 
 appear in your console.
+
+#### Log Levels
+
+By default, Sprout allows the use of dynamic log levels, meaning `setLogLevel:` can be sent at runtime to set the desired log level. This comes with a slight performance hit for log entries, and can be disabled by defining `SPROUT_DISABLE_DYNAMIC_LOG_LEVEL=1`. If disabled, the log level will be static and can only be set at compile time.
+
+The log level defaults to `LOG_LEVEL_VERBOSE` if `DEBUG` is defined and set to a non-zero value. If `DEBUG` is not defined (or set to zero) the log level defaults to `LOG_LEVEL_WARN`.
+
+The default log level can be overridden by defining `SPROUT_LOG_LEVEL` and setting it to the desired log level.
+
+NOTE: If you're using Sprout with CocoaPods, simply defining this in your precompiled header or project build settings will not have the desired affect, since Sprout is compiled into the Pods library before these are traversed by the pre-compiler. So you will need to define `SPROUT_LOG_LEVEL` in the Podfile `post_install` hook.
+
+See the **Podfile post_install** section above for an example `post_install` hook which does this.
 
 #### Default Loggers
 
@@ -145,6 +164,10 @@ __NOTE:__ If you're using Crashlytics you should initialize Sprout before callin
   * Avoiding namespace conflicts for exception and signal handlers.
 * 2.0.2 - August 13, 2014
   * Adding empty strings to TestFlight weak constants to avoid weak linking issues.
+* 2.0.3 - October 3, 2014
+  * Adding ability to override default static log level by defining `SPROUT_LOG_LEVEL`.
+  * Cleaning up preprocessor macro checking and defines.
+  * Adding Sprout-internal log category.
    
 ### Licence
 
