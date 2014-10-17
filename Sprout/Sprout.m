@@ -128,11 +128,18 @@ void sproutSignalHandler(int signal)
     char **strs = backtrace_symbols(callstack, frames);
     
     NSMutableArray *backtrace = [NSMutableArray arrayWithCapacity:frames];
-    for (int i = skip; i < skip + length; ++i)
+    if (strs != NULL)
     {
-        [backtrace addObject:[NSString stringWithUTF8String:strs[i]]];
+        for (int i = skip; i < skip + length; ++i)
+        {
+            char *str = strs[i];
+            if (str != NULL)
+            {
+                [backtrace addObject:[NSString stringWithUTF8String:str]];
+            }
+        }
+        free(strs);
     }
-    free(strs);
     
     NSString *retVal = [backtrace componentsJoinedByString:@"\n"];
     return retVal;
