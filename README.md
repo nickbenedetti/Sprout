@@ -168,7 +168,9 @@ __NOTE:__ If you're using Crashlytics you should initialize Sprout before callin
   * Adding ability to override default static log level by defining `SPROUT_LOG_LEVEL`.
   * Cleaning up preprocessor macro checking and defines.
   * Adding Sprout-internal log category.
-   
+* 2.0.4 - October 17, 2014
+  * Armoring against NULL backtrace symbols.
+
 ### Licence
 
 This work is licensed under the [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
