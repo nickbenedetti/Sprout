@@ -170,6 +170,9 @@ __NOTE:__ If you're using Crashlytics you should initialize Sprout before callin
   * Adding Sprout-internal log category.
 * 2.0.4 - October 17, 2014
   * Armoring against NULL backtrace symbols.
+* 2.0.5 - February 5, 2015
+  * Fixing TARGET_OS_MAC conditional compilation.
+  * Adding `deviceName` to `logAppAndDeviceInfo` output.
 
 ### Licence
 
