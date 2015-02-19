@@ -16,11 +16,11 @@
 //
 
 #include <execinfo.h>
+#import <sys/sysctl.h>
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 #else //Mac
-#import <sys/sysctl.h>
 #import <SystemConfiguration/SCDynamicStoreCopySpecific.h>
 
 static NSString * const kSystemVersionPlistLocation = @"/System/Library/CoreServices/SystemVersion.plist";
@@ -28,8 +28,10 @@ static NSString * const kSystemVersionKeyProductName = @"ProductName";
 static NSString * const kSystemVersionKeyProductUserVisibleVersion = @"ProductUserVisibleVersion";
 static NSString * const kSystemVersionKeyProductBuildVersion = @"ProductBuildVersion";
 
-static NSString * const kSysInfoKeyHardwarePlatform = @"hw.model";
 #endif //TARGET
+
+static NSString * const kSysInfoKeyHardwarePlatform = @"hw.model";
+static NSString * const kSysInfoKeyHardwareMachine = @"hw.machine";
 
 #import "Sprout.h"
 #import "SproutCustomLogFormatter.h"
@@ -240,12 +242,13 @@ void sproutSignalHandler(int signal)
     NSString *appBuildNumber = [self appBuildNumber];
     NSString *deviceName;
     NSString *deviceModel;
+    NSString *deviceMachine;
     NSString *systemName;
     NSString *systemVersion;
     
-    [self deviceName:&deviceName deviceModel:&deviceModel systemName:&systemName systemVersion:&systemVersion];
+    [self deviceName:&deviceName deviceModel:&deviceModel deviceMachine:&deviceMachine systemName:&systemName systemVersion:&systemVersion];
 
-    DDLogInfo(@"%@ %@ (%@ %@) %@ \"%@\", %@ %@", appName ?: @"<unknown_app_name>", appVersion ?: @"<unknown_app_version>", appIdentifier ?: @"<unknown_app_identifier>", appBuildNumber ?: @"<unknown_app_build_number>", deviceModel ?: @"<unknown_device_model>", deviceName ?: @"<unknown_device_name>", systemName ?: @"<unknown_system_name>", systemVersion ?: @"<unknown_system_version>");
+    DDLogInfo(@"%@ %@ (%@ %@) %@ \"%@\" (%@), %@ %@", appName ?: @"<unknown_app_name>", appVersion ?: @"<unknown_app_version>", appIdentifier ?: @"<unknown_app_identifier>", appBuildNumber ?: @"<unknown_app_build_number>", deviceModel ?: @"<unknown_device_model>", deviceName ?: @"<unknown_device_name>", deviceMachine ?: @"<unknown_device_machine>", systemName ?: @"<unknown_system_name>", systemVersion ?: @"<unknown_system_version>");
 }
 
 - (NSData *)logsAsZippedData
@@ -459,18 +462,20 @@ void sproutSignalHandler(int signal)
     return retVal;
 }
 
-- (void)deviceName:(NSString **)deviceName deviceModel:(NSString **)deviceModel systemName:(NSString **)systemName systemVersion:(NSString **)systemVersion
+#pragma mark - Device Info
+
+- (void)deviceName:(NSString **)deviceName deviceModel:(NSString **)deviceModel deviceMachine:(NSString **)deviceMachine systemName:(NSString **)systemName systemVersion:(NSString **)systemVersion
 {
 #if TARGET_OS_IPHONE
-    [self iosDeviceName:deviceName deviceModel:deviceModel systemName:systemName systemVersion:systemVersion];
+    [self iosDeviceName:deviceName deviceModel:deviceModel deviceMachine:deviceMachine systemName:systemName systemVersion:systemVersion];
 #elif TARGET_OS_MAC
-    [self osxDeviceName:deviceName deviceModel:deviceModel systemName:systemName systemVersion:systemVersion];
+    [self osxDeviceName:deviceName deviceModel:deviceModel deviceMachine:deviceMachine systemName:systemName systemVersion:systemVersion];
 #endif
 }
 
 #if TARGET_OS_IPHONE
 
-- (void)iosDeviceName:(NSString **)deviceName deviceModel:(NSString **)deviceModel systemName:(NSString **)systemName systemVersion:(NSString **)systemVersion
+- (void)iosDeviceName:(NSString **)deviceName deviceModel:(NSString **)deviceModel deviceMachine:(NSString **)deviceMachine systemName:(NSString **)systemName systemVersion:(NSString **)systemVersion
 {
     if (deviceName)
     {
@@ -480,6 +485,11 @@ void sproutSignalHandler(int signal)
     if (deviceModel)
     {
         *deviceModel = [UIDevice currentDevice].model;
+    }
+    
+    if (deviceMachine)
+    {
+        *deviceMachine = [self sysInfoByName:kSysInfoKeyHardwareMachine];
     }
     
     if (systemName)
@@ -495,7 +505,7 @@ void sproutSignalHandler(int signal)
 
 #else // Mac OS
 
-- (void)osxDeviceName:(NSString **)deviceName deviceModel:(NSString **)deviceModel systemName:(NSString **)systemName systemVersion:(NSString **)systemVersion
+- (void)osxDeviceName:(NSString **)deviceName deviceModel:(NSString **)deviceModel deviceMachine:(NSString **)deviceMachine systemName:(NSString **)systemName systemVersion:(NSString **)systemVersion
 {
     if (deviceName)
     {
@@ -505,6 +515,11 @@ void sproutSignalHandler(int signal)
     if (deviceModel)
     {
         *deviceModel = [self sysInfoByName:kSysInfoKeyHardwarePlatform];
+    }
+    
+    if (deviceMachine)
+    {
+        *deviceMachine = [self sysInfoByName:kSysInfoKeyHardwareMachine];
     }
     
     //See http://stackoverflow.com/questions/11072804/mac-os-x-10-8-replacement-for-gestalt-for-testing-os-version-at-runtime
@@ -522,6 +537,8 @@ void sproutSignalHandler(int signal)
         *systemVersion = [NSString stringWithFormat:@"%@ (%@)", version ?: @"<unknown_system_version", buildNumber ?: @"<unknown_system_build_number>"];
     }
 }
+
+#endif //TARGET
 
 - (NSString *)sysInfoByName:(NSString *)name
 {
@@ -541,8 +558,6 @@ void sproutSignalHandler(int signal)
     
     return retVal;
 }
-
-#endif //TARGET
 
 - (NSString *)tempDirectory
 {
