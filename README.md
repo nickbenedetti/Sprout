@@ -173,6 +173,8 @@ __NOTE:__ If you're using Crashlytics you should initialize Sprout before callin
 * 2.0.5 - February 5, 2015
   * Fixing TARGET_OS_MAC conditional compilation.
   * Adding `deviceName` to `logAppAndDeviceInfo` output.
+* 2.0.6 - February 19, 2015
+  * Adding `deviceMachine` to `logAppAndDeviceInfo` output.
 
 ### Licence
 
