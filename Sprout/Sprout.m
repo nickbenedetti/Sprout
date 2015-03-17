@@ -55,7 +55,6 @@ NSUncaughtExceptionHandler *priorHandler;
 @property (nonatomic,assign) BOOL started;
 @property (nonatomic,strong) DDFileLogger *fileLogger;
 @property (nonatomic,strong) DDTTYLogger *ttyLogger;
-@property (nonatomic,strong) TestFlightLogger *testFlightLogger;
 @property (nonatomic,strong) CrashlyticsLogger *crashlyticsLogger;
 @property (nonatomic,strong) NSFileManager *fileManager;
 
@@ -338,13 +337,6 @@ void sproutSignalHandler(int signal)
             [loggers addObject:logger];
         }
         
-        logger = [self setupTestFlightLogger];
-        if (logger)
-        {
-            self.testFlightLogger = logger;
-            [loggers addObject:logger];
-        }
-        
         logger = [self setupCrashlyticsLogger];
         if (logger)
         {
@@ -413,13 +405,6 @@ void sproutSignalHandler(int signal)
     logger.logFileManager.maximumNumberOfLogFiles = 7;
     #endif
 
-    return logger;
-}
-
-- (TestFlightLogger *)setupTestFlightLogger
-{
-    TestFlightLogger *logger = [TestFlightLogger sharedInstance];
-    
     return logger;
 }
 

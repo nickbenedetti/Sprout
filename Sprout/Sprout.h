@@ -46,11 +46,6 @@
  
  appear in your console.
  
- To use with TestFlight http://testflightapp.com :
- 
- If you have TestFlight installed, Sprout will automatically add the `TestFlightLogger` to send log messages to the `TFLog` TestFlight SDK logger at your current log level.
- @warning If you're using TestFlight you should initialize Sprout before calling `TestFlight takeOff:`
-
  To use with Crashlytics http://crashlytics.com :
  
  If you have Crashlytics installed, Sprout will automatically add the `CrashlyticsLogger` to send log messages to the `CLSLog` Crashlytics SDK logger at your current log level.
@@ -65,7 +60,6 @@
 #import "DDLog.h"
 #import "DDFileLogger.h"
 #import "DDTTYLogger.h"
-#import "TestFlightLogger.h"
 #import "CrashlyticsLogger.h"
 
 //Set the logging level and optional loggers
@@ -135,10 +129,6 @@
  * @return The `DDTTYLogger` used to write log statements to the console.
  */
 @property (nonatomic,strong,readonly) DDTTYLogger *ttyLogger;
-/**
- * @return The `TestFlightLogger` used to write log statements to TestFlight, or `nil` if TestFlight logging is disabled.
- */
-@property (nonatomic,strong,readonly) TestFlightLogger *testFlightLogger;
 /**
  * @return The `CrashlyticsLogger` used to write log statements to Crashlytics, or `nil` if Crashlytics logging is disabled.
  */
@@ -258,10 +248,6 @@
  * Setup the File logger
  */
 - (DDFileLogger *)setupFileLogger;
-/**
- * Setup the TestsFlight logger
- */
-- (TestFlightLogger *)setupTestFlightLogger;
 /**
  * Setup the Crashlytics logger
  */
