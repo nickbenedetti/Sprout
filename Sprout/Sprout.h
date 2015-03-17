@@ -117,6 +117,8 @@
 
 @interface Sprout : NSObject
 
+#pragma mark - Properties
+
 /**
  * @return `YES` if Sprout has configured CocoaLumberjack
  */
@@ -150,6 +152,8 @@
  */
 @property (nonatomic,strong,readonly) NSFileManager *fileManager;
 
+#pragma mark - Startup
+
 /**
  * @return The singleton instance of `Sprout`
  */
@@ -162,6 +166,9 @@
 - (void)startLogging;
 
 #if !SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
+
+#pragma mark - Log Level
+
 /**
  * Sets the logging level to that specified.
  * @param logLevel The new log level to be used. Takes affect immediately.
@@ -178,6 +185,8 @@
 - (void)setLogLevel:(int)logLevel;
 #endif
 
+#pragma mark - Logging Utilities
+
 /**
  * Outputs a log statement at LOG_LEVEL_INFO with the app name, bundle identifier, versions (CFBundleShortVersionString and CFBundleVersion), device model, OS name and version.
  */
@@ -193,7 +202,7 @@
  */
 - (NSArray *)logFiles;
 
-//Loggers
+#pragma mark - Loggers
 
 /**
  * Adds the given logger to CocoaLumberjack, with log level `LOG_LEVEL_ALL`, after configuring it with an instance of the default log formatter specified by the `defaultLogFormatterClass` property.
@@ -228,7 +237,7 @@
  */
 - (NSArray *)allLoggers;
 
-//Potential Overrides
+#pragma mark - Potential Overrides
 
 /**
  * Adds the loggers from the `defaultLoggers` property to CocoaLumberjack
@@ -253,8 +262,20 @@
  */
 - (CrashlyticsLogger *)setupCrashlyticsLogger;
 
-//Helper implementation
+#pragma mark - Helpers
+
+#pragma mark Device Info
+
+- (NSString *)appVersion;
+- (NSString *)appBuildNumber;
+- (NSString *)appName;
+- (NSString *)appIdentifier;
+- (void)deviceName:(NSString **)deviceName deviceModel:(NSString **)deviceModel deviceMachine:(NSString **)deviceMachine systemName:(NSString **)systemName systemVersion:(NSString **)systemVersion;
+
+#pragma mark Misc
+
 + (NSString *)backtraceSkipping:(int)skip length:(int)length;
++ (NSString *)stringForLogLevel:(int)logLevel;
 - (NSString *)tempDirectory;
 - (NSString *)UUID;
 
