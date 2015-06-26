@@ -11,8 +11,20 @@
 		086E70D616E02FFE00C510A7 /* SproutCustomLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 086E70D316E02FFE00C510A7 /* SproutCustomLogFormatter.m */; };
 		086E70D716E02FFE00C510A7 /* Sprout.m in Sources */ = {isa = PBXBuildFile; fileRef = 086E70D516E02FFE00C510A7 /* Sprout.m */; };
 		DB659862199AAEBE006ED4A5 /* CrashlyticsLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DB659861199AAEBE006ED4A5 /* CrashlyticsLogger.m */; };
+		DBE9963C1B3DEDA300F51090 /* Sprout_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE9963B1B3DEDA300F51090 /* Sprout_Tests.m */; };
+		DBE9963D1B3DEDA300F51090 /* libSprout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 086E70A716E026FB00C510A7 /* libSprout.a */; };
 		F0A5343F35EB49F39F69DEEB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4703F39D186544078E9ED2B0 /* libPods.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DBE9963E1B3DEDA300F51090 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 086E709F16E026FB00C510A7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 086E70A616E026FB00C510A7;
+			remoteInfo = Sprout;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		086E70A516E026FB00C510A7 /* CopyFiles */ = {
@@ -40,6 +52,9 @@
 		670A1ECB271B4153BCDD0C84 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DB659860199AAEBE006ED4A5 /* CrashlyticsLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashlyticsLogger.h; sourceTree = "<group>"; };
 		DB659861199AAEBE006ED4A5 /* CrashlyticsLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrashlyticsLogger.m; sourceTree = "<group>"; };
+		DBE996371B3DEDA300F51090 /* Sprout Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sprout Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBE9963A1B3DEDA300F51090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBE9963B1B3DEDA300F51090 /* Sprout_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sprout_Tests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +67,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DBE996341B3DEDA300F51090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBE9963D1B3DEDA300F51090 /* libSprout.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -59,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				086E70AC16E026FB00C510A7 /* Sprout */,
+				DBE996381B3DEDA300F51090 /* Sprout Tests */,
 				086E70A916E026FB00C510A7 /* Frameworks */,
 				086E70A816E026FB00C510A7 /* Products */,
 				17E7A52AACCCFB1A27C8F875 /* Pods */,
@@ -69,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				086E70A716E026FB00C510A7 /* libSprout.a */,
+				DBE996371B3DEDA300F51090 /* Sprout Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,6 +139,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DBE996381B3DEDA300F51090 /* Sprout Tests */ = {
+			isa = PBXGroup;
+			children = (
+				DBE9963B1B3DEDA300F51090 /* Sprout_Tests.m */,
+				DBE996391B3DEDA300F51090 /* Supporting Files */,
+			);
+			path = "Sprout Tests";
+			sourceTree = "<group>";
+		};
+		DBE996391B3DEDA300F51090 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DBE9963A1B3DEDA300F51090 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +177,24 @@
 			productReference = 086E70A716E026FB00C510A7 /* libSprout.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		DBE996361B3DEDA300F51090 /* Sprout Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBE996421B3DEDA300F51090 /* Build configuration list for PBXNativeTarget "Sprout Tests" */;
+			buildPhases = (
+				DBE996331B3DEDA300F51090 /* Sources */,
+				DBE996341B3DEDA300F51090 /* Frameworks */,
+				DBE996351B3DEDA300F51090 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DBE9963F1B3DEDA300F51090 /* PBXTargetDependency */,
+			);
+			name = "Sprout Tests";
+			productName = "Sprout Tests";
+			productReference = DBE996371B3DEDA300F51090 /* Sprout Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -143,6 +203,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Levi Brown";
+				TargetAttributes = {
+					DBE996361B3DEDA300F51090 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+				};
 			};
 			buildConfigurationList = 086E70A216E026FB00C510A7 /* Build configuration list for PBXProject "Sprout" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -157,9 +222,20 @@
 			projectRoot = "";
 			targets = (
 				086E70A616E026FB00C510A7 /* Sprout */,
+				DBE996361B3DEDA300F51090 /* Sprout Tests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DBE996351B3DEDA300F51090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		0EE43E8BDDF24F2E9146ABB8 /* Copy Pods Resources */ = {
@@ -189,7 +265,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DBE996331B3DEDA300F51090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBE9963C1B3DEDA300F51090 /* Sprout_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DBE9963F1B3DEDA300F51090 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 086E70A616E026FB00C510A7 /* Sprout */;
+			targetProxy = DBE9963E1B3DEDA300F51090 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		086E70CA16E026FB00C510A7 /* Debug */ = {
@@ -267,6 +359,76 @@
 			};
 			name = Release;
 		};
+		DBE996401B3DEDA300F51090 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 670A1ECB271B4153BCDD0C84 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sprout-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Sprout Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DBE996411B3DEDA300F51090 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35D384B14823509402EB04AC /* Pods.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sprout-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Sprout Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -284,6 +446,15 @@
 			buildConfigurations = (
 				086E70CD16E026FB00C510A7 /* Debug */,
 				086E70CE16E026FB00C510A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBE996421B3DEDA300F51090 /* Build configuration list for PBXNativeTarget "Sprout Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBE996401B3DEDA300F51090 /* Debug */,
+				DBE996411B3DEDA300F51090 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

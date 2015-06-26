@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Sprout"
-  s.version      = "2.0.7"
+  s.version      = "2.0.8"
   s.summary      = "Bootstrap the CocoaLumberjack logging framework."
   s.description  = <<-DESC
 		Bootstrap the CocoaLumberjack logging framework and add additional functionality such as Custom Loggers, log archiving, crash stack traces, and more.
@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
   s.source_files = 'Sprout/**/*.{h,m}'
   s.frameworks = 'Foundation'
   s.requires_arc = true
-  s.dependency 'CocoaLumberjack', '~> 1.8'
-  s.dependency 'SSZipArchive', '~> 0.3.1'
+  s.dependency 'CocoaLumberjack', '~> 1.9'
+  s.dependency 'SSZipArchive', '~> 0.3.2'
 end

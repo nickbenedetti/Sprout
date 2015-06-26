@@ -274,7 +274,8 @@
 
 #pragma mark Misc
 
-+ (NSString *)backtraceSkipping:(int)skip length:(int)length;
++ (NSString *)backtraceSkipping:(NSUInteger)skip length:(NSUInteger)length;
++ (NSArray *)trimmedBacktraceSkipping:(NSUInteger)skip length:(NSUInteger)length;
 + (NSString *)stringForLogLevel:(int)logLevel;
 - (NSString *)tempDirectory;
 - (NSString *)UUID;

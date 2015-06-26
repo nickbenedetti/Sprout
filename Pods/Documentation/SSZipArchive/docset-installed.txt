@@ -1,4 +1,0 @@
-Documentation set was installed to Xcode!
-
-Path: /Users/labrown/Library/Developer/Shared/Documentation/DocSets/org.cocoapods.SSZipArchive-0.2.4.docset
-Time: 2013-04-04 21:29:38 +0000

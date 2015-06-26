@@ -11,17 +11,17 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>A61DFC96DAC53195D7CC942EFB3DAEA683C50173</key>
-		<string>ssh://github.com/levigroker/Sprout.git</string>
+		<string>github.com:levigroker/Sprout.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Sprout.xcodeproj/project.xcworkspace</string>
+	<string>Sprout.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A61DFC96DAC53195D7CC942EFB3DAEA683C50173</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/levigroker/Sprout.git</string>
+	<string>github.com:levigroker/Sprout.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

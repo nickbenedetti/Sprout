@@ -60,6 +60,9 @@ NSUncaughtExceptionHandler *priorHandler;
 
 @end
 
+//Original exception and signal handling concept and code from http://www.cocoawithlove.com/2010/05/handling-unhandled-exceptions-and.html
+//Since modified
+
 void sproutExceptionHandler(NSException *exception)
 {
     DDLogException(@"Exception: %@\nCall stack:\n%@", exception, [exception callStackSymbols]);
@@ -119,29 +122,29 @@ void sproutSignalHandler(int signal)
 
 #pragma mark Class Level
 
-//Original concept and code from http://www.cocoawithlove.com/2010/05/handling-unhandled-exceptions-and.html
-//Since modified
-+ (NSString *)backtraceSkipping:(int)skip length:(int)length
++ (NSString *)backtraceSkipping:(NSUInteger)skip length:(NSUInteger)length
 {
-    void* callstack[128];
-    int frames = backtrace(callstack, 128);
-    char **strs = backtrace_symbols(callstack, frames);
-    
-    NSMutableArray *backtrace = [NSMutableArray arrayWithCapacity:frames];
-    if (strs != NULL)
+    NSArray *trimmedBacktrace = [self trimmedBacktraceSkipping:skip length:length];
+    NSString *retVal = [trimmedBacktrace componentsJoinedByString:@"\n"];
+    return retVal;
+}
+
++ (NSArray *)trimmedBacktraceSkipping:(NSUInteger)skip length:(NSUInteger)length
+{
+    NSMutableArray *retVal = [NSMutableArray array];
+    if (length > 0)
     {
-        for (int i = skip; i < skip + length; ++i)
-        {
-            char *str = strs[i];
-            if (str != NULL)
+        NSArray *backtrace = [NSThread callStackSymbols];
+        NSUInteger finalIndex = (length - 1) + skip;
+        [backtrace enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if (idx >= skip)
             {
-                [backtrace addObject:[NSString stringWithUTF8String:str]];
+                [retVal addObject:obj];
             }
-        }
-        free(strs);
+            *stop = idx >= finalIndex;
+        }];
     }
     
-    NSString *retVal = [backtrace componentsJoinedByString:@"\n"];
     return retVal;
 }
 
