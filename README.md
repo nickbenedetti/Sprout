@@ -22,7 +22,7 @@ otherwise the default is the warning level (`ddLogLevel = LOG_LEVEL_WARN`) and n
 
 #### Podfile post_install
 
-Here's an example `post_install` hook which adds the `DEBUG`, `TESTFLIGHT` and `SPROUT_DISABLE_DYNAMIC_LOG_LEVEL` preprocessor definitions to the `Pods-Sprout` target of the `Pods` project. *Note* `DEBUG` is not added to the `Release` configuration.
+Here's an example `post_install` hook which adds the `DEBUG` and `SPROUT_DISABLE_DYNAMIC_LOG_LEVEL` preprocessor definitions to the `Pods-Sprout` target of the `Pods` project. *Note* `DEBUG` is not added to the `Release` configuration.
 This also overrides the default log level by setting `SPROUT_LOG_LEVEL` to a different log level for `Release` vs. other Schemes. 
 
 		post_install do |installer_representation|
