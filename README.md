@@ -143,13 +143,13 @@ __NOTE:__ If you're using Crashlytics you should initialize Sprout before callin
 ### Licence
 
 This work is licensed under the [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
-Please see the included LICENSE.txt for complete details.
+Please see the included [LICENSE.txt](https://github.com/levigroker/Sprout/blob/master/LICENSE.txt) for complete details.
 
 ### About
 A professional iOS engineer by day, my name is Levi Brown. Authoring a technical
 blog [grokin.gs](http://grokin.gs), I am reachable via:
 
 Twitter [@levigroker](https://twitter.com/levigroker)  
-EMail [levigroker@gmail.com](mailto:levigroker@gmail.com)  
+Email [levigroker@gmail.com](mailto:levigroker@gmail.com)  
 
 Your constructive comments and feedback are always welcome.
