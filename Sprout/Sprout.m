@@ -2,7 +2,7 @@
 //  Sprout.m
 //
 //  Created by Levi Brown on October 4, 2012.
-//  Copyright (c) 2012, 2013, 2014 Levi Brown <mailto:levigroker@gmail.com>
+//  Copyright (c) 2012, 2013, 2014, 2015 Levi Brown <mailto:levigroker@gmail.com>
 //  This work is licensed under the Creative Commons Attribution 3.0
 //  Unported License. To view a copy of this license, visit
 //  http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
@@ -35,7 +35,6 @@ static NSString * const kSysInfoKeyHardwareMachine = @"hw.machine";
 
 #import "Sprout.h"
 #import "SproutCustomLogFormatter.h"
-#import "SSZipArchive.h"
 
 #define DDLogException(frmt, ...)   LOG_MAYBE(YES, ddLogLevel, LOG_FLAG_ERROR, 0, "Exception Handler", frmt, ##__VA_ARGS__)
 #define DDLogSignal(frmt, ...)   LOG_MAYBE(LOG_ASYNC_ERROR, ddLogLevel, LOG_FLAG_ERROR, 0, "Signal Handler", frmt, ##__VA_ARGS__)
