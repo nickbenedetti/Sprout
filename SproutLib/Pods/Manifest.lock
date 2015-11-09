@@ -4,7 +4,7 @@ PODS:
   - CocoaLumberjack/Core (1.9.2)
   - CocoaLumberjack/Extensions (1.9.2):
     - CocoaLumberjack/Core
-  - Sprout (2.0.8):
+  - Sprout (2.0.9):
     - CocoaLumberjack (~> 1.9)
     - SSZipArchive (~> 0.3.2)
   - SSZipArchive (0.3.3)
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 628fca2e88ef06f7cf6817309aa405f325d9a6fa
-  Sprout: 498e9fb89f8538d39f834c661e7dd546155d3778
+  Sprout: bc90eb4a63de2cdb3f922ba4a72336a5c0f0987e
   SSZipArchive: 2cf2a6d3ac9f03252b7d96f93728b9b983be9afb
 
 COCOAPODS: 0.39.0

@@ -61,6 +61,7 @@
 #import "DDFileLogger.h"
 #import "DDTTYLogger.h"
 #import "CrashlyticsLogger.h"
+#import "SproutDDLogAdditions.h"
 
 //Set the logging level and optional loggers
 
