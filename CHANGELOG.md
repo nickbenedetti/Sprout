@@ -45,3 +45,5 @@
   * Changing build project and directory structure.
   * Updated copyright and Readme.
   * Added Travis.ci build/test automation.
+* 2.0.10 - November 9, 2015
+  * Adding `SproutDDLogAdditions.h` with synchronous and asynchronous "log always" macros.
