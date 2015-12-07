@@ -194,11 +194,6 @@
 - (void)logAppAndDeviceInfo;
 
 /**
- * @return All file logs as an `NSData` representing a zip archive of the log files.
- */
-- (NSData *)logsAsZippedData;
-
-/**
  * @return An `NSArray` of `NSString` objects containing the full path to the most recent (up to 10) log files.
  */
 - (NSArray *)logFiles;

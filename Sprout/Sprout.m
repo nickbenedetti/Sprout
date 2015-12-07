@@ -252,30 +252,6 @@ void sproutSignalHandler(int signal)
     DDLogInfo(@"%@ %@ (%@ %@) %@ \"%@\" (%@), %@ %@", appName ?: @"<unknown_app_name>", appVersion ?: @"<unknown_app_version>", appIdentifier ?: @"<unknown_app_identifier>", appBuildNumber ?: @"<unknown_app_build_number>", deviceModel ?: @"<unknown_device_model>", deviceName ?: @"<unknown_device_name>", deviceMachine ?: @"<unknown_device_machine>", systemName ?: @"<unknown_system_name>", systemVersion ?: @"<unknown_system_version>");
 }
 
-- (NSData *)logsAsZippedData
-{
-    NSData *retVal = nil;
-#ifdef _SSZIPARCHIVE_H
-    NSString *tempDir = [self tempDirectory];
-    if (tempDir)
-    {
-        NSString *tempFile = [tempDir stringByAppendingPathComponent:[self UUID]];
-        NSArray *logFiles = [self logFiles];
-        if ([SSZipArchive createZipFileAtPath:tempFile withFilesAtPaths:logFiles])
-        {
-            //Read the temp zip file into memory
-            retVal = [NSData dataWithContentsOfFile:tempFile];
-            //Delete the temp directory and contents
-            [self.fileManager removeItemAtPath:tempDir error:nil];
-        }
-    }
-#else
-#warning SSZipArchive framework not found in project, or not included in precompiled header. `logsAsZippedData` will return `nil`.
-#endif
-    
-    return retVal;
-}
-
 - (NSArray *)logFiles
 {
     NSUInteger maximumLogFilesToReturn = MIN(self.fileLogger.logFileManager.maximumNumberOfLogFiles, 10);

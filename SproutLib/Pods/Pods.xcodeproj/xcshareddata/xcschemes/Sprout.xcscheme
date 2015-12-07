@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '08E200A3989A70FF3A61FF96'
+               BlueprintIdentifier = '1588388D1B68AEF5CD4C1585'
                BlueprintName = 'Sprout'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libSprout.a'>
