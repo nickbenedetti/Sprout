@@ -134,11 +134,37 @@ Both lines are prefixed by a *date/time stamp* (`2014-05-20 16:06:45:602`).
 If you wish to supply your own log formatter you can set the log formatter on any of the logger instances, or you can supply your own class as the default log formatter by setting Sprout's `defaultLogFormatterClass` property before calling `startLogging`.
 
 #### Crashlytics Usage
+
 [Crashlytics](http://crashlytics.com) is a great tool, and Sprout has support for it.
 
 If you link against the Crashlytics framework, Sprout will automatically add the `CrashlyticsLogger` to send log messages to the `CLSLog` Crashlytics logger at your current log level.
 
 __NOTE:__ If you're using Crashlytics you should initialize Sprout before calling `Crashlytics startWithAPIKey:`
+
+### Zipped Logfiles
+
+As of Sprout 2.1 the `logsAsZippedData` function was removed. This was done to remove the dependency on [SSZipArchive](https://github.com/ZipArchive/ZipArchive) as it didn't feel right to impose this dependency on Sprout users. There are many zip frameworks available. Here is an example implementation of `logsAsZippedData` you can use (which uses [SSZipArchive](https://github.com/ZipArchive/ZipArchive)) should you miss this functionality:
+
+    - (NSData *)logsAsZippedData
+    {
+      NSData *retVal = nil;
+      NSString *tempDir = [[Sprout sharedInstance] tempDirectory];
+      if (tempDir)
+      {
+        NSString *tempFile = [tempDir stringByAppendingPathComponent:[[Sprout sharedInstance] UUID]];
+        NSArray *logFiles = [[Sprout sharedInstance] logFiles];
+        if ([SSZipArchive createZipFileAtPath:tempFile withFilesAtPaths:logFiles])
+        {
+          //Read the temp zip file into memory
+          retVal = [NSData dataWithContentsOfFile:tempFile];
+          //Delete the temp directory and contents
+          [[NSFileManager defaultManager] removeItemAtPath:tempDir error:nil];
+        }
+      }
+    
+      return retVal;
+    }
+
 
 ### Licence
 
