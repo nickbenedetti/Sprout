@@ -32,6 +32,7 @@ static NSString * const kSystemVersionKeyProductBuildVersion = @"ProductBuildVer
 
 static NSString * const kSysInfoKeyHardwarePlatform = @"hw.model";
 static NSString * const kSysInfoKeyHardwareMachine = @"hw.machine";
+static NSTimeInterval const kSignalReportingThresholdTimeInterval = 1.0f;
 
 #import "Sprout.h"
 #import "SproutCustomLogFormatter.h"
@@ -48,6 +49,8 @@ static NSString * const kSysInfoKeyHardwareMachine = @"hw.machine";
 void sproutExceptionHandler(NSException *exception);
 void sproutSignalHandler(int signal);
 NSUncaughtExceptionHandler *priorHandler;
+NSTimeInterval thresholdSignalTime = DBL_MAX;
+NSString *lastSignal = nil;
 
 @interface Sprout ()
 
@@ -91,8 +94,27 @@ void sproutSignalHandler(int signal)
         default:
             break;
     }
-    NSString *backtrace = [Sprout backtraceSkipping:2 /* Skip the backrace method and this signal handler */ length:20 /* Get the next 20 stack frames */];
-    DDLogSignal(@"Recieved %@ signal. Call stack:\n%@", signalSring, backtrace);
+    
+    //Collapse similar signals within a given time threshold
+    if ([lastSignal isEqualToString:signalSring] && thresholdSignalTime > [NSDate timeIntervalSinceReferenceDate])
+    {
+        //The same kind of signal was reported within the threshold time, so we ignore it.
+    }
+    else
+    {
+        //The signal does not match our last signal kind (or there was no last signal), so report it
+        //OR
+        //The threshold time has passed, so report the signal again
+        
+        //Update the threshold time
+        thresholdSignalTime = [NSDate timeIntervalSinceReferenceDate] + kSignalReportingThresholdTimeInterval;
+
+        NSString *backtrace = [Sprout backtraceSkipping:2 /* Skip the backrace method and this signal handler */ length:20 /* Get the next 20 stack frames */];
+        DDLogSignal(@"Recieved %@ signal. Call stack:\n%@", signalSring, backtrace);
+    }
+    
+    //Track the current signal kind
+    lastSignal = signalSring;
 }
 
 @implementation Sprout
