@@ -49,3 +49,5 @@
   * Adding `SproutDDLogAdditions.h` with synchronous and asynchronous "log always" macros.
 * 2.1 - December 7, 2015
   * Removing `logsAsZippedData` and dependency on [SSZipArchive](https://github.com/ZipArchive/ZipArchive).
+* 2.2 - August 4, 2016
+  * Adding code to condense instances of the same kind of signal into one, within a 1 second threshold.
