@@ -22,7 +22,7 @@
 #ifndef _SPROUT_DDLOG_ADDITIONS_H
 #define _SPROUT_DDLOG_ADDITIONS_H
 
-#import "DDLog.h"
+#import <CocoaLumberjack/DDLog.h>
 
 // Synchronous logging regardless of the log level
 #define DDLogSyncAlwaysError(frmt, ...)   SYNC_LOG_OBJC_MACRO(LOG_LEVEL_DEF, LOG_FLAG_ERROR,   0, frmt, ##__VA_ARGS__)

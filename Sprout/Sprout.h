@@ -57,9 +57,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DDLog.h"
-#import "DDFileLogger.h"
-#import "DDTTYLogger.h"
+#import <CocoaLumberjack/DDLog.h>
+#import <CocoaLumberjack/DDFileLogger.h>
+#import <CocoaLumberjack/DDTTYLogger.h>
 #import "CrashlyticsLogger.h"
 #import "SproutDDLogAdditions.h"
 

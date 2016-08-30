@@ -16,7 +16,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DDLog.h"
+#import <CocoaLumberjack/DDLog.h>
 
 @interface SproutCustomLogFormatter : NSObject <DDLogFormatter>
 
