@@ -41,11 +41,7 @@
 	NSString *file = [logMessage->_file lastPathComponent];
     NSString *function = logMessage->_function;
     NSString *timestamp = [self.dateFormatter stringFromDate:(logMessage->_timestamp)];
-
-    char tidCStr[9];
-    int tidLen = snprintf(tidCStr, 9, "%x", logMessage->_threadID);
-    NSString *threadID = [NSString stringWithCString:tidCStr encoding:NSASCIIStringEncoding];
-    threadID = [threadID substringToIndex:MIN((size_t)8, tidLen)];
+    NSString *threadID = logMessage->_threadID;
 
 	return [NSString stringWithFormat:@"%@         <%@> %@(%@ %d)\n%@ %@ %@", timestamp, threadID, function, file, (int)logMessage->_line, timestamp, logLevel, logMessage->_message];
 }
