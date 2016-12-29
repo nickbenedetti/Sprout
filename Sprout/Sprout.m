@@ -244,8 +244,9 @@ void sproutSignalHandler(int signal)
         dynamicLogLevel = NO;
         #endif
 
+		__weak typeof(self) weakSelf = self;
 		[self addStartupMessageBlock:^{
-			SproutLogDebug(@"Log level %@ '%@'. Dynamic log level is %@abled.", defaultLogLevel ? @"defaulted to" : @"set by 'SPROUT_LOG_LEVEL' to", [self.class stringForLogLevel:LOG_LEVEL_DEF], dynamicLogLevel ? @"en" : @"dis");
+			SproutLogDebug(@"Log level %@ '%@'. Dynamic log level is %@abled.", defaultLogLevel ? @"defaulted to" : @"set by 'SPROUT_LOG_LEVEL' to", [weakSelf.class stringForLogLevel:LOG_LEVEL_DEF], dynamicLogLevel ? @"en" : @"dis");
 		}];
 		
 		[self addStartupMessageBlock:^{
