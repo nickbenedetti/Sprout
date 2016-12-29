@@ -371,7 +371,7 @@ void sproutSignalHandler(int signal)
     [self addLogger:logger withLogLevel:DDLogLevelAll];
 }
 
-- (void)addLogger:(id <DDLogger>)logger withLogLevel:(int)logLevel
+- (void)addLogger:(id <DDLogger>)logger withLogLevel:(NSUInteger)logLevel
 {
     if (logger)
     {
