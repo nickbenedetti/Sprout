@@ -53,7 +53,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import <CocoaLumberjack/CocoaLumberjack.h>
+#import "CocoaLumberjack.h"
 #import "CrashlyticsLogger.h"
 #import "SproutDDLogAdditions.h"
 
