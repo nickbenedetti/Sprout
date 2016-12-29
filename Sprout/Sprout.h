@@ -219,7 +219,7 @@ LOG_MACRO(async, lvl, flg, ctx, nil, __FUNCTION__, frmt, ##__VA_ARGS__)
  *
  * @param logger The logger to add.
  */
-- (void)addLogger:(id <DDLogger>)logger withLogLevel:(int)logLevel;
+- (void)addLogger:(id <DDLogger>)logger withLogLevel:(NSUInteger)logLevel;
 
 /**
  * Removes the given logger from CocoaLumberjack
