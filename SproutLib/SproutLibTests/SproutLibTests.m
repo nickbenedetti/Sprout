@@ -25,6 +25,11 @@
     [super tearDown];
 }
 
+- (void)testStartup100 {
+	[[Sprout sharedInstance] startLogging];
+	DDLogDebug(@"Testing 123");
+}
+
 - (void)testBacktrace100 {
     NSUInteger length = 0;
     NSArray *backtrace = [Sprout trimmedBacktraceSkipping:0 length:length];
