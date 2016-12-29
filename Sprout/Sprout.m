@@ -2,17 +2,13 @@
 //  Sprout.m
 //
 //  Created by Levi Brown on October 4, 2012.
-//  Copyright (c) 2012-2016 Levi Brown <mailto:levigroker@gmail.com>
-//  This work is licensed under the Creative Commons Attribution 3.0
-//  Unported License. To view a copy of this license, visit
-//  http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
-//  Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
-//  USA.
+//  Copyright (c) 2012-2017 Levi Brown <mailto:levigroker@gmail.com> This work is
+//  licensed under the Creative Commons Attribution 4.0 International License. To
+//  view a copy of this license, visit https://creativecommons.org/licenses/by/4.0/
+//  or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 //
-//  The above attribution and the included license must accompany any version
-//  of the source code. Visible attribution in any binary distributable
-//  including this work (or derivatives) is not required, but would be
-//  appreciated.
+//  The above attribution and the included license must accompany any version of
+//  the source code, binary distributable, or derivatives.
 //
 
 #include <execinfo.h>
@@ -37,14 +33,14 @@ static NSTimeInterval const kSignalReportingThresholdTimeInterval = 1.0f;
 #import "Sprout.h"
 #import "SproutCustomLogFormatter.h"
 
-#define DDLogException(frmt, ...)   LOG_MAYBE(YES, ddLogLevel, LOG_FLAG_ERROR, 0, "Exception Handler", frmt, ##__VA_ARGS__)
-#define DDLogSignal(frmt, ...)   LOG_MAYBE(LOG_ASYNC_ERROR, ddLogLevel, LOG_FLAG_ERROR, 0, "Signal Handler", frmt, ##__VA_ARGS__)
+#define DDLogException(frmt, ...)   LOG_MAYBE(NO, ddLogLevel, DDLogFlagError, 0, nil, "Exception Handler", frmt, ##__VA_ARGS__)
+#define DDLogSignal(frmt, ...)      LOG_MAYBE(NO, ddLogLevel, DDLogFlagError, 0, nil, "Signal Handler", frmt, ##__VA_ARGS__)
 
-#define SproutLogError(frmt, ...)    SYNC_LOG_OBJC_MAYBE(sproutInternalLogLevel,  LOG_FLAG_ERROR,   SPROUT_LOG_CONTEXT, @"[Sprout] "frmt, ##__VA_ARGS__)
-#define SproutLogWarn(frmt, ...)     ASYNC_LOG_OBJC_MAYBE(sproutInternalLogLevel, LOG_FLAG_WARN,    SPROUT_LOG_CONTEXT, @"[Sprout] "frmt, ##__VA_ARGS__)
-#define SproutLogInfo(frmt, ...)     ASYNC_LOG_OBJC_MAYBE(sproutInternalLogLevel, LOG_FLAG_INFO,    SPROUT_LOG_CONTEXT, @"[Sprout] "frmt, ##__VA_ARGS__)
-#define SproutLogDebug(frmt, ...)    ASYNC_LOG_OBJC_MAYBE(sproutInternalLogLevel, LOG_FLAG_DEBUG,   SPROUT_LOG_CONTEXT, @"[Sprout] "frmt, ##__VA_ARGS__)
-#define SproutLogVerbose(frmt, ...)  ASYNC_LOG_OBJC_MAYBE(sproutInternalLogLevel, LOG_FLAG_VERBOSE, SPROUT_LOG_CONTEXT, @"[Sprout] "frmt, ##__VA_ARGS__)
+#define SproutLogError(frmt, ...)   LOG_MAYBE(NO,                sproutInternalLogLevel, DDLogFlagError,   SPROUT_LOG_CONTEXT, nil, __PRETTY_FUNCTION__, @"[Sprout] "frmt, ##__VA_ARGS__)
+#define SproutLogWarn(frmt, ...)    LOG_MAYBE(LOG_ASYNC_ENABLED, sproutInternalLogLevel, DDLogFlagWarning, SPROUT_LOG_CONTEXT, nil, __PRETTY_FUNCTION__, @"[Sprout] "frmt, ##__VA_ARGS__)
+#define SproutLogInfo(frmt, ...)    LOG_MAYBE(LOG_ASYNC_ENABLED, sproutInternalLogLevel, DDLogFlagInfo,    SPROUT_LOG_CONTEXT, nil, __PRETTY_FUNCTION__, @"[Sprout] "frmt, ##__VA_ARGS__)
+#define SproutLogDebug(frmt, ...)   LOG_MAYBE(LOG_ASYNC_ENABLED, sproutInternalLogLevel, DDLogFlagDebug,   SPROUT_LOG_CONTEXT, nil, __PRETTY_FUNCTION__, @"[Sprout] "frmt, ##__VA_ARGS__)
+#define SproutLogVerbose(frmt, ...) LOG_MAYBE(LOG_ASYNC_ENABLED, sproutInternalLogLevel, DDLogFlagVerbose, SPROUT_LOG_CONTEXT, nil, __PRETTY_FUNCTION__, @"[Sprout] "frmt, ##__VA_ARGS__)
 
 void sproutExceptionHandler(NSException *exception);
 void sproutSignalHandler(int signal);
@@ -59,7 +55,7 @@ NSString *lastSignal = nil;
 @property (nonatomic,strong) DDTTYLogger *ttyLogger;
 @property (nonatomic,strong) CrashlyticsLogger *crashlyticsLogger;
 @property (nonatomic,strong) NSFileManager *fileManager;
-
+@property (nonatomic,strong) NSMutableOrderedSet *startupMessageBlocks;
 @end
 
 //Original exception and signal handling concept and code from http://www.cocoawithlove.com/2010/05/handling-unhandled-exceptions-and.html
@@ -134,8 +130,9 @@ void sproutSignalHandler(int signal)
 {
     if ((self = [super init]))
     {
-        self.fileManager = [[NSFileManager alloc] init];
-        self.defaultLogFormatterClass = [SproutCustomLogFormatter class];
+        _fileManager = [[NSFileManager alloc] init];
+        _defaultLogFormatterClass = [SproutCustomLogFormatter class];
+		_startupMessageBlocks = [[NSMutableOrderedSet alloc] init];
     }
     
     return self;
@@ -174,26 +171,26 @@ void sproutSignalHandler(int signal)
     NSString *retVal = nil;
     
     switch (logLevel) {
-        case LOG_LEVEL_OFF:
-            retVal = @"LOG_LEVEL_OFF";
+        case DDLogLevelOff:
+            retVal = @"DDLogLevelOff";
             break;
-        case LOG_LEVEL_ERROR:
-            retVal = @"LOG_LEVEL_ERROR";
+        case DDLogLevelError:
+            retVal = @"DDLogLevelError";
             break;
-        case LOG_LEVEL_WARN:
-            retVal = @"LOG_LEVEL_WARN";
+        case DDLogLevelWarning:
+            retVal = @"DDLogLevelWarning";
             break;
-        case LOG_LEVEL_INFO:
-            retVal = @"LOG_LEVEL_INFO";
+        case DDLogLevelInfo:
+            retVal = @"DDLogLevelInfo";
             break;
-        case LOG_LEVEL_DEBUG:
-            retVal = @"LOG_LEVEL_DEBUG";
+        case DDLogLevelDebug:
+            retVal = @"DDLogLevelDebug";
             break;
-        case LOG_LEVEL_VERBOSE:
-            retVal = @"LOG_LEVEL_VERBOSE";
+        case DDLogLevelVerbose:
+            retVal = @"DDLogLevelVerbose";
             break;
-        case LOG_LEVEL_ALL:
-            retVal = @"LOG_LEVEL_ALL";
+        case DDLogLevelAll:
+            retVal = @"DDLogLevelAll";
             break;
         default:
             retVal = @"<Unkown>";
@@ -206,6 +203,11 @@ void sproutSignalHandler(int signal)
 #pragma mark - Implementation
 
 - (void)startLogging
+{
+	[self startLogging:nil];
+}
+
+- (void)startLogging:(void(^)(void))completion
 {
     if (!self.started)
     {
@@ -242,11 +244,22 @@ void sproutSignalHandler(int signal)
         dynamicLogLevel = NO;
         #endif
 
-        SproutLogDebug(@"Log level %@ '%@'. Dynamic log level is %@abled.", defaultLogLevel ? @"defaulted to" : @"set by 'SPROUT_LOG_LEVEL' to", [self.class stringForLogLevel:LOG_LEVEL_DEF], dynamicLogLevel ? @"en" : @"dis");
-        
-        SproutLogInfo(@"CocoaLumberjack loggers initialized!");
-        
-        self.started = YES;
+		[self addStartupMessageBlock:^{
+			SproutLogDebug(@"Log level %@ '%@'. Dynamic log level is %@abled.", defaultLogLevel ? @"defaulted to" : @"set by 'SPROUT_LOG_LEVEL' to", [self.class stringForLogLevel:LOG_LEVEL_DEF], dynamicLogLevel ? @"en" : @"dis");
+		}];
+		
+		[self addStartupMessageBlock:^{
+			SproutLogInfo(@"CocoaLumberjack loggers initialized!");
+		}];
+		
+		if (completion)
+		{
+			completion();
+		}
+		
+		[self logStartupMessageBlocks];
+
+		self.started = YES;
     }
 }
 
@@ -299,7 +312,9 @@ void sproutSignalHandler(int signal)
     for (id<DDLogger> logger in loggers)
     {
         [self addLogger:logger];
-        SproutLogVerbose(@"Added logger: '%@'", [logger loggerName]);
+		[self addStartupMessageBlock:^{
+			SproutLogVerbose(@"Added logger: '%@'", [logger loggerName]);
+		}];
     }
 }
 
@@ -352,7 +367,7 @@ void sproutSignalHandler(int signal)
 
 - (void)addLogger:(id <DDLogger>)logger
 {
-    [self addLogger:logger withLogLevel:LOG_LEVEL_ALL];
+    [self addLogger:logger withLogLevel:DDLogLevelAll];
 }
 
 - (void)addLogger:(id <DDLogger>)logger withLogLevel:(int)logLevel
@@ -416,6 +431,22 @@ void sproutSignalHandler(int signal)
 }
 
 #pragma mark - Helpers
+
+- (void)addStartupMessageBlock:(void (^__nonnull)(void))messageBlock
+{
+	if (messageBlock)
+	{
+		[self.startupMessageBlocks addObject:[messageBlock copy]];
+	}
+}
+
+- (void)logStartupMessageBlocks
+{
+	for (void (^messageBlock)(void) in self.startupMessageBlocks)
+	{
+		messageBlock();
+	}
+}
 
 - (NSString *)appVersion
 {

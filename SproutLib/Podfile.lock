@@ -1,21 +1,26 @@
 PODS:
-  - CocoaLumberjack (1.9.2):
-    - CocoaLumberjack/Extensions (= 1.9.2)
-  - CocoaLumberjack/Core (1.9.2)
-  - CocoaLumberjack/Extensions (1.9.2):
+  - CocoaLumberjack (3.0.0):
+    - CocoaLumberjack/Default (= 3.0.0)
+    - CocoaLumberjack/Extensions (= 3.0.0)
+  - CocoaLumberjack/Core (3.0.0)
+  - CocoaLumberjack/Default (3.0.0):
     - CocoaLumberjack/Core
-  - Sprout (2.1):
-    - CocoaLumberjack (~> 1.9)
+  - CocoaLumberjack/Extensions (3.0.0):
+    - CocoaLumberjack/Default
+  - Sprout (3.0):
+    - CocoaLumberjack (~> 3.0)
 
 DEPENDENCIES:
   - Sprout (from `..`)
 
 EXTERNAL SOURCES:
   Sprout:
-    :path: ..
+    :path: ".."
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: 628fca2e88ef06f7cf6817309aa405f325d9a6fa
-  Sprout: a1d5c3159e8c91e48bcb3c756cb04eb4d2f72c4f
+  CocoaLumberjack: c823149bccc5519a9447aeb433be7b1212a7d6a5
+  Sprout: 05bc01877b41a1acf9569f4dfdbd25b0b93c98ca
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 0c860ebe41edf5cb0ca3f8bdd28a702c12db0368
+
+COCOAPODS: 1.1.1

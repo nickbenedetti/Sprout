@@ -2,17 +2,13 @@
 //  Sprout.h
 //
 //  Created by Levi Brown on October 4, 2012.
-//  Copyright (c) 2012-2016 Levi Brown <mailto:levigroker@gmail.com>
-//  This work is licensed under the Creative Commons Attribution 3.0
-//  Unported License. To view a copy of this license, visit
-//  http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
-//  Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
-//  USA.
+//  Copyright (c) 2012-2017 Levi Brown <mailto:levigroker@gmail.com> This work is
+//  licensed under the Creative Commons Attribution 4.0 International License. To
+//  view a copy of this license, visit https://creativecommons.org/licenses/by/4.0/
+//  or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 //
-//  The above attribution and the included license must accompany any version
-//  of the source code. Visible attribution in any binary distributable
-//  including this work (or derivatives) is not required, but would be
-//  appreciated.
+//  The above attribution and the included license must accompany any version of
+//  the source code, binary distributable, or derivatives.
 //
 
 /**
@@ -57,11 +53,13 @@
 
 #import <Foundation/Foundation.h>
 
-#import <CocoaLumberjack/DDLog.h>
-#import <CocoaLumberjack/DDFileLogger.h>
-#import <CocoaLumberjack/DDTTYLogger.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "CrashlyticsLogger.h"
 #import "SproutDDLogAdditions.h"
+
+//C Compatibility
+#define SPROUT_LOG_C_MACRO(async, lvl, flg, ctx, frmt, ...) \
+LOG_MACRO(async, lvl, flg, ctx, nil, __FUNCTION__, frmt, ##__VA_ARGS__)
 
 //Set the logging level and optional loggers
 
@@ -70,8 +68,8 @@
 
 //Here we set the default log levels
 //If `SPROUT_LOG_LEVEL` is defined, then it will be used,
-//otherwise the log level defaults to `LOG_LEVEL_VERBOSE` if `DEBUG` is defined and
-//the log level defaults to `LOG_LEVEL_WARN` if `DEBUG` is not defined.
+//otherwise the log level defaults to `DDLogLevelVerbose` if `DEBUG` is defined and
+//the log level defaults to `DDLogLevelWarning` if `DEBUG` is not defined.
 //By default, dynamic log levels are enabled, and `setLogLevel:` can be used to set the log level at runtime dynamically,
 //however if `SPROUT_DISABLE_DYNAMIC_LOG_LEVEL` is defined, the log level is static.
 
@@ -80,13 +78,13 @@
         #ifdef SPROUT_LOG_LEVEL
             static const int ddLogLevel = SPROUT_LOG_LEVEL;
         #else
-            static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+            static const int ddLogLevel = DDLogLevelVerbose;
         #endif
     #else
         #ifdef SPROUT_LOG_LEVEL
             static int ddLogLevel = SPROUT_LOG_LEVEL;
         #else
-            static int ddLogLevel = LOG_LEVEL_VERBOSE;
+            static int ddLogLevel = DDLogLevelVerbose;
         #endif
     #endif
     #define SPROUT_CONSOLE_LOGGING 1
@@ -95,13 +93,13 @@
         #ifdef SPROUT_LOG_LEVEL
             static const int ddLogLevel = SPROUT_LOG_LEVEL;
         #else
-            static const int ddLogLevel = LOG_LEVEL_WARN;
+            static const int ddLogLevel = DDLogLevelWarning;
         #endif
     #else
         #ifdef SPROUT_LOG_LEVEL
             static int ddLogLevel = SPROUT_LOG_LEVEL;
         #else
-            static int ddLogLevel = LOG_LEVEL_WARN;
+            static int ddLogLevel = DDLogLevelWarning;
         #endif
     #endif
 #endif
@@ -111,9 +109,9 @@
 
 //Sprout's internal logging level
 #if DEBUG
-    static const int sproutInternalLogLevel = LOG_LEVEL_VERBOSE;
+    static const int sproutInternalLogLevel = DDLogLevelVerbose;
 #else
-    static const int sproutInternalLogLevel = LOG_LEVEL_INFO;
+    static const int sproutInternalLogLevel = DDLogLevelInfo;
 #endif
 
 @interface Sprout : NSObject
@@ -162,9 +160,18 @@
 
 /**
  * Configures CocoaLumberjack for logging, and attaches signal handlers, etc.
+ * This is the same as calling `startLogging:nil`
  * After this is called, `started` will be `YES`
  */
 - (void)startLogging;
+
+/**
+ * Configures CocoaLumberjack for logging, and attaches signal handlers, etc.
+ *
+ * @param completion A block to be called after logging has been configured but prior to any logging.
+ * After this is called, `started` will be `YES`
+ */
+- (void)startLogging:(void(^)(void))completion;
 
 #if !SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
 
@@ -177,11 +184,11 @@
  * @see https://github.com/robbiehanson/CocoaLumberjack/wiki/DynamicLogLevels
  * Default CocoaLumberjack has these log levels defined:
  *
- *   LOG_LEVEL_OFF
- *   LOG_LEVEL_ERROR
- *   LOG_LEVEL_WARN
- *   LOG_LEVEL_INFO
- *   LOG_LEVEL_VERBOSE
+ *   DDLogLevelOff
+ *   DDLogLevelError
+ *   DDLogLevelWarning
+ *   DDLogLevelInfo
+ *   DDLogLevelVerbose
  */
 - (void)setLogLevel:(int)logLevel;
 #endif
@@ -189,7 +196,7 @@
 #pragma mark - Logging Utilities
 
 /**
- * Outputs a log statement at LOG_LEVEL_INFO with the app name, bundle identifier, versions (CFBundleShortVersionString and CFBundleVersion), device model, OS name and version.
+ * Outputs a log statement at DDLogLevelInfo with the app name, bundle identifier, versions (CFBundleShortVersionString and CFBundleVersion), device model, OS name and version.
  */
 - (void)logAppAndDeviceInfo;
 
@@ -201,7 +208,7 @@
 #pragma mark - Loggers
 
 /**
- * Adds the given logger to CocoaLumberjack, with log level `LOG_LEVEL_ALL`, after configuring it with an instance of the default log formatter specified by the `defaultLogFormatterClass` property.
+ * Adds the given logger to CocoaLumberjack, with log level `DDLogLevelAll`, after configuring it with an instance of the default log formatter specified by the `defaultLogFormatterClass` property.
  *
  * @param logger The logger to add.
  */
