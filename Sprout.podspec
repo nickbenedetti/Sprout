@@ -1,5 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Sprout"
+  s.module_name      = s.name
   s.version          = "3.0"
   s.summary          = "Bootstrap the CocoaLumberjack logging framework."
   s.description      = <<-DESC
