@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.social_media_url    = 'https://twitter.com/levigroker'
   s.source              = { :git => "https://github.com/levigroker/Sprout.git", :tag => s.version.to_s }
   s.source_files        = 'Sprout/**/*.{h,m}'
-  s.public_header_files = ['Sprout/**/*.h']
+  s.public_header_files = 'Sprout/**/*.h'
   s.frameworks          = 'Foundation'
   s.requires_arc        = true
   s.ios.deployment_target = '9.0'
