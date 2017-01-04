@@ -171,8 +171,8 @@ This work is licensed under the [Creative Commons Attribution 4.0 International 
 Please see the included [LICENSE.txt](https://github.com/levigroker/Sprout/blob/master/LICENSE.txt) for complete details.
 
 ### About
-A professional iOS engineer by day, my name is Levi Brown. Authoring a technical
-blog [grokin.gs](http://grokin.gs), I am reachable via:
+A professional iOS engineer by day, my name is Levi Brown. Authoring a blog
+[grokin.gs](http://grokin.gs), I am reachable via:
 
 Twitter [@levigroker](https://twitter.com/levigroker)  
 Email [levigroker@gmail.com](mailto:levigroker@gmail.com)  
