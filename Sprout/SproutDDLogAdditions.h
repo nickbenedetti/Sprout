@@ -21,17 +21,17 @@
 #import <CocoaLumberjack/CocoaLumberjack.h>
 
 // Synchronous logging regardless of the log level
-#define DDLogSyncAlwaysError(frmt, ...)   LOG_MACRO(NO, LOG_LEVEL_DEF, DDLogFlagError,   0, frmt, ##__VA_ARGS__)
-#define DDLogSyncAlwaysWarn(frmt, ...)    LOG_MACRO(NO, LOG_LEVEL_DEF, DDLogFlagWarning, 0, frmt, ##__VA_ARGS__)
-#define DDLogSyncAlwaysInfo(frmt, ...)    LOG_MACRO(NO, LOG_LEVEL_DEF, DDLogFlagInfo,    0, frmt, ##__VA_ARGS__)
-#define DDLogSyncAlwaysDebug(frmt, ...)   LOG_MACRO(NO, LOG_LEVEL_DEF, DDLogFlagDebug,   0, frmt, ##__VA_ARGS__)
-#define DDLogSyncAlwaysVerbose(frmt, ...) LOG_MACRO(NO, LOG_LEVEL_DEF, DDLogFlagVerbose, 0, frmt, ##__VA_ARGS__)
+#define DDLogSyncAlwaysError(frmt, ...)   LOG_MACRO(NO, LOG_LEVEL_DEF, DDLogFlagError,   0, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#define DDLogSyncAlwaysWarn(frmt, ...)    LOG_MACRO(NO, LOG_LEVEL_DEF, DDLogFlagWarning, 0, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#define DDLogSyncAlwaysInfo(frmt, ...)    LOG_MACRO(NO, LOG_LEVEL_DEF, DDLogFlagInfo,    0, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#define DDLogSyncAlwaysDebug(frmt, ...)   LOG_MACRO(NO, LOG_LEVEL_DEF, DDLogFlagDebug,   0, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#define DDLogSyncAlwaysVerbose(frmt, ...) LOG_MACRO(NO, LOG_LEVEL_DEF, DDLogFlagVerbose, 0, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
 
 // Normal sync/async logging regardless of the log level
-#define DDLogAlwaysError(frmt, ...)   LOG_MACRO(NO,                LOG_LEVEL_DEF, DDLogFlagError,   0, frmt, ##__VA_ARGS__)
-#define DDLogAlwaysWarn(frmt, ...)    LOG_MACRO(LOG_ASYNC_ENABLED, LOG_LEVEL_DEF, DDLogFlagWarning, 0, frmt, ##__VA_ARGS__)
-#define DDLogAlwaysInfo(frmt, ...)    LOG_MACRO(LOG_ASYNC_ENABLED, LOG_LEVEL_DEF, DDLogFlagInfo,    0, frmt, ##__VA_ARGS__)
-#define DDLogAlwaysDebug(frmt, ...)   LOG_MACRO(LOG_ASYNC_ENABLED, LOG_LEVEL_DEF, DDLogFlagDebug,   0, frmt, ##__VA_ARGS__)
-#define DDLogAlwaysVerbose(frmt, ...) LOG_MACRO(LOG_ASYNC_ENABLED, LOG_LEVEL_DEF, DDLogFlagVerbose, 0, frmt, ##__VA_ARGS__)
+#define DDLogAlwaysError(frmt, ...)   LOG_MACRO(NO,                LOG_LEVEL_DEF, DDLogFlagError,   0, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#define DDLogAlwaysWarn(frmt, ...)    LOG_MACRO(LOG_ASYNC_ENABLED, LOG_LEVEL_DEF, DDLogFlagWarning, 0, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#define DDLogAlwaysInfo(frmt, ...)    LOG_MACRO(LOG_ASYNC_ENABLED, LOG_LEVEL_DEF, DDLogFlagInfo,    0, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#define DDLogAlwaysDebug(frmt, ...)   LOG_MACRO(LOG_ASYNC_ENABLED, LOG_LEVEL_DEF, DDLogFlagDebug,   0, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
+#define DDLogAlwaysVerbose(frmt, ...) LOG_MACRO(LOG_ASYNC_ENABLED, LOG_LEVEL_DEF, DDLogFlagVerbose, 0, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
 
 #endif /* _SPROUT_DDLOG_ADDITIONS_H */
