@@ -2,25 +2,31 @@ PODS:
   - CocoaLumberjack (3.0.0):
     - CocoaLumberjack/Default (= 3.0.0)
     - CocoaLumberjack/Extensions (= 3.0.0)
-  - CocoaLumberjack/Core (3.0.0)
-  - CocoaLumberjack/Default (3.0.0):
-    - CocoaLumberjack/Core
+  - CocoaLumberjack/Default (3.0.0)
   - CocoaLumberjack/Extensions (3.0.0):
     - CocoaLumberjack/Default
   - Sprout (3.0):
     - CocoaLumberjack (~> 3.0)
 
 DEPENDENCIES:
+  - CocoaLumberjack (from `https://github.com/CocoaLumberjack/CocoaLumberjack.git`)
   - Sprout (from `..`)
 
 EXTERNAL SOURCES:
+  CocoaLumberjack:
+    :git: https://github.com/CocoaLumberjack/CocoaLumberjack.git
   Sprout:
     :path: ".."
 
-SPEC CHECKSUMS:
-  CocoaLumberjack: c823149bccc5519a9447aeb433be7b1212a7d6a5
-  Sprout: 05bc01877b41a1acf9569f4dfdbd25b0b93c98ca
+CHECKOUT OPTIONS:
+  CocoaLumberjack:
+    :commit: 04416a15d8a0539a2440b3fbac8481e2576f73b7
+    :git: https://github.com/CocoaLumberjack/CocoaLumberjack.git
 
-PODFILE CHECKSUM: 0c860ebe41edf5cb0ca3f8bdd28a702c12db0368
+SPEC CHECKSUMS:
+  CocoaLumberjack: e4b8225d82b79a28a581f5bfefb9432ad87e1e83
+  Sprout: caaf67ece8fbd1c79be6ba6ec3909644f4ab20bf
+
+PODFILE CHECKSUM: 8402aa0a095e4847b85f2a6f896f57f76a896dc3
 
 COCOAPODS: 1.1.1

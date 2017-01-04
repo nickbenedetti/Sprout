@@ -1,5 +1,6 @@
 {
   "name": "Sprout",
+  "module_name": "Sprout",
   "version": "3.0",
   "summary": "Bootstrap the CocoaLumberjack logging framework.",
   "description": "Bootstrap the CocoaLumberjack logging framework and add additional functionality such as Custom Loggers, log archiving, crash stack traces, and more.",
@@ -14,6 +15,7 @@
     "tag": "3.0"
   },
   "source_files": "Sprout/**/*.{h,m}",
+  "public_header_files": "Sprout/**/*.h",
   "frameworks": "Foundation",
   "requires_arc": true,
   "platforms": {

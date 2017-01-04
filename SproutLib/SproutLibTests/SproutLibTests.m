@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "Sprout.h"
+#import <Sprout/Sprout.h>
 
 @interface SproutLibTests : XCTestCase
 

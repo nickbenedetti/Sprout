@@ -1,1 +1,0 @@
-../../../../../Sprout/SproutCustomLogFormatter.h

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A16257D2854FE94B52950B8 /* libPods-SproutLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD7E7092B2BD111EBF0C8D5 /* libPods-SproutLib.a */; };
-		9F96E121EEFC4B9C512DD79C /* libPods-SproutLibTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DDB086ACE4F50E62FBC4A8 /* libPods-SproutLibTests.a */; };
+		5BD641EE271879636CF52DC6 /* Pods_SproutLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6ED687C04002BE8A63A60DB /* Pods_SproutLib.framework */; };
+		7C3489214210B067210F897E /* Pods_SproutLibTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5108D271BBEF8396A2FC917 /* Pods_SproutLibTests.framework */; };
 		DB186BE91BD19A2A0072D792 /* SproutLib.h in Headers */ = {isa = PBXBuildFile; fileRef = DB186BE81BD19A2A0072D792 /* SproutLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB186BF01BD19A2A0072D792 /* SproutLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB186BE51BD19A2A0072D792 /* SproutLib.framework */; };
 		DB186BF51BD19A2A0072D792 /* SproutLibTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB186BF41BD19A2A0072D792 /* SproutLibTests.m */; };
@@ -26,8 +26,8 @@
 
 /* Begin PBXFileReference section */
 		5225D6BE5E9A9328F0502FD0 /* Pods-SproutLibTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SproutLibTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SproutLibTests/Pods-SproutLibTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A5108D271BBEF8396A2FC917 /* Pods_SproutLibTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SproutLibTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4A5DFCAE82ADC563D4B0FD3 /* Pods-SproutLib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SproutLib.release.xcconfig"; path = "Pods/Target Support Files/Pods-SproutLib/Pods-SproutLib.release.xcconfig"; sourceTree = "<group>"; };
-		BAD7E7092B2BD111EBF0C8D5 /* libPods-SproutLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SproutLib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0449107A673703842738CB1 /* Pods-SproutLibTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SproutLibTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SproutLibTests/Pods-SproutLibTests.release.xcconfig"; sourceTree = "<group>"; };
 		DB186BE51BD19A2A0072D792 /* SproutLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SproutLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB186BE81BD19A2A0072D792 /* SproutLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SproutLib.h; sourceTree = "<group>"; };
@@ -35,7 +35,7 @@
 		DB186BEF1BD19A2A0072D792 /* SproutLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SproutLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB186BF41BD19A2A0072D792 /* SproutLibTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SproutLibTests.m; sourceTree = "<group>"; };
 		DB186BF61BD19A2A0072D792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3DDB086ACE4F50E62FBC4A8 /* libPods-SproutLibTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SproutLibTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6ED687C04002BE8A63A60DB /* Pods_SproutLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SproutLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD43A1004ECCE3D75ED477AF /* Pods-SproutLib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SproutLib.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SproutLib/Pods-SproutLib.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,7 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A16257D2854FE94B52950B8 /* libPods-SproutLib.a in Frameworks */,
+				5BD641EE271879636CF52DC6 /* Pods_SproutLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +53,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB186BF01BD19A2A0072D792 /* SproutLib.framework in Frameworks */,
-				9F96E121EEFC4B9C512DD79C /* libPods-SproutLibTests.a in Frameworks */,
+				7C3489214210B067210F897E /* Pods_SproutLibTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,8 +63,8 @@
 		055C536C2762DF06E1401BCE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BAD7E7092B2BD111EBF0C8D5 /* libPods-SproutLib.a */,
-				E3DDB086ACE4F50E62FBC4A8 /* libPods-SproutLibTests.a */,
+				F6ED687C04002BE8A63A60DB /* Pods_SproutLib.framework */,
+				A5108D271BBEF8396A2FC917 /* Pods_SproutLibTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

@@ -1,0 +1,6 @@
+framework module Pods_SproutLib {
+  umbrella header "Pods-SproutLib-umbrella.h"
+
+  export *
+  module * { export * }
+}

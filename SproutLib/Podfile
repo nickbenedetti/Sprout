@@ -1,8 +1,11 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '9.0'
+use_frameworks!
 
 pod 'Sprout', :path => '..'
+# See https://github.com/CocoaLumberjack/CocoaLumberjack/pull/784
+pod 'CocoaLumberjack', :git => 'https://github.com/CocoaLumberjack/CocoaLumberjack.git'
 
 target 'SproutLib' do
   target 'SproutLibTests' do
