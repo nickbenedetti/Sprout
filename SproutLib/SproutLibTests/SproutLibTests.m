@@ -7,7 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "Sprout.h"
+#import <Sprout/Sprout.h>
+#import "CrashlyticsLogger.h"
 
 @interface SproutLibTests : XCTestCase
 
@@ -23,6 +24,17 @@
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+}
+
+- (void)testStartup100 {
+	[Sprout sharedInstance].loggersBlock = ^NSSet<id<DDLogger>> *(NSSet<id<DDLogger>> *defaultLoggers) {
+		NSMutableSet *retVal = [NSMutableSet setWithSet:defaultLoggers];
+		[retVal addObject:[CrashlyticsLogger sharedInstance]];
+		return retVal;
+	};
+	[[Sprout sharedInstance] startLogging:^{
+		[[Sprout sharedInstance] logAppAndDeviceInfo];
+	}];
 }
 
 - (void)testBacktrace100 {

@@ -1,0 +1,6 @@
+framework module Sprout {
+  umbrella header "Sprout-umbrella.h"
+
+  export *
+  module * { export * }
+}

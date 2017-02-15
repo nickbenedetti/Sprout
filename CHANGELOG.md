@@ -51,3 +51,10 @@
   * Removing `logsAsZippedData` and dependency on [SSZipArchive](https://github.com/ZipArchive/ZipArchive).
 * 2.2 - August 4, 2016
   * Adding code to condense instances of the same kind of signal into one, within a 1 second threshold.
+* 3.0 - December 28, 2016
+  * Updated to use CocoaLumberjack 3.0
+  * Updated license.
+* 3.1 - February 15, 2017
+  * Provided block based configuration (instead of overrides)
+  * Updated `logFiles` method to return NSURLs (**breaking API change**)
+  * Removed weak dependency on Crashlytics for logging.

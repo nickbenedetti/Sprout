@@ -1,21 +1,38 @@
 PODS:
-  - CocoaLumberjack (1.9.2):
-    - CocoaLumberjack/Extensions (= 1.9.2)
-  - CocoaLumberjack/Core (1.9.2)
-  - CocoaLumberjack/Extensions (1.9.2):
-    - CocoaLumberjack/Core
-  - Sprout (2.1):
-    - CocoaLumberjack (~> 1.9)
+  - CocoaLumberjack (3.0.0):
+    - CocoaLumberjack/Default (= 3.0.0)
+    - CocoaLumberjack/Extensions (= 3.0.0)
+  - CocoaLumberjack/Default (3.0.0)
+  - CocoaLumberjack/Extensions (3.0.0):
+    - CocoaLumberjack/Default
+  - Crashlytics (3.8.3):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.11)
+  - Sprout (3.1):
+    - CocoaLumberjack (~> 3.0)
 
 DEPENDENCIES:
+  - CocoaLumberjack (from `https://github.com/CocoaLumberjack/CocoaLumberjack.git`)
+  - Crashlytics (~> 3.8)
   - Sprout (from `..`)
 
 EXTERNAL SOURCES:
+  CocoaLumberjack:
+    :git: https://github.com/CocoaLumberjack/CocoaLumberjack.git
   Sprout:
-    :path: ..
+    :path: ".."
+
+CHECKOUT OPTIONS:
+  CocoaLumberjack:
+    :commit: 8ef06654756f84890109836c48fe75c645a28ddd
+    :git: https://github.com/CocoaLumberjack/CocoaLumberjack.git
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: 628fca2e88ef06f7cf6817309aa405f325d9a6fa
-  Sprout: a1d5c3159e8c91e48bcb3c756cb04eb4d2f72c4f
+  CocoaLumberjack: e4b8225d82b79a28a581f5bfefb9432ad87e1e83
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  Sprout: f40552c2c452ee2c8c18cef27136b9c88ffa1ec2
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: ca9250ea348bf36c5a838b857b6c29565ee9f518
+
+COCOAPODS: 1.2.0

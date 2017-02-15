@@ -2,66 +2,34 @@
 //  Sprout.h
 //
 //  Created by Levi Brown on October 4, 2012.
-//  Copyright (c) 2012-2016 Levi Brown <mailto:levigroker@gmail.com>
-//  This work is licensed under the Creative Commons Attribution 3.0
-//  Unported License. To view a copy of this license, visit
-//  http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
-//  Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
-//  USA.
+//  Copyright (c) 2012-2017 Levi Brown <mailto:levigroker@gmail.com> This work is
+//  licensed under the Creative Commons Attribution 4.0 International License. To
+//  view a copy of this license, visit https://creativecommons.org/licenses/by/4.0/
+//  or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 //
-//  The above attribution and the included license must accompany any version
-//  of the source code. Visible attribution in any binary distributable
-//  including this work (or derivatives) is not required, but would be
-//  appreciated.
+//  The above attribution and the included license must accompany any version of
+//  the source code, binary distributable, or derivatives.
 //
 
 /**
  Sprout is used to bootstrap the (excellent) CocoaLumberjack https://github.com/robbiehanson/CocoaLumberjack logging framework.
  
- In the simplest case, setup is just:
- 
- - Add `Sprout.h` to your precompiled header:
- 
-        #ifdef __OBJC__
-        #import <Foundation/Foundation.h>
-        //Third Party
-        #import "Sprout.h"
-        #endif
- 
- - Start Logging in your `application:didFinishLaunchingWithOptions:` UIApplicationDelegate
- 
-        - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-        {
-            //Initialize logging
-            [[Sprout sharedInstance] startLogging];
-            //. . .
- 
- - Define `DEBUG`
- In your Preprocessor Macros target build settings, define `DEBUG=1` (this may not be needed, as it is a default setting in later XCode project templates).
- 
- - Run!
- After the above setup, you should be able to run and see:
- 
-        CocoaLumberjack loggers initialized!
- 
- appear in your console.
- 
- To use with Crashlytics http://crashlytics.com :
- 
- If you have Crashlytics installed, Sprout will automatically add the `CrashlyticsLogger` to send log messages to the `CLSLog` Crashlytics SDK logger at your current log level.
- @warning If you're using Crashlytics you should initialize Sprout before calling `Crashlytics startWithAPIKey:`
-*/
+ Please see the README in the repository:
+ https://github.com/levigroker/Sprout
+
+ */
 
 #ifndef _SPROUT_H
 #define _SPROUT_H
 
 #import <Foundation/Foundation.h>
 
-#import <CocoaLumberjack/DDLog.h>
-#import <CocoaLumberjack/DDFileLogger.h>
-#import <CocoaLumberjack/DDTTYLogger.h>
-#import "CrashlyticsLogger.h"
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "SproutDDLogAdditions.h"
+
+//C Compatibility
+#define SPROUT_LOG_C_MACRO(async, lvl, flg, ctx, frmt, ...) \
+LOG_MACRO(async, lvl, flg, ctx, nil, __FUNCTION__, frmt, ##__VA_ARGS__)
 
 //Set the logging level and optional loggers
 
@@ -70,8 +38,8 @@
 
 //Here we set the default log levels
 //If `SPROUT_LOG_LEVEL` is defined, then it will be used,
-//otherwise the log level defaults to `LOG_LEVEL_VERBOSE` if `DEBUG` is defined and
-//the log level defaults to `LOG_LEVEL_WARN` if `DEBUG` is not defined.
+//otherwise the log level defaults to `DDLogLevelVerbose` if `DEBUG` is defined and
+//the log level defaults to `DDLogLevelWarning` if `DEBUG` is not defined.
 //By default, dynamic log levels are enabled, and `setLogLevel:` can be used to set the log level at runtime dynamically,
 //however if `SPROUT_DISABLE_DYNAMIC_LOG_LEVEL` is defined, the log level is static.
 
@@ -80,13 +48,13 @@
         #ifdef SPROUT_LOG_LEVEL
             static const int ddLogLevel = SPROUT_LOG_LEVEL;
         #else
-            static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+            static const int ddLogLevel = DDLogLevelVerbose;
         #endif
     #else
         #ifdef SPROUT_LOG_LEVEL
             static int ddLogLevel = SPROUT_LOG_LEVEL;
         #else
-            static int ddLogLevel = LOG_LEVEL_VERBOSE;
+            static int ddLogLevel = DDLogLevelVerbose;
         #endif
     #endif
     #define SPROUT_CONSOLE_LOGGING 1
@@ -95,13 +63,13 @@
         #ifdef SPROUT_LOG_LEVEL
             static const int ddLogLevel = SPROUT_LOG_LEVEL;
         #else
-            static const int ddLogLevel = LOG_LEVEL_WARN;
+            static const int ddLogLevel = DDLogLevelWarning;
         #endif
     #else
         #ifdef SPROUT_LOG_LEVEL
             static int ddLogLevel = SPROUT_LOG_LEVEL;
         #else
-            static int ddLogLevel = LOG_LEVEL_WARN;
+            static int ddLogLevel = DDLogLevelWarning;
         #endif
     #endif
 #endif
@@ -111,9 +79,9 @@
 
 //Sprout's internal logging level
 #if DEBUG
-    static const int sproutInternalLogLevel = LOG_LEVEL_VERBOSE;
+    static const int sproutInternalLogLevel = DDLogLevelVerbose;
 #else
-    static const int sproutInternalLogLevel = LOG_LEVEL_INFO;
+    static const int sproutInternalLogLevel = DDLogLevelInfo;
 #endif
 
 @interface Sprout : NSObject
@@ -121,37 +89,25 @@
 #pragma mark - Properties
 
 /**
+ A block which can be set to intercept the creation and addition of the set of default loggers to be used.
+ The block receives the set of loggers Sprout will use by default and should return the loggers to actually be installed.
+ If this property is `nil` the default loggers will be used.
+ Changes to this property should be made before a call to `startLogging`.
+ */
+@property (nonatomic, copy) NSSet<id<DDLogger>> *(^loggersBlock)(NSSet<id<DDLogger>> *defaultLoggers);
+
+/**
+ A block which can be set to intercept the creation of the default log formatter.
+ The block receives the log formatter Sprout will use by default and should return the log formatter to actually be installed.
+ If this property is `nil` the default log formatter will be used.
+ Changes to this property should be made before a call to `startLogging`.
+ */
+@property (nonatomic, copy) id<DDLogFormatter> (^logFormatterBlock)(id<DDLogFormatter> defaultLogFormatter);
+
+/**
  * @return `YES` if Sprout has configured CocoaLumberjack
  */
 @property (nonatomic,assign,readonly) BOOL started;
-/**
- * @return The `DDFileLogger` used to write log statements to files.
- */
-@property (nonatomic,strong,readonly) DDFileLogger *fileLogger;
-/**
- * @return The `DDTTYLogger` used to write log statements to the console.
- */
-@property (nonatomic,strong,readonly) DDTTYLogger *ttyLogger;
-/**
- * @return The `CrashlyticsLogger` used to write log statements to Crashlytics, or `nil` if Crashlytics logging is disabled.
- */
-@property (nonatomic,strong,readonly) CrashlyticsLogger *crashlyticsLogger;
-/**
- * An NSArray of objects conforming to the DDLogger protocol which are the default installed loggers.
- * Set this to an empty array to have no default loggers. Setting it to `nil` will use the defaults.
- * Changes to this property should be made before a call to `startLogging`.
- */
-@property (nonatomic,strong) NSArray *defaultLoggers;
-/**
- * The default log formatter.
- * Set this to a class implementing the `DDLogFormatter` protocol prior to calling `startLogging` to set a custom log formatter.
- * This defaults to `SproutCustomLogFormatter.class`
- */
-@property (nonatomic,strong) Class<DDLogFormatter> defaultLogFormatterClass;
-/**
- * @return The `NSFileManager` used to perform file based operations.
- */
-@property (nonatomic,strong,readonly) NSFileManager *fileManager;
 
 #pragma mark - Startup
 
@@ -162,9 +118,18 @@
 
 /**
  * Configures CocoaLumberjack for logging, and attaches signal handlers, etc.
+ * This is the same as calling `startLogging:nil`
  * After this is called, `started` will be `YES`
  */
 - (void)startLogging;
+
+/**
+ * Configures CocoaLumberjack for logging, and attaches signal handlers, etc.
+ *
+ * @param completion A block to be called after logging has been configured but prior to any logging.
+ * After this is called, `started` will be `YES`
+ */
+- (void)startLogging:(void(^)(void))completion;
 
 #if !SPROUT_DISABLE_DYNAMIC_LOG_LEVEL
 
@@ -177,11 +142,11 @@
  * @see https://github.com/robbiehanson/CocoaLumberjack/wiki/DynamicLogLevels
  * Default CocoaLumberjack has these log levels defined:
  *
- *   LOG_LEVEL_OFF
- *   LOG_LEVEL_ERROR
- *   LOG_LEVEL_WARN
- *   LOG_LEVEL_INFO
- *   LOG_LEVEL_VERBOSE
+ *   DDLogLevelOff
+ *   DDLogLevelError
+ *   DDLogLevelWarning
+ *   DDLogLevelInfo
+ *   DDLogLevelVerbose
  */
 - (void)setLogLevel:(int)logLevel;
 #endif
@@ -189,19 +154,19 @@
 #pragma mark - Logging Utilities
 
 /**
- * Outputs a log statement at LOG_LEVEL_INFO with the app name, bundle identifier, versions (CFBundleShortVersionString and CFBundleVersion), device model, OS name and version.
+ * Outputs a log statement at DDLogLevelInfo with the app name, bundle identifier, versions (CFBundleShortVersionString and CFBundleVersion), device model, OS name and version.
  */
 - (void)logAppAndDeviceInfo;
 
 /**
- * @return An `NSArray` of `NSString` objects containing the full path to the most recent (up to 10) log files.
+ * @return An `NSArray` of `NSURL` objects containing the file URLs to the most recent (up to 10) log files. The first item in the array will be the most recently created log file.
  */
 - (NSArray *)logFiles;
 
 #pragma mark - Loggers
 
 /**
- * Adds the given logger to CocoaLumberjack, with log level `LOG_LEVEL_ALL`, after configuring it with an instance of the default log formatter specified by the `defaultLogFormatterClass` property.
+ * Adds the given logger to CocoaLumberjack, with log level `DDLogLevelAll`, after configuring it with an instance of the default log formatter specified by the `defaultLogFormatterClass` property.
  *
  * @param logger The logger to add.
  */
@@ -212,7 +177,7 @@
  *
  * @param logger The logger to add.
  */
-- (void)addLogger:(id <DDLogger>)logger withLogLevel:(int)logLevel;
+- (void)addLogger:(id <DDLogger>)logger withLogLevel:(NSUInteger)logLevel;
 
 /**
  * Removes the given logger from CocoaLumberjack
@@ -233,31 +198,6 @@
  */
 - (NSArray *)allLoggers;
 
-#pragma mark - Potential Overrides
-
-/**
- * Adds the loggers from the `defaultLoggers` property to CocoaLumberjack
- */
-- (void)addDefaultLoggers;
-/**
- * Creates a new instance of the DDLogFormatter specified by the `defaultLogFormatterClass` property.
- *
- * @return A new instance of the default DDLogFormatter
- */
-- (id<DDLogFormatter>)createDefaultLogFormatter;
-/**
- * Setup the console (TTY) logger
- */
-- (DDTTYLogger *)setupTTYLogger;
-/**
- * Setup the File logger
- */
-- (DDFileLogger *)setupFileLogger;
-/**
- * Setup the Crashlytics logger
- */
-- (CrashlyticsLogger *)setupCrashlyticsLogger;
-
 #pragma mark - Helpers
 
 #pragma mark Device Info
@@ -273,8 +213,13 @@
 + (NSString *)backtraceSkipping:(NSUInteger)skip length:(NSUInteger)length;
 + (NSArray *)trimmedBacktraceSkipping:(NSUInteger)skip length:(NSUInteger)length;
 + (NSString *)stringForLogLevel:(int)logLevel;
-- (NSString *)tempDirectory;
-- (NSString *)UUID;
+
+/**
+ Returns a URL representing a newly created unique temporary directory.
+
+ @return an NSURL referencing the newly created unique temporary directory, or `nil` if one could not be created.
+ */
+- (NSURL *)tempDirectory;
 
 @end
 

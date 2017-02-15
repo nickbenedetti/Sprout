@@ -2,17 +2,13 @@
 //  Sprout.m
 //
 //  Created by Levi Brown on October 4, 2012.
-//  Copyright (c) 2012-2016 Levi Brown <mailto:levigroker@gmail.com>
-//  This work is licensed under the Creative Commons Attribution 3.0
-//  Unported License. To view a copy of this license, visit
-//  http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
-//  Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
-//  USA.
+//  Copyright (c) 2012-2017 Levi Brown <mailto:levigroker@gmail.com> This work is
+//  licensed under the Creative Commons Attribution 4.0 International License. To
+//  view a copy of this license, visit https://creativecommons.org/licenses/by/4.0/
+//  or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 //
-//  The above attribution and the included license must accompany any version
-//  of the source code. Visible attribution in any binary distributable
-//  including this work (or derivatives) is not required, but would be
-//  appreciated.
+//  The above attribution and the included license must accompany any version of
+//  the source code, binary distributable, or derivatives.
 //
 
 #include <execinfo.h>
@@ -37,14 +33,14 @@ static NSTimeInterval const kSignalReportingThresholdTimeInterval = 1.0f;
 #import "Sprout.h"
 #import "SproutCustomLogFormatter.h"
 
-#define DDLogException(frmt, ...)   LOG_MAYBE(YES, ddLogLevel, LOG_FLAG_ERROR, 0, "Exception Handler", frmt, ##__VA_ARGS__)
-#define DDLogSignal(frmt, ...)   LOG_MAYBE(LOG_ASYNC_ERROR, ddLogLevel, LOG_FLAG_ERROR, 0, "Signal Handler", frmt, ##__VA_ARGS__)
+#define DDLogException(frmt, ...)   LOG_MAYBE(NO, ddLogLevel, DDLogFlagError, 0, nil, "Exception Handler", frmt, ##__VA_ARGS__)
+#define DDLogSignal(frmt, ...)      LOG_MAYBE(NO, ddLogLevel, DDLogFlagError, 0, nil, "Signal Handler", frmt, ##__VA_ARGS__)
 
-#define SproutLogError(frmt, ...)    SYNC_LOG_OBJC_MAYBE(sproutInternalLogLevel,  LOG_FLAG_ERROR,   SPROUT_LOG_CONTEXT, @"[Sprout] "frmt, ##__VA_ARGS__)
-#define SproutLogWarn(frmt, ...)     ASYNC_LOG_OBJC_MAYBE(sproutInternalLogLevel, LOG_FLAG_WARN,    SPROUT_LOG_CONTEXT, @"[Sprout] "frmt, ##__VA_ARGS__)
-#define SproutLogInfo(frmt, ...)     ASYNC_LOG_OBJC_MAYBE(sproutInternalLogLevel, LOG_FLAG_INFO,    SPROUT_LOG_CONTEXT, @"[Sprout] "frmt, ##__VA_ARGS__)
-#define SproutLogDebug(frmt, ...)    ASYNC_LOG_OBJC_MAYBE(sproutInternalLogLevel, LOG_FLAG_DEBUG,   SPROUT_LOG_CONTEXT, @"[Sprout] "frmt, ##__VA_ARGS__)
-#define SproutLogVerbose(frmt, ...)  ASYNC_LOG_OBJC_MAYBE(sproutInternalLogLevel, LOG_FLAG_VERBOSE, SPROUT_LOG_CONTEXT, @"[Sprout] "frmt, ##__VA_ARGS__)
+#define SproutLogError(frmt, ...)   LOG_MAYBE(NO,                sproutInternalLogLevel, DDLogFlagError,   SPROUT_LOG_CONTEXT, nil, __PRETTY_FUNCTION__, @"[Sprout] "frmt, ##__VA_ARGS__)
+#define SproutLogWarn(frmt, ...)    LOG_MAYBE(LOG_ASYNC_ENABLED, sproutInternalLogLevel, DDLogFlagWarning, SPROUT_LOG_CONTEXT, nil, __PRETTY_FUNCTION__, @"[Sprout] "frmt, ##__VA_ARGS__)
+#define SproutLogInfo(frmt, ...)    LOG_MAYBE(LOG_ASYNC_ENABLED, sproutInternalLogLevel, DDLogFlagInfo,    SPROUT_LOG_CONTEXT, nil, __PRETTY_FUNCTION__, @"[Sprout] "frmt, ##__VA_ARGS__)
+#define SproutLogDebug(frmt, ...)   LOG_MAYBE(LOG_ASYNC_ENABLED, sproutInternalLogLevel, DDLogFlagDebug,   SPROUT_LOG_CONTEXT, nil, __PRETTY_FUNCTION__, @"[Sprout] "frmt, ##__VA_ARGS__)
+#define SproutLogVerbose(frmt, ...) LOG_MAYBE(LOG_ASYNC_ENABLED, sproutInternalLogLevel, DDLogFlagVerbose, SPROUT_LOG_CONTEXT, nil, __PRETTY_FUNCTION__, @"[Sprout] "frmt, ##__VA_ARGS__)
 
 void sproutExceptionHandler(NSException *exception);
 void sproutSignalHandler(int signal);
@@ -56,9 +52,7 @@ NSString *lastSignal = nil;
 
 @property (nonatomic,assign) BOOL started;
 @property (nonatomic,strong) DDFileLogger *fileLogger;
-@property (nonatomic,strong) DDTTYLogger *ttyLogger;
-@property (nonatomic,strong) CrashlyticsLogger *crashlyticsLogger;
-@property (nonatomic,strong) NSFileManager *fileManager;
+@property (nonatomic,strong) NSMutableOrderedSet *startupMessageBlocks;
 
 @end
 
@@ -134,8 +128,7 @@ void sproutSignalHandler(int signal)
 {
     if ((self = [super init]))
     {
-        self.fileManager = [[NSFileManager alloc] init];
-        self.defaultLogFormatterClass = [SproutCustomLogFormatter class];
+		_startupMessageBlocks = [[NSMutableOrderedSet alloc] init];
     }
     
     return self;
@@ -174,26 +167,26 @@ void sproutSignalHandler(int signal)
     NSString *retVal = nil;
     
     switch (logLevel) {
-        case LOG_LEVEL_OFF:
-            retVal = @"LOG_LEVEL_OFF";
+        case DDLogLevelOff:
+            retVal = @"DDLogLevelOff";
             break;
-        case LOG_LEVEL_ERROR:
-            retVal = @"LOG_LEVEL_ERROR";
+        case DDLogLevelError:
+            retVal = @"DDLogLevelError";
             break;
-        case LOG_LEVEL_WARN:
-            retVal = @"LOG_LEVEL_WARN";
+        case DDLogLevelWarning:
+            retVal = @"DDLogLevelWarning";
             break;
-        case LOG_LEVEL_INFO:
-            retVal = @"LOG_LEVEL_INFO";
+        case DDLogLevelInfo:
+            retVal = @"DDLogLevelInfo";
             break;
-        case LOG_LEVEL_DEBUG:
-            retVal = @"LOG_LEVEL_DEBUG";
+        case DDLogLevelDebug:
+            retVal = @"DDLogLevelDebug";
             break;
-        case LOG_LEVEL_VERBOSE:
-            retVal = @"LOG_LEVEL_VERBOSE";
+        case DDLogLevelVerbose:
+            retVal = @"DDLogLevelVerbose";
             break;
-        case LOG_LEVEL_ALL:
-            retVal = @"LOG_LEVEL_ALL";
+        case DDLogLevelAll:
+            retVal = @"DDLogLevelAll";
             break;
         default:
             retVal = @"<Unkown>";
@@ -206,6 +199,11 @@ void sproutSignalHandler(int signal)
 #pragma mark - Implementation
 
 - (void)startLogging
+{
+	[self startLogging:nil];
+}
+
+- (void)startLogging:(void(^)(void))completion
 {
     if (!self.started)
     {
@@ -242,11 +240,23 @@ void sproutSignalHandler(int signal)
         dynamicLogLevel = NO;
         #endif
 
-        SproutLogDebug(@"Log level %@ '%@'. Dynamic log level is %@abled.", defaultLogLevel ? @"defaulted to" : @"set by 'SPROUT_LOG_LEVEL' to", [self.class stringForLogLevel:LOG_LEVEL_DEF], dynamicLogLevel ? @"en" : @"dis");
-        
-        SproutLogInfo(@"CocoaLumberjack loggers initialized!");
-        
-        self.started = YES;
+		__weak typeof(self) weakSelf = self;
+		[self addStartupMessageBlock:^{
+			SproutLogDebug(@"Log level %@ '%@'. Dynamic log level is %@abled.", defaultLogLevel ? @"defaulted to" : @"set by 'SPROUT_LOG_LEVEL' to", [weakSelf.class stringForLogLevel:LOG_LEVEL_DEF], dynamicLogLevel ? @"en" : @"dis");
+		}];
+		
+		[self addStartupMessageBlock:^{
+			SproutLogInfo(@"CocoaLumberjack loggers initialized!");
+		}];
+		
+		if (completion)
+		{
+			completion();
+		}
+		
+		[self logStartupMessageBlocks];
+
+		self.started = YES;
     }
 }
 
@@ -282,10 +292,10 @@ void sproutSignalHandler(int signal)
     for (int i = 0; i < MIN(sortedLogFileInfos.count, maximumLogFilesToReturn); ++i)
     {
         DDLogFileInfo *logFileInfo = [sortedLogFileInfos objectAtIndex:i];
-        NSString *logFile = logFileInfo.filePath;
-        if (logFile)
+		NSURL *logFileURL = logFileInfo.filePath ? [NSURL fileURLWithPath:logFileInfo.filePath isDirectory:NO] : nil;
+        if (logFileURL)
         {
-            [logFiles addObject:logFile];
+            [logFiles addObject:logFileURL];
         }
     }
     return logFiles;
@@ -295,72 +305,61 @@ void sproutSignalHandler(int signal)
 
 - (void)addDefaultLoggers
 {
-    NSArray *loggers = self.defaultLoggers;
-    for (id<DDLogger> logger in loggers)
+	NSSet<id<DDLogger>> *loggers = [self defaultLoggers];
+	
+	if (self.loggersBlock)
+	{
+		loggers = self.loggersBlock(loggers);
+	}
+
+	for (id<DDLogger> logger in loggers)
     {
         [self addLogger:logger];
-        SproutLogVerbose(@"Added logger: '%@'", [logger loggerName]);
+		[self addStartupMessageBlock:^{
+			SproutLogVerbose(@"Added logger: '%@'", [logger loggerName]);
+		}];
     }
 }
 
-- (id<DDLogFormatter>)createDefaultLogFormatter
+- (NSSet<id<DDLogger>> *)defaultLoggers
 {
-    Class formatterClass = self.defaultLogFormatterClass;
-    id<DDLogFormatter> formatter = [[formatterClass alloc] init];
-    if (![formatter conformsToProtocol:@protocol(DDLogFormatter)])
-    {
-        formatter = [[SproutCustomLogFormatter alloc] init];
-    }
-    
-    return formatter;
-}
-
-- (NSArray *)defaultLoggers
-{
-    if (!_defaultLoggers)
-    {
-        NSMutableArray *loggers = [NSMutableArray arrayWithCapacity:4];
-        
-        id<DDLogger> logger = nil;
-        
-        logger = [self setupTTYLogger];
-        if (logger)
-        {
-            self.ttyLogger = logger;
-            [loggers addObject:logger];
-        }
-        
-        logger = [self setupFileLogger];
-        if (logger)
-        {
-            self.fileLogger = logger;
-            [loggers addObject:logger];
-        }
-        
-        logger = [self setupCrashlyticsLogger];
-        if (logger)
-        {
-            self.crashlyticsLogger = logger;
-            [loggers addObject:logger];
-        }
-        
-        _defaultLoggers = loggers;
-    }
-
-    return _defaultLoggers;
+	NSMutableSet *loggers = [NSMutableSet setWithCapacity:2];
+	
+	id<DDLogger> logger = nil;
+	
+	logger = [self setupTTYLogger];
+	if (logger)
+	{
+		[loggers addObject:logger];
+	}
+	
+	logger = [self setupFileLogger];
+	if (logger)
+	{
+		self.fileLogger = logger;
+		[loggers addObject:logger];
+	}
+	
+    return loggers;
 }
 
 - (void)addLogger:(id <DDLogger>)logger
 {
-    [self addLogger:logger withLogLevel:LOG_LEVEL_ALL];
+    [self addLogger:logger withLogLevel:DDLogLevelAll];
 }
 
-- (void)addLogger:(id <DDLogger>)logger withLogLevel:(int)logLevel
+- (void)addLogger:(id <DDLogger>)logger withLogLevel:(NSUInteger)logLevel
 {
     if (logger)
     {
-        id<DDLogFormatter> formatter = [self createDefaultLogFormatter];
-        [logger setLogFormatter:formatter];
+		id<DDLogFormatter> formatter = [[SproutCustomLogFormatter alloc] init];
+		
+		if (self.logFormatterBlock)
+		{
+			formatter = self.logFormatterBlock(formatter);
+		}
+
+		[logger setLogFormatter:formatter];
         
         [DDLog addLogger:logger];
     }
@@ -408,14 +407,23 @@ void sproutSignalHandler(int signal)
     return logger;
 }
 
-- (CrashlyticsLogger *)setupCrashlyticsLogger
+#pragma mark - Helpers
+
+- (void)addStartupMessageBlock:(void (^__nonnull)(void))messageBlock
 {
-    CrashlyticsLogger *logger = [CrashlyticsLogger sharedInstance];
-    
-    return logger;
+	if (messageBlock)
+	{
+		[self.startupMessageBlocks addObject:[messageBlock copy]];
+	}
 }
 
-#pragma mark - Helpers
+- (void)logStartupMessageBlocks
+{
+	for (void (^messageBlock)(void) in self.startupMessageBlocks)
+	{
+		messageBlock();
+	}
+}
 
 - (NSString *)appVersion
 {
@@ -544,13 +552,13 @@ void sproutSignalHandler(int signal)
     return retVal;
 }
 
-- (NSString *)tempDirectory
+- (NSURL *)tempDirectory
 {
     //Modified from: http://cocoawithlove.com/2009/07/temporary-files-and-folders-in-cocoa.html
     
     NSString *retVal = nil;
     
-    NSString *tempDirectoryTemplate = [NSTemporaryDirectory() stringByAppendingPathComponent:[self UUID]];
+    NSString *tempDirectoryTemplate = [NSTemporaryDirectory() stringByAppendingPathComponent:[[NSUUID UUID] UUIDString]];
     const char *tempDirectoryTemplateCString = [tempDirectoryTemplate fileSystemRepresentation];
     char *tempDirectoryNameCString = (char *)malloc(strlen(tempDirectoryTemplateCString) + 1);
     strcpy(tempDirectoryNameCString, tempDirectoryTemplateCString);
@@ -558,20 +566,11 @@ void sproutSignalHandler(int signal)
     char *result = mkdtemp(tempDirectoryNameCString);
     if (result)
     {
-        retVal = [self.fileManager stringWithFileSystemRepresentation:tempDirectoryNameCString length:strlen(result)];
+        retVal = [NSURL fileURLWithFileSystemRepresentation:tempDirectoryTemplateCString isDirectory:YES relativeToURL:nil];
     }
     
     free(tempDirectoryNameCString);
     
-    return retVal;
-}
-
-- (NSString *)UUID
-{
-    CFUUIDRef uuidRef = CFUUIDCreate(NULL);
-    CFStringRef stringRef = CFUUIDCreateString(NULL, uuidRef);
-    CFRelease(uuidRef);
-    NSString *retVal = (NSString *)CFBridgingRelease(stringRef);
     return retVal;
 }
 
