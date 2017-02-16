@@ -556,7 +556,7 @@ void sproutSignalHandler(int signal)
 {
     //Modified from: http://cocoawithlove.com/2009/07/temporary-files-and-folders-in-cocoa.html
     
-    NSString *retVal = nil;
+    NSURL *retVal = nil;
     
     NSString *tempDirectoryTemplate = [NSTemporaryDirectory() stringByAppendingPathComponent:[[NSUUID UUID] UUIDString]];
     const char *tempDirectoryTemplateCString = [tempDirectoryTemplate fileSystemRepresentation];
