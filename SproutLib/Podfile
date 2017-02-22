@@ -5,8 +5,6 @@ use_frameworks!
 
 pod 'Sprout', :path => '..'
 pod 'Crashlytics', '~> 3.8'
-# See https://github.com/CocoaLumberjack/CocoaLumberjack/pull/784
-pod 'CocoaLumberjack', :git => 'https://github.com/CocoaLumberjack/CocoaLumberjack.git'
 
 target 'SproutLib' do
   target 'SproutLibTests' do
