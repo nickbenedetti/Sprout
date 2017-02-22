@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.source_files        = 'Sprout/*.{h,m}'
   s.public_header_files = 'Sprout/*.h'
   s.frameworks          = 'Foundation'
-  s.dependency 'CocoaLumberjack', '~> 3.0'
+  s.dependency 'CocoaLumberjack', '~> 3.1'
   s.ios.deployment_target = '9.0'
   s.osx.deployment_target = '10.11'
 
