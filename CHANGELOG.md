@@ -54,7 +54,8 @@
 * 3.0 - December 28, 2016
   * Updated to use CocoaLumberjack 3.0
   * Updated license.
-* 3.1 - February 15, 2017
+* 3.1 - February 22, 2017
   * Provided block based configuration (instead of overrides)
   * Updated `logFiles` method to return NSURLs (**breaking API change**)
   * Removed weak dependency on Crashlytics for logging.
+  * CocoaLumberjack 3.1 dependency
