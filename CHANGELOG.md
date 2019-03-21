@@ -59,3 +59,5 @@
   * Updated `logFiles` method to return NSURLs (**breaking API change**)
   * Removed weak dependency on Crashlytics for logging.
   * CocoaLumberjack 3.1 dependency
+* 3.1.1 - March 20, 2019
+  * Added `AppCenterLogger.h/m` for logging to [App Center](https://appcenter.ms)
