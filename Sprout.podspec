@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                = "Sprout"
-  s.version             = "3.1"
+  s.version             = "3.1.1"
   s.summary             = "Bootstrap the CocoaLumberjack logging framework."
   s.description         = <<-DESC
 		Bootstrap the CocoaLumberjack logging framework and add additional functionality such as Custom Loggers, log archiving, crash stack traces, and more.
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.source_files        = 'Sprout/*.{h,m}'
   s.public_header_files = 'Sprout/*.h'
   s.frameworks          = 'Foundation'
-  s.dependency 'CocoaLumberjack', '~> 3.1'
+  s.dependency 'CocoaLumberjack', '~> 3.5'
   s.ios.deployment_target = '9.0'
   s.osx.deployment_target = '10.11'
 
