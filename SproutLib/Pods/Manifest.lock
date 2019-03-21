@@ -1,30 +1,37 @@
 PODS:
-  - CocoaLumberjack (3.1.0):
-    - CocoaLumberjack/Default (= 3.1.0)
-    - CocoaLumberjack/Extensions (= 3.1.0)
-  - CocoaLumberjack/Default (3.1.0)
-  - CocoaLumberjack/Extensions (3.1.0):
-    - CocoaLumberjack/Default
-  - Crashlytics (3.8.4):
-    - Fabric (~> 1.6.3)
-  - Fabric (1.6.11)
-  - Sprout (3.1):
-    - CocoaLumberjack (~> 3.1)
+  - AppCenter/Core (1.14.0)
+  - CocoaLumberjack (3.5.2):
+    - CocoaLumberjack/Core (= 3.5.2)
+  - CocoaLumberjack/Core (3.5.2)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
+  - Fabric (1.9.0)
+  - Sprout (3.1.1):
+    - CocoaLumberjack (~> 3.5)
 
 DEPENDENCIES:
+  - AppCenter/Core (~> 1.14)
   - Crashlytics (~> 3.8)
   - Sprout (from `..`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AppCenter
+    - CocoaLumberjack
+    - Crashlytics
+    - Fabric
 
 EXTERNAL SOURCES:
   Sprout:
     :path: ".."
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: 8311463ddf9ee86a06ef92a071dd656c89244500
-  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
-  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  Sprout: 114c187febd8f32b9f25f8085d93110d92a6aa0b
+  AppCenter: 02c5efe08d3bbab5421ae41d5f7aa7238906b817
+  CocoaLumberjack: 118bf4a820efc641f79fa487b75ed928dccfae23
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  Sprout: edeaa82dfce7e4d10b4ef4c68b0cb66fa0d29a94
 
-PODFILE CHECKSUM: 7a94947c0176c0bf79d8e74db2c55788a72443d3
+PODFILE CHECKSUM: 4042b63dc7b8b213f06714ce11f2f085fedcb538
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.6.1

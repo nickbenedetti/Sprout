@@ -5,6 +5,7 @@ use_frameworks!
 
 pod 'Sprout', :path => '..'
 pod 'Crashlytics', '~> 3.8'
+pod 'AppCenter/Core', '~> 1.14'
 
 target 'SproutLib' do
   target 'SproutLibTests' do

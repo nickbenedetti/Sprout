@@ -12,6 +12,8 @@
 		DB186BE91BD19A2A0072D792 /* SproutLib.h in Headers */ = {isa = PBXBuildFile; fileRef = DB186BE81BD19A2A0072D792 /* SproutLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB186BF01BD19A2A0072D792 /* SproutLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB186BE51BD19A2A0072D792 /* SproutLib.framework */; };
 		DB186BF51BD19A2A0072D792 /* SproutLibTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB186BF41BD19A2A0072D792 /* SproutLibTests.m */; };
+		DB82482D2242D2E6002C9DA0 /* AppCenterLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = DB82482B2242D2E5002C9DA0 /* AppCenterLogger.h */; };
+		DB82482E2242D2E6002C9DA0 /* AppCenterLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DB82482C2242D2E5002C9DA0 /* AppCenterLogger.m */; };
 		DBA392471E5509890025271F /* CrashlyticsLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = DBA392451E5509890025271F /* CrashlyticsLogger.h */; };
 		DBA392481E5509890025271F /* CrashlyticsLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA392461E5509890025271F /* CrashlyticsLogger.m */; };
 /* End PBXBuildFile section */
@@ -39,6 +41,8 @@
 		DB186BEF1BD19A2A0072D792 /* SproutLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SproutLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB186BF41BD19A2A0072D792 /* SproutLibTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SproutLibTests.m; sourceTree = "<group>"; };
 		DB186BF61BD19A2A0072D792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB82482B2242D2E5002C9DA0 /* AppCenterLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCenterLogger.h; sourceTree = "<group>"; };
+		DB82482C2242D2E5002C9DA0 /* AppCenterLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCenterLogger.m; sourceTree = "<group>"; };
 		DBA392451E5509890025271F /* CrashlyticsLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashlyticsLogger.h; sourceTree = "<group>"; };
 		DBA392461E5509890025271F /* CrashlyticsLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrashlyticsLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +119,8 @@
 		DBA392441E5509890025271F /* Loggers */ = {
 			isa = PBXGroup;
 			children = (
+				DB82482B2242D2E5002C9DA0 /* AppCenterLogger.h */,
+				DB82482C2242D2E5002C9DA0 /* AppCenterLogger.m */,
 				DBA392451E5509890025271F /* CrashlyticsLogger.h */,
 				DBA392461E5509890025271F /* CrashlyticsLogger.m */,
 			);
@@ -140,6 +146,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB82482D2242D2E6002C9DA0 /* AppCenterLogger.h in Headers */,
 				DBA392471E5509890025271F /* CrashlyticsLogger.h in Headers */,
 				DB186BE91BD19A2A0072D792 /* SproutLib.h in Headers */,
 			);
@@ -157,7 +164,6 @@
 				DB186BE11BD19A2A0072D792 /* Frameworks */,
 				DB186BE21BD19A2A0072D792 /* Headers */,
 				DB186BE31BD19A2A0072D792 /* Resources */,
-				934DC84E23646DA66F3922AF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,8 +182,6 @@
 				DB186BEB1BD19A2A0072D792 /* Sources */,
 				DB186BEC1BD19A2A0072D792 /* Frameworks */,
 				DB186BED1BD19A2A0072D792 /* Resources */,
-				0D66D683F22320D008F6EF69 /* [CP] Embed Pods Frameworks */,
-				2FB641F23FE59AC850C5ADF6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -195,7 +199,7 @@
 		DB186BDC1BD19A2A0072D792 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Levi Brown";
 				TargetAttributes = {
 					DB186BE41BD19A2A0072D792 = {
@@ -242,49 +246,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0D66D683F22320D008F6EF69 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SproutLibTests/Pods-SproutLibTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2FB641F23FE59AC850C5ADF6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SproutLibTests/Pods-SproutLibTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		305FA6611F107304515EAFC4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SproutLibTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		90984FA6DD3A3D09BD14ACA8 /* [CP] Check Pods Manifest.lock */ = {
@@ -293,28 +270,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SproutLib-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		934DC84E23646DA66F3922AF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SproutLib/Pods-SproutLib-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -324,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB82482E2242D2E6002C9DA0 /* AppCenterLogger.m in Sources */,
 				DBA392481E5509890025271F /* CrashlyticsLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,14 +321,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -390,7 +364,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -404,14 +377,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -433,7 +414,6 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -479,6 +459,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 32B4D2AABC39974C9153B382 /* Pods-SproutLibTests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SproutLibTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.levigroker.SproutLibTests;
@@ -490,6 +471,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D80B04106AD9A18F837686A /* Pods-SproutLibTests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SproutLibTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.levigroker.SproutLibTests;
