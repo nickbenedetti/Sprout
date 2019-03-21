@@ -133,14 +133,14 @@ If you wish to supply your own log formatter you can provide a `logFormatterBloc
 
 #### Crashlytics Usage
 
-[Crashlytics](http://crashlytics.com) is a great tool, and Sprout has support for it.
+[Crashlytics](http://crashlytics.com) logging is supported by Sprout.
 
 Sadly, using Cocoapods to automatically manage this dependency is not presently possible when `use_frameworks!` is specified. This is due to Crashlytics being provided as a static library (see [this thread](https://twittercommunity.com/t/crashlytics-cocoapod-dynamic-framework-support/47000)).
 
 However, you can manually add support for logging to Crashlytics by making use of the 
  `CrashlyticsLogger` implementation provided. You'll need to include `CrashlyticsLogger.h/m` directly in your project and add it to Sprout before calling `startLogging`
 
-__NOTE:__ If you're using Crashlytics you should initialize Crashlytics (call `[Fabric with:@[Crashlytics.class]]`) inside Sprout `startLogging:` block handler. 
+__NOTE:__ You should initialize Crashlytics (call `[Fabric with:@[Crashlytics.class]]`) inside Sprout `startLogging:` block handler. 
 
 Example:
 
@@ -152,6 +152,25 @@ Example:
 
     [[Sprout sharedInstance] startLogging:^{
 	    [Fabric with:@[Crashlytics.class]]
+    	[[Sprout sharedInstance] logAppAndDeviceInfo];
+    }];
+
+#### App Center Usage
+
+[App Center](https://appcenter.ms) logging is supported by Sprout.
+
+You can manually add support for logging to App Center by making use of the 
+ `AppCenterLogger` implementation provided. You'll need to include `AppCenterLogger.h/m` directly in your project and add it to Sprout before calling `startLogging`
+
+Example:
+
+    [Sprout sharedInstance].loggersBlock = ^NSSet<id<DDLogger>> *(NSSet<id<DDLogger>> *defaultLoggers) {
+    	NSMutableSet *retVal = [NSMutableSet setWithSet:defaultLoggers];
+    	[retVal addObject:[AppCenterLogger sharedInstance]];
+    	return retVal;
+    };
+
+    [[Sprout sharedInstance] startLogging:^{
     	[[Sprout sharedInstance] logAppAndDeviceInfo];
     }];
 
