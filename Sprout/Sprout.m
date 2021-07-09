@@ -281,7 +281,7 @@ void sproutSignalHandler(int signal)
     
     [self deviceName:&deviceName deviceModel:&deviceModel deviceMachine:&deviceMachine systemName:&systemName systemVersion:&systemVersion];
 
-    DDLogInfo(@"%@ %@ (%@ %@) %@ \"%@\" (%@), %@ %@", appName ?: @"<unknown_app_name>", appVersion ?: @"<unknown_app_version>", appIdentifier ?: @"<unknown_app_identifier>", appBuildNumber ?: @"<unknown_app_build_number>", deviceModel ?: @"<unknown_device_model>", deviceName ?: @"<unknown_device_name>", deviceMachine ?: @"<unknown_device_machine>", systemName ?: @"<unknown_system_name>", systemVersion ?: @"<unknown_system_version>");
+    DDLogAlwaysInfo(@"%@ %@ (%@ %@) %@ \"%@\" (%@), %@ %@", appName ?: @"<unknown_app_name>", appVersion ?: @"<unknown_app_version>", appIdentifier ?: @"<unknown_app_identifier>", appBuildNumber ?: @"<unknown_app_build_number>", deviceModel ?: @"<unknown_device_model>", deviceName ?: @"<unknown_device_name>", deviceMachine ?: @"<unknown_device_machine>", systemName ?: @"<unknown_system_name>", systemVersion ?: @"<unknown_system_version>");
 }
 
 - (NSArray *)logFiles
