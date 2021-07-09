@@ -60,4 +60,6 @@
   * Removed weak dependency on Crashlytics for logging.
   * CocoaLumberjack 3.1 dependency
 * 3.1.1 - March 20, 2019
-  * Added `AppCenterLogger.h/m` for logging to [App Center](https://appcenter.ms)
+  * Added `AppCenterLogger.h/m` for logging to [App Center](https://appcenter.ms)\
+* 3.1.2 - July 9, 2021
+  * Incorporated PR from @gyratorycircus to "log always" app/device info at startup.
