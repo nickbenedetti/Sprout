@@ -14,8 +14,6 @@
 		DB186BF51BD19A2A0072D792 /* SproutLibTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB186BF41BD19A2A0072D792 /* SproutLibTests.m */; };
 		DB82482D2242D2E6002C9DA0 /* AppCenterLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = DB82482B2242D2E5002C9DA0 /* AppCenterLogger.h */; };
 		DB82482E2242D2E6002C9DA0 /* AppCenterLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DB82482C2242D2E5002C9DA0 /* AppCenterLogger.m */; };
-		DBA392471E5509890025271F /* CrashlyticsLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = DBA392451E5509890025271F /* CrashlyticsLogger.h */; };
-		DBA392481E5509890025271F /* CrashlyticsLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA392461E5509890025271F /* CrashlyticsLogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +41,6 @@
 		DB186BF61BD19A2A0072D792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB82482B2242D2E5002C9DA0 /* AppCenterLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCenterLogger.h; sourceTree = "<group>"; };
 		DB82482C2242D2E5002C9DA0 /* AppCenterLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCenterLogger.m; sourceTree = "<group>"; };
-		DBA392451E5509890025271F /* CrashlyticsLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashlyticsLogger.h; sourceTree = "<group>"; };
-		DBA392461E5509890025271F /* CrashlyticsLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrashlyticsLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +117,6 @@
 			children = (
 				DB82482B2242D2E5002C9DA0 /* AppCenterLogger.h */,
 				DB82482C2242D2E5002C9DA0 /* AppCenterLogger.m */,
-				DBA392451E5509890025271F /* CrashlyticsLogger.h */,
-				DBA392461E5509890025271F /* CrashlyticsLogger.m */,
 			);
 			name = Loggers;
 			path = ../../Sprout/Loggers;
@@ -147,7 +141,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB82482D2242D2E6002C9DA0 /* AppCenterLogger.h in Headers */,
-				DBA392471E5509890025271F /* CrashlyticsLogger.h in Headers */,
 				DB186BE91BD19A2A0072D792 /* SproutLib.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,7 +192,7 @@
 		DB186BDC1BD19A2A0072D792 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = "Levi Brown";
 				TargetAttributes = {
 					DB186BE41BD19A2A0072D792 = {
@@ -215,6 +208,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = DB186BDB1BD19A2A0072D792;
@@ -290,7 +284,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB82482E2242D2E6002C9DA0 /* AppCenterLogger.m in Sources */,
-				DBA392481E5509890025271F /* CrashlyticsLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +328,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -391,6 +385,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

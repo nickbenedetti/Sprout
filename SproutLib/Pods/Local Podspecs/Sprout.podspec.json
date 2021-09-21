@@ -1,6 +1,6 @@
 {
   "name": "Sprout",
-  "version": "3.1.1",
+  "version": "3.2",
   "summary": "Bootstrap the CocoaLumberjack logging framework.",
   "description": "Bootstrap the CocoaLumberjack logging framework and add additional functionality such as Custom Loggers, log archiving, crash stack traces, and more.",
   "homepage": "https://github.com/levigroker/Sprout",
@@ -11,7 +11,7 @@
   "social_media_url": "https://twitter.com/levigroker",
   "source": {
     "git": "https://github.com/levigroker/Sprout.git",
-    "tag": "3.1.1"
+    "tag": "3.2"
   },
   "requires_arc": true,
   "source_files": "Sprout/*.{h,m}",
@@ -19,11 +19,11 @@
   "frameworks": "Foundation",
   "dependencies": {
     "CocoaLumberjack": [
-      "~> 3.5"
+      "~> 3.7"
     ]
   },
   "platforms": {
-    "ios": "9.0",
-    "osx": "10.11"
+    "ios": "13.0",
+    "osx": "11.0"
   }
 }
