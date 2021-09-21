@@ -4,7 +4,7 @@
 //  Part of "Sprout" https://github.com/levigroker/Sprout
 //
 //  Created by Levi Brown on March 20, 2019.
-//  Copyright (c) 2019 Levi Brown <mailto:levigroker@gmail.com> This work is
+//  Copyright (c) 2019-2021 Levi Brown <mailto:levigroker@gmail.com> This work is
 //  licensed under the Creative Commons Attribution 4.0 International License. To
 //  view a copy of this license, visit https://creativecommons.org/licenses/by/4.0/
 //  or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
@@ -26,23 +26,23 @@
     return retVal;
 }
 
-- (MSLogLevel)msLogLevelForDDLogLevel:(DDLogLevel)ddLogLevel
+- (MSACLogLevel)msLogLevelForDDLogLevel:(DDLogLevel)ddLogLevel
 {
 	switch (ddLogLevel) {
 		case DDLogLevelOff:
-			return MSLogLevelNone;
+			return MSACLogLevelNone;
 		case DDLogLevelError:
-			return MSLogLevelError;
+			return MSACLogLevelError;
 		case DDLogLevelWarning:
-			return MSLogLevelWarning;
+			return MSACLogLevelWarning;
 		case DDLogLevelInfo:
-			return MSLogLevelInfo;
+			return MSACLogLevelInfo;
 		case DDLogLevelDebug:
-			return MSLogLevelDebug;
+			return MSACLogLevelDebug;
 		case DDLogLevelVerbose: // Fall through
 		case DDLogLevelAll: // Fall through
 		default: // Fall through
-			return MSLogLevelVerbose;
+			return MSACLogLevelVerbose;
 	}
 }
 
@@ -55,10 +55,10 @@
     }
     
     if (logMsg) {
-		MSLogLevel msLogLevel = [self msLogLevelForDDLogLevel:logMessage->_level];
-		[MSLogger logMessage:^NSString *{
+		MSACLogLevel msLogLevel = [self msLogLevelForDDLogLevel:logMessage->_level];
+		[MSACLogger logMessage:^NSString *{
 			return logMsg;
-		} level:msLogLevel tag:[logMessage->_tag description] file:[logMessage->_file UTF8String] function:[logMessage->_function UTF8String] line:(uint)logMessage->_line];
+		} level:msLogLevel tag:[logMessage->_representedObject description] file:[logMessage->_file UTF8String] function:[logMessage->_function UTF8String] line:(uint)logMessage->_line];
 	}
 }
 
