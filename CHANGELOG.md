@@ -63,3 +63,6 @@
   * Added `AppCenterLogger.h/m` for logging to [App Center](https://appcenter.ms)\
 * 3.1.2 - July 9, 2021
   * Incorporated PR from @gyratorycircus to "log always" app/device info at startup.
+* 3.2 - 2021-09-21
+  * Updated AppCenter API use to 4.3. Using DDOSLogger instead of DDTTYLogger.
+  
