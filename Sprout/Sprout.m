@@ -327,7 +327,7 @@ void sproutSignalHandler(int signal)
 	
 	id<DDLogger> logger = nil;
 	
-	logger = [self setupTTYLogger];
+	logger = [self setupOSLogger];
 	if (logger)
 	{
 		[loggers addObject:logger];
@@ -380,14 +380,13 @@ void sproutSignalHandler(int signal)
     return [DDLog allLoggers];
 }
 
-- (DDTTYLogger *)setupTTYLogger
+- (DDOSLogger *)setupOSLogger
 {
-    DDTTYLogger *logger = nil;
+	DDOSLogger *logger = nil;
     
     #if SPROUT_CONSOLE_LOGGING
     //Console
-    logger = [DDTTYLogger sharedInstance];
-    [logger setColorsEnabled:YES];
+    logger = [DDOSLogger sharedInstance];
     #endif
     
     return logger;
