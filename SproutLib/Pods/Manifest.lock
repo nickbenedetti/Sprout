@@ -3,7 +3,7 @@ PODS:
   - CocoaLumberjack (3.7.2):
     - CocoaLumberjack/Core (= 3.7.2)
   - CocoaLumberjack/Core (3.7.2)
-  - Sprout (3.2):
+  - Sprout (3.2.2):
     - CocoaLumberjack (~> 3.7)
 
 DEPENDENCIES:
@@ -22,7 +22,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AppCenter: 883369ab78427b0561c688158d689dfe1f993ea9
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
-  Sprout: 4d7109f39715f4815c44c36cd3ba6807b8d6a3a8
+  Sprout: 02bd9f0eb8c0b2cb351b28c446de6bb6fac0e65f
 
 PODFILE CHECKSUM: 0009af4da395db3229373326d7ffa876ae1489d1
 
