@@ -15,7 +15,11 @@
 #import <sys/sysctl.h>
 
 #if TARGET_OS_IPHONE
+#if TARGET_OS_WATCH
+#import <WatchKit/WatchKit.h>
+#else // iOS
 #import <UIKit/UIKit.h>
+#endif
 #else //Mac
 #import <SystemConfiguration/SCDynamicStoreCopySpecific.h>
 
@@ -459,7 +463,11 @@ void sproutSignalHandler(int signal)
 - (void)deviceName:(NSString **)deviceName deviceModel:(NSString **)deviceModel deviceMachine:(NSString **)deviceMachine systemName:(NSString **)systemName systemVersion:(NSString **)systemVersion
 {
 #if TARGET_OS_IPHONE
+#if TARGET_OS_WATCH
+	[self watchDeviceName:deviceName deviceModel:deviceModel deviceMachine:deviceMachine systemName:systemName systemVersion:systemVersion];
+#else // iOS
     [self iosDeviceName:deviceName deviceModel:deviceModel deviceMachine:deviceMachine systemName:systemName systemVersion:systemVersion];
+#endif
 #elif TARGET_OS_MAC
     [self osxDeviceName:deviceName deviceModel:deviceModel deviceMachine:deviceMachine systemName:systemName systemVersion:systemVersion];
 #endif
@@ -467,6 +475,35 @@ void sproutSignalHandler(int signal)
 
 #if TARGET_OS_IPHONE
 
+#if TARGET_OS_WATCH
+- (void)watchDeviceName:(NSString **)deviceName deviceModel:(NSString **)deviceModel deviceMachine:(NSString **)deviceMachine systemName:(NSString **)systemName systemVersion:(NSString **)systemVersion
+{
+	if (deviceName)
+	{
+		*deviceName = [WKInterfaceDevice currentDevice].name;
+	}
+
+	if (deviceModel)
+	{
+		*deviceModel = [WKInterfaceDevice currentDevice].model;
+	}
+
+	if (deviceMachine)
+	{
+		*deviceMachine = [self sysInfoByName:kSysInfoKeyHardwareMachine];
+	}
+
+	if (systemName)
+	{
+		*systemName = [WKInterfaceDevice currentDevice].systemName;
+	}
+
+	if (systemVersion)
+	{
+		*systemVersion = [WKInterfaceDevice currentDevice].systemVersion;
+	}
+}
+#else // iOS
 - (void)iosDeviceName:(NSString **)deviceName deviceModel:(NSString **)deviceModel deviceMachine:(NSString **)deviceMachine systemName:(NSString **)systemName systemVersion:(NSString **)systemVersion
 {
     if (deviceName)
@@ -494,6 +531,7 @@ void sproutSignalHandler(int signal)
         *systemVersion = [UIDevice currentDevice].systemVersion;
     }
 }
+#endif
 
 #else // Mac OS
 
