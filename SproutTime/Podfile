@@ -1,0 +1,18 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :watchos, '8.0'
+use_frameworks!
+
+pod 'Sprout', :path => '..'
+
+target 'SproutTime' do
+  target 'SproutTimeTests' do
+    inherit! :search_paths
+  end
+  target 'SproutTime WatchKit App' do
+    inherit! :search_paths
+  end
+  target 'SproutTime WatchKit Extension' do
+    inherit! :search_paths
+  end
+end

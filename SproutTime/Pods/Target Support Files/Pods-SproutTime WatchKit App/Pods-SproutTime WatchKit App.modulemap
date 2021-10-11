@@ -1,0 +1,6 @@
+framework module Pods_SproutTime_WatchKit_App {
+  umbrella header "Pods-SproutTime WatchKit App-umbrella.h"
+
+  export *
+  module * { export * }
+}

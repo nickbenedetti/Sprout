@@ -1,0 +1,25 @@
+PODS:
+  - CocoaLumberjack (3.7.2):
+    - CocoaLumberjack/Core (= 3.7.2)
+  - CocoaLumberjack/Core (3.7.2)
+  - Sprout (3.2.2):
+    - CocoaLumberjack (~> 3.7)
+
+DEPENDENCIES:
+  - Sprout (from `..`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - CocoaLumberjack
+
+EXTERNAL SOURCES:
+  Sprout:
+    :path: ".."
+
+SPEC CHECKSUMS:
+  CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
+  Sprout: 02bd9f0eb8c0b2cb351b28c446de6bb6fac0e65f
+
+PODFILE CHECKSUM: 745875685783496f245e0452aa672cf9f01ff1c1
+
+COCOAPODS: 1.11.2

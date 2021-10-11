@@ -1,0 +1,1519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03E0C16DFB7873B7E94D234AE6CE332D /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F3363C0DD1AF0D24373AC5F7A04703 /* DDLog.m */; };
+		0495B73FE7B68E80C3C61E42643F135C /* CLIColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7989B8DA6EDBBF67840B7D15EB44F0 /* CLIColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		056E59D2228DB2B7182113172A55716A /* DDContextFilterLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = C4AADEE9A3EBCB2ECF6B3EB28CC6BDD1 /* DDContextFilterLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06A339A54F282669190230987BC25F7F /* DDTTYLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 644C0C6036D11DBA62C7D36038E25E7F /* DDTTYLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07439036B0A624EB81BCAD84B4217A24 /* DDFileLogger+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A4C58D6989631F68F3E2E1AC36177A6 /* DDFileLogger+Internal.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		145F9EAD066F70BEFEBC7C472C8B6AE0 /* DDAbstractDatabaseLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 89CA6FEB3463AEB5D30787285320A689 /* DDAbstractDatabaseLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		14B6202FE4FDCA8FEC7BE39BB8ACF1C3 /* Pods-SproutTime WatchKit Extension-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BD7BA849478369AFC018EAE8DC5D5B61 /* Pods-SproutTime WatchKit Extension-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		150459A10E3E74F597A9E90AAE18041C /* DDContextFilterLogFormatter+Deprecated.h in Headers */ = {isa = PBXBuildFile; fileRef = 74D57D508FB500C94D89B8888D42BC87 /* DDContextFilterLogFormatter+Deprecated.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		19FCC62E4542BF03DC650FB951872278 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A003A25B2A7E6E95C30801E60AE0DD /* Foundation.framework */; };
+		1B879107498475A1E0DA60B0AE1E7066 /* DDOSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = B523CBD94C394BE5505805034A326838 /* DDOSLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		21E63F15EFA16AA2572497DA5DD78E44 /* DDLog+LOGV.h in Headers */ = {isa = PBXBuildFile; fileRef = 651F2F771449386D087D6634B7E71549 /* DDLog+LOGV.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		353DC20D392D4832996791E15D370D90 /* Sprout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1ACC9DDF908CF2BDD3FC59873C2AE2 /* Sprout.m */; };
+		36E1A2438B42CB8E4AACC639FD33556D /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FE31881E04EAD84E06E0FF541A0AAB2C /* DDASLLogger.m */; };
+		376AEB2C580EA3EA6004FB12889B0AAC /* Sprout.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A64924E405137956601609BAD9D2054 /* Sprout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D36A7B67F64229436E40CC609CDA042 /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 467DA212D8B074C0B6E64440B416C01C /* DDASLLogCapture.m */; };
+		430ACE0BBF2BA1E545B1EC37AF36EDF3 /* CocoaLumberjack-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C1986DA53EB62EEEF8B275B42DA650E0 /* CocoaLumberjack-dummy.m */; };
+		434C0DF239D749372CB6EC0C2A37AF37 /* Pods-SproutTime-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5ED47A9E12A558084FDBAC5C14F8DF85 /* Pods-SproutTime-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		472BE43B65B5605E349558899367C8FA /* DDLoggerNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 2771DFEDB2113764717A3764CF2A2AF3 /* DDLoggerNames.m */; };
+		4A3FC228231F5CF140BDCDB97E6A7C4D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A003A25B2A7E6E95C30801E60AE0DD /* Foundation.framework */; };
+		4C6591071806A4EA9AE3DD851D22FBBF /* DDFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 038E7F5F37848E68BA9CBA1C4086374B /* DDFileLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C7C3C204D04C2AB8D931EFFE6416E52 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 92FF5A73F2E2BBC45587C08C55808055 /* DDMultiFormatter.m */; };
+		587104B1F808C84525995BB4ABC3AF85 /* Pods-SproutTimeTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05039DF60507693654887C487549DCC1 /* Pods-SproutTimeTests-dummy.m */; };
+		6165468EE48C906F1781857AC9855447 /* SproutDDLogAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 72E4282641134CF35854002F21319428 /* SproutDDLogAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6B0C52E8966658064BD40DFF11DF6C65 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 39662E48CCC5CD4137FD9A736FAA0C03 /* DDFileLogger.m */; };
+		6E82ADC8CDFD36151922AE49F97946E8 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = E399F541D0625F914667900007AEE3B1 /* DDAbstractDatabaseLogger.m */; };
+		730895234875219C65F10FFEBF6E9B2F /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B7674CA9F098B41422B379BEAD8502 /* DDContextFilterLogFormatter.m */; };
+		735F7C24B72A4BA1F890D98C0DEE19A2 /* Pods-SproutTimeTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4722CC9EC4D365E84FFD0F5E7F393904 /* Pods-SproutTimeTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		744CE33F1AF21FA3AAA624A7FD1BB5F8 /* CocoaLumberjack.h in Headers */ = {isa = PBXBuildFile; fileRef = 56C1421643989BF67C01924553605F88 /* CocoaLumberjack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7551733193E5652CC51FE5EEB52069DF /* Pods-SproutTime WatchKit Extension-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8284C2C5B591F9181B02EEF1298EBA /* Pods-SproutTime WatchKit Extension-dummy.m */; };
+		78E29B800CBFC464BD87A00EC86B2124 /* DDAssertMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = FA263D6ACE33F86DD39706916DC188B9 /* DDAssertMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F780D09E2119CBD9DD487676B44A290 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A003A25B2A7E6E95C30801E60AE0DD /* Foundation.framework */; };
+		7FB03913D2655FF2D66BC621FE0BCAED /* SproutCustomLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D9F0D139D6433A5737866B77457E56 /* SproutCustomLogFormatter.m */; };
+		82DB56367F2E6166E07A8136734BCACA /* DDASLLogCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 871CC5B48CDE55B01269A705112C0E2F /* DDASLLogCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		83C0B648B7186D1E8957407D1B5235EB /* Pods-SproutTime-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 428E02C006E0EA73E1FC5A5D4B22303A /* Pods-SproutTime-dummy.m */; };
+		863D5DE35DA07D926D57DD5C8F0F8CBF /* CocoaLumberjack-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A82355695C815314119B2D5A9D48C9C5 /* CocoaLumberjack-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B84E8A433506CE439E7AC17B9CA2600 /* Sprout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CC0BC7B33934F3DF1AFA88A523239C0 /* Sprout-dummy.m */; };
+		8DDEB03BEEA3D8E20BD291D51BF73EBD /* DDLogMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 94E44D3547B77A30057F38439AA7CD5B /* DDLogMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E0B488DCA52CFA2343D6ECEE942D59B /* SproutCustomLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = A3AAA319302B858D49C0F43D9FA84FFC /* SproutCustomLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90FC53060C713E909D6DF8B827455BDF /* DDContextFilterLogFormatter+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF5596CA06477AED49C93658F3CD555 /* DDContextFilterLogFormatter+Deprecated.m */; };
+		A03012C8493DCC8CA7381A185560F8FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A003A25B2A7E6E95C30801E60AE0DD /* Foundation.framework */; };
+		AE33DEF9A1E0CE07C541DF111FC5C7B2 /* DDLegacyMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9101C4604CCD2511A417FC99F3ECF0 /* DDLegacyMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B0B97E46EAB3C5EE2483EAD8D869A32A /* Pods-SproutTime WatchKit App-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D27F2414D59F2F94EB5BC40DF8CBA14 /* Pods-SproutTime WatchKit App-dummy.m */; };
+		B831BBE8F63D3E960949A34CF63DFBA0 /* DDLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 33333391B020170DE2DBC306CB659855 /* DDLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC773AA342E15112FC9C036D02C260CE /* DDASLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C177F848F4043B872535B5129E05E1 /* DDASLLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C08213D09541D7F908FE9C6362F51CEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A003A25B2A7E6E95C30801E60AE0DD /* Foundation.framework */; };
+		C10574AD49BE882AB861F391EF5E65F7 /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D8B5153009DE026E72AECBD9D0A5A1 /* CLIColor.m */; };
+		C8EB66B26F0EB1D2DD674DEAE9D0D435 /* DDLoggerNames.h in Headers */ = {isa = PBXBuildFile; fileRef = 37E546E8470047EA3C4893BF3A11FE2A /* DDLoggerNames.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB7FEBAC9823242E5B01736C99F4D183 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6CAFE5D544DC5562D320A01393AFF6 /* DDTTYLogger.m */; };
+		CBC2B1C82511E18BDBEE4418E1192077 /* Sprout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 09CAF2E9CBA75B95B1040BD4CF6D629A /* Sprout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D391BD517219423EC666A9FDCE96B377 /* DDFileLogger+Buffering.h in Headers */ = {isa = PBXBuildFile; fileRef = 928C053C89C4059B261EF78AA96A9225 /* DDFileLogger+Buffering.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D52C58748ACD4BCA3879D92115DEE3A7 /* DDMultiFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = FF33001E1EEB84CA9B39AE80F04BF7AA /* DDMultiFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D769033D3D61D0E76073CC88469B019A /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FABE504B3BF380E82A34766C7D9152 /* DDDispatchQueueLogFormatter.m */; };
+		DA07177C225F6ADC9271B98EDC37A1F8 /* DDOSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D145D863C27615C77E5A304A54DA2290 /* DDOSLogger.m */; };
+		DD5E98FB09AAE150B8ED1FECC93F2EFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A003A25B2A7E6E95C30801E60AE0DD /* Foundation.framework */; };
+		F10208D5907EF5544A13E160E4EBDE2B /* Pods-SproutTime WatchKit App-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E76ACB5F3EAAF17776B97DD98F6C1040 /* Pods-SproutTime WatchKit App-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6605CB4BA21163C9D3D7C6E4E62BF7B /* DDFileLogger+Buffering.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BD83A12F404B4B6CD1F05A8FC3AEF6 /* DDFileLogger+Buffering.m */; };
+		FF1025D99EEB3116FF164F9CA6D14467 /* DDDispatchQueueLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 718C6B63AC1A620D15D89174E9CF2000 /* DDDispatchQueueLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		480B3A135628DE19DAC3AB1EB15A4F3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FB8CF2E857B63988CD2D1CC4C1E9B9F;
+			remoteInfo = "Pods-SproutTime";
+		};
+		8AC09AC384B6B5BCBFBA906696A27928 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FB8CF2E857B63988CD2D1CC4C1E9B9F;
+			remoteInfo = "Pods-SproutTime";
+		};
+		9FABAAA166DB6C58EBA9166E50822CED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E95654B155D25890BE8E26081FCA8265;
+			remoteInfo = CocoaLumberjack;
+		};
+		A5E2456CB661A88CC5BDE37E583086D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E95654B155D25890BE8E26081FCA8265;
+			remoteInfo = CocoaLumberjack;
+		};
+		B0BD241162A04AB43C1B20A49A5896AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FB8CF2E857B63988CD2D1CC4C1E9B9F;
+			remoteInfo = "Pods-SproutTime";
+		};
+		F98916C9B12191006B93D20A68D5B76D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2139A23462F3E4F5F051A10A9EA3F04C;
+			remoteInfo = Sprout;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01F3363C0DD1AF0D24373AC5F7A04703 /* DDLog.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDLog.m; path = Sources/CocoaLumberjack/DDLog.m; sourceTree = "<group>"; };
+		038E7F5F37848E68BA9CBA1C4086374B /* DDFileLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDFileLogger.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDFileLogger.h; sourceTree = "<group>"; };
+		05039DF60507693654887C487549DCC1 /* Pods-SproutTimeTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SproutTimeTests-dummy.m"; sourceTree = "<group>"; };
+		09CAF2E9CBA75B95B1040BD4CF6D629A /* Sprout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Sprout-umbrella.h"; sourceTree = "<group>"; };
+		16B7674CA9F098B41422B379BEAD8502 /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDContextFilterLogFormatter.m; path = Sources/CocoaLumberjack/Extensions/DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		1A4C58D6989631F68F3E2E1AC36177A6 /* DDFileLogger+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DDFileLogger+Internal.h"; path = "Sources/CocoaLumberjack/DDFileLogger+Internal.h"; sourceTree = "<group>"; };
+		1A64924E405137956601609BAD9D2054 /* Sprout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Sprout.h; path = Sprout/Sprout.h; sourceTree = "<group>"; };
+		1A9EE4BFC81AC55C3B537A5C64C82B1B /* Pods-SproutTime WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SproutTime WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		1AE67DEE1E9156900D42F56EA591EF9B /* Pods-SproutTime WatchKit App-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SproutTime WatchKit App-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1BB54082301A29E688753C60AC9581C6 /* Sprout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Sprout-prefix.pch"; sourceTree = "<group>"; };
+		1D7F6B2821D00C3074A534259C3B606F /* Pods-SproutTime WatchKit Extension-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SproutTime WatchKit Extension-acknowledgements.plist"; sourceTree = "<group>"; };
+		23BD83A12F404B4B6CD1F05A8FC3AEF6 /* DDFileLogger+Buffering.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "DDFileLogger+Buffering.m"; path = "Sources/CocoaLumberjack/Extensions/DDFileLogger+Buffering.m"; sourceTree = "<group>"; };
+		254380628DAAD36DE17F28ADBD50279C /* Pods-SproutTime WatchKit Extension.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SproutTime WatchKit Extension.modulemap"; sourceTree = "<group>"; };
+		2771DFEDB2113764717A3764CF2A2AF3 /* DDLoggerNames.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDLoggerNames.m; path = Sources/CocoaLumberjack/DDLoggerNames.m; sourceTree = "<group>"; };
+		279997A0602F13AF63E90C349504B510 /* Pods-SproutTimeTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SproutTimeTests.modulemap"; sourceTree = "<group>"; };
+		27C177F848F4043B872535B5129E05E1 /* DDASLLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDASLLogger.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDASLLogger.h; sourceTree = "<group>"; };
+		2AE6B5007E9343FFA1792A8FC4E76F25 /* Sprout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Sprout.release.xcconfig; sourceTree = "<group>"; };
+		2E62A03C65969D036FFBD266C107C7F0 /* Pods-SproutTime.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SproutTime.modulemap"; sourceTree = "<group>"; };
+		32FEEE7FF6158FCB3837B0AD7F78A839 /* Pods-SproutTime WatchKit Extension-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SproutTime WatchKit Extension-acknowledgements.markdown"; sourceTree = "<group>"; };
+		33333391B020170DE2DBC306CB659855 /* DDLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLog.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDLog.h; sourceTree = "<group>"; };
+		33F9FB5757B198F0974864891275CF58 /* Pods-SproutTime-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SproutTime-acknowledgements.markdown"; sourceTree = "<group>"; };
+		37E546E8470047EA3C4893BF3A11FE2A /* DDLoggerNames.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLoggerNames.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDLoggerNames.h; sourceTree = "<group>"; };
+		39662E48CCC5CD4137FD9A736FAA0C03 /* DDFileLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDFileLogger.m; path = Sources/CocoaLumberjack/DDFileLogger.m; sourceTree = "<group>"; };
+		3A9101C4604CCD2511A417FC99F3ECF0 /* DDLegacyMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLegacyMacros.h; path = "Sources/CocoaLumberjack/Supporting Files/DDLegacyMacros.h"; sourceTree = "<group>"; };
+		3DDC595D36D3A81711EDD03799BF05D6 /* Pods-SproutTimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SproutTimeTests.release.xcconfig"; sourceTree = "<group>"; };
+		428E02C006E0EA73E1FC5A5D4B22303A /* Pods-SproutTime-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SproutTime-dummy.m"; sourceTree = "<group>"; };
+		45203EAC570C34086D7F36DCE825FBBC /* Pods-SproutTime WatchKit Extension */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-SproutTime WatchKit Extension"; path = Pods_SproutTime_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45B6AAD23DA6DF4064131FF5C7297CBA /* CocoaLumberjack-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CocoaLumberjack-Info.plist"; sourceTree = "<group>"; };
+		467DA212D8B074C0B6E64440B416C01C /* DDASLLogCapture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDASLLogCapture.m; path = Sources/CocoaLumberjack/DDASLLogCapture.m; sourceTree = "<group>"; };
+		46A003A25B2A7E6E95C30801E60AE0DD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4722CC9EC4D365E84FFD0F5E7F393904 /* Pods-SproutTimeTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SproutTimeTests-umbrella.h"; sourceTree = "<group>"; };
+		4DAC40787F11B147A88AD5BCCD15D9D9 /* CocoaLumberjack.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CocoaLumberjack.modulemap; sourceTree = "<group>"; };
+		56C1421643989BF67C01924553605F88 /* CocoaLumberjack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CocoaLumberjack.h; path = "Sources/CocoaLumberjack/Supporting Files/CocoaLumberjack.h"; sourceTree = "<group>"; };
+		56D8B5153009DE026E72AECBD9D0A5A1 /* CLIColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CLIColor.m; path = Sources/CocoaLumberjack/CLI/CLIColor.m; sourceTree = "<group>"; };
+		576AB527C7B796887E1472E35313E41A /* Pods-SproutTimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SproutTimeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		58DB18C9B6F358CA7E670BD37A880B5F /* Pods-SproutTime-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SproutTime-Info.plist"; sourceTree = "<group>"; };
+		5D27F2414D59F2F94EB5BC40DF8CBA14 /* Pods-SproutTime WatchKit App-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SproutTime WatchKit App-dummy.m"; sourceTree = "<group>"; };
+		5D7989B8DA6EDBBF67840B7D15EB44F0 /* CLIColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLIColor.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/CLIColor.h; sourceTree = "<group>"; };
+		5ED47A9E12A558084FDBAC5C14F8DF85 /* Pods-SproutTime-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SproutTime-umbrella.h"; sourceTree = "<group>"; };
+		644C0C6036D11DBA62C7D36038E25E7F /* DDTTYLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDTTYLogger.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDTTYLogger.h; sourceTree = "<group>"; };
+		651F2F771449386D087D6634B7E71549 /* DDLog+LOGV.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DDLog+LOGV.h"; path = "Sources/CocoaLumberjack/include/CocoaLumberjack/DDLog+LOGV.h"; sourceTree = "<group>"; };
+		6CC0BC7B33934F3DF1AFA88A523239C0 /* Sprout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Sprout-dummy.m"; sourceTree = "<group>"; };
+		707C6F57EF4EC49A640215BAC4D69D34 /* Pods-SproutTime WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SproutTime WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
+		718C6B63AC1A620D15D89174E9CF2000 /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDDispatchQueueLogFormatter.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		72E4282641134CF35854002F21319428 /* SproutDDLogAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SproutDDLogAdditions.h; path = Sprout/SproutDDLogAdditions.h; sourceTree = "<group>"; };
+		74D57D508FB500C94D89B8888D42BC87 /* DDContextFilterLogFormatter+Deprecated.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DDContextFilterLogFormatter+Deprecated.h"; path = "Sources/CocoaLumberjack/include/CocoaLumberjack/DDContextFilterLogFormatter+Deprecated.h"; sourceTree = "<group>"; };
+		7E8284C2C5B591F9181B02EEF1298EBA /* Pods-SproutTime WatchKit Extension-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SproutTime WatchKit Extension-dummy.m"; sourceTree = "<group>"; };
+		81520B4D592E06C541E975334F259F02 /* Pods-SproutTime WatchKit App-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SproutTime WatchKit App-Info.plist"; sourceTree = "<group>"; };
+		815716219BBC5EC4884B36D8ACE6DAFB /* Pods-SproutTime */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-SproutTime"; path = Pods_SproutTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8408907AD70AF489BF765A3A153E23AA /* Pods-SproutTimeTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SproutTimeTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		850A4CBB65C6AFE83F53539FCD8D3857 /* Pods-SproutTime WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SproutTime WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		871CC5B48CDE55B01269A705112C0E2F /* DDASLLogCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDASLLogCapture.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDASLLogCapture.h; sourceTree = "<group>"; };
+		872DC5FABF3094D74FF5E093C0533842 /* Sprout.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = Sprout.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		874A5157A3FB014081DF0697C1E486AD /* Pods-SproutTimeTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SproutTimeTests-Info.plist"; sourceTree = "<group>"; };
+		89CA6FEB3463AEB5D30787285320A689 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDAbstractDatabaseLogger.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
+		8C1ACC9DDF908CF2BDD3FC59873C2AE2 /* Sprout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Sprout.m; path = Sprout/Sprout.m; sourceTree = "<group>"; };
+		928C053C89C4059B261EF78AA96A9225 /* DDFileLogger+Buffering.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DDFileLogger+Buffering.h"; path = "Sources/CocoaLumberjack/include/CocoaLumberjack/DDFileLogger+Buffering.h"; sourceTree = "<group>"; };
+		92FF5A73F2E2BBC45587C08C55808055 /* DDMultiFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDMultiFormatter.m; path = Sources/CocoaLumberjack/Extensions/DDMultiFormatter.m; sourceTree = "<group>"; };
+		94E44D3547B77A30057F38439AA7CD5B /* DDLogMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLogMacros.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDLogMacros.h; sourceTree = "<group>"; };
+		977588E82A896C28AF85E6ABD4745161 /* Pods-SproutTimeTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-SproutTimeTests"; path = Pods_SproutTimeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		986006C8B2F87E378845C1CC5F130480 /* CocoaLumberjack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaLumberjack.debug.xcconfig; sourceTree = "<group>"; };
+		9D1ED0DBC6FFFACAEF4E5E2DEE36121A /* Sprout-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Sprout-Info.plist"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A1D3676ABF4170B86F53BB6145658EE0 /* Pods-SproutTimeTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SproutTimeTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		A31B06D309BCCADEF223AE559BD4DB96 /* Pods-SproutTime WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SproutTime WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
+		A3AAA319302B858D49C0F43D9FA84FFC /* SproutCustomLogFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SproutCustomLogFormatter.h; path = Sprout/SproutCustomLogFormatter.h; sourceTree = "<group>"; };
+		A82355695C815314119B2D5A9D48C9C5 /* CocoaLumberjack-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaLumberjack-umbrella.h"; sourceTree = "<group>"; };
+		AC6CAFE5D544DC5562D320A01393AFF6 /* DDTTYLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDTTYLogger.m; path = Sources/CocoaLumberjack/DDTTYLogger.m; sourceTree = "<group>"; };
+		B14FE503D267340BB4B349753140C4C3 /* Pods-SproutTime-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SproutTime-frameworks.sh"; sourceTree = "<group>"; };
+		B523CBD94C394BE5505805034A326838 /* DDOSLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDOSLogger.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDOSLogger.h; sourceTree = "<group>"; };
+		B62001620A4890E73E321EE0E6B7EA76 /* Pods-SproutTime WatchKit Extension-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SproutTime WatchKit Extension-Info.plist"; sourceTree = "<group>"; };
+		B6F8CB0827A6F652B919B71EC589AADA /* Pods-SproutTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SproutTime.release.xcconfig"; sourceTree = "<group>"; };
+		BA60561FDB1464E693366F6D1D592C00 /* CocoaLumberjack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaLumberjack.release.xcconfig; sourceTree = "<group>"; };
+		BC68B2DDB9F2A69B400D668C248A5510 /* Sprout */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Sprout; path = Sprout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCF5596CA06477AED49C93658F3CD555 /* DDContextFilterLogFormatter+Deprecated.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "DDContextFilterLogFormatter+Deprecated.m"; path = "Sources/CocoaLumberjack/Extensions/DDContextFilterLogFormatter+Deprecated.m"; sourceTree = "<group>"; };
+		BD7BA849478369AFC018EAE8DC5D5B61 /* Pods-SproutTime WatchKit Extension-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SproutTime WatchKit Extension-umbrella.h"; sourceTree = "<group>"; };
+		C1986DA53EB62EEEF8B275B42DA650E0 /* CocoaLumberjack-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CocoaLumberjack-dummy.m"; sourceTree = "<group>"; };
+		C261436D14052AE3C35F240BCD155CAC /* CocoaLumberjack */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CocoaLumberjack; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3AF2398B346FF71DECA113C8CE5EADE /* Pods-SproutTime-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SproutTime-acknowledgements.plist"; sourceTree = "<group>"; };
+		C41105FA86D68ED6A226765CD4957685 /* Pods-SproutTime WatchKit App */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-SproutTime WatchKit App"; path = Pods_SproutTime_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C47FBAD9C974E8965594A434D9E4E4D9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		C4AADEE9A3EBCB2ECF6B3EB28CC6BDD1 /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDContextFilterLogFormatter.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		C50A5FAC49781FA0D92DE05F75060C8A /* Pods-SproutTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SproutTime.debug.xcconfig"; sourceTree = "<group>"; };
+		C7FABE504B3BF380E82A34766C7D9152 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDDispatchQueueLogFormatter.m; path = Sources/CocoaLumberjack/Extensions/DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		CEF4C37D5EF2DAE303DC3400D73C2EE1 /* Pods-SproutTime WatchKit App-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SproutTime WatchKit App-acknowledgements.plist"; sourceTree = "<group>"; };
+		D145D863C27615C77E5A304A54DA2290 /* DDOSLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDOSLogger.m; path = Sources/CocoaLumberjack/DDOSLogger.m; sourceTree = "<group>"; };
+		D96BFC10B97737836B9DD3416CCC0DFB /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE.txt; sourceTree = "<group>"; };
+		E399F541D0625F914667900007AEE3B1 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDAbstractDatabaseLogger.m; path = Sources/CocoaLumberjack/DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
+		E76ACB5F3EAAF17776B97DD98F6C1040 /* Pods-SproutTime WatchKit App-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SproutTime WatchKit App-umbrella.h"; sourceTree = "<group>"; };
+		E99E44AFA768365C012D8B8874C43B76 /* Sprout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Sprout.modulemap; sourceTree = "<group>"; };
+		EC571037D261EF31BF508FF902E187CB /* CocoaLumberjack-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaLumberjack-prefix.pch"; sourceTree = "<group>"; };
+		ED9AE99AC0DC8A562B31580D476B5E29 /* Pods-SproutTime WatchKit App.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SproutTime WatchKit App.modulemap"; sourceTree = "<group>"; };
+		F8D9F0D139D6433A5737866B77457E56 /* SproutCustomLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SproutCustomLogFormatter.m; path = Sprout/SproutCustomLogFormatter.m; sourceTree = "<group>"; };
+		FA263D6ACE33F86DD39706916DC188B9 /* DDAssertMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDAssertMacros.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDAssertMacros.h; sourceTree = "<group>"; };
+		FA3E17672F461D548C9E86FB07C0ADF0 /* Sprout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Sprout.debug.xcconfig; sourceTree = "<group>"; };
+		FE31881E04EAD84E06E0FF541A0AAB2C /* DDASLLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDASLLogger.m; path = Sources/CocoaLumberjack/DDASLLogger.m; sourceTree = "<group>"; };
+		FF33001E1EEB84CA9B39AE80F04BF7AA /* DDMultiFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDMultiFormatter.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDMultiFormatter.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		206AC8CF593D0351AD7B63A573D7C27E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A3FC228231F5CF140BDCDB97E6A7C4D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B7E2C278CABBDE2F956D35B2C451FC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19FCC62E4542BF03DC650FB951872278 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E6D3FFC1034AA9CA98B31C2A51CA0E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F780D09E2119CBD9DD487676B44A290 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A0D01C4665DB2272A92414508BACE93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A03012C8493DCC8CA7381A185560F8FE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7A2539BF37FCFCA473A17A5A2875180 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C08213D09541D7F908FE9C6362F51CEC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF4800927296EC61171BD0E6B73BAAA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD5E98FB09AAE150B8ED1FECC93F2EFC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1FDADCBF801C7AE777A5A7C62BE44050 /* Pods-SproutTime WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				ED9AE99AC0DC8A562B31580D476B5E29 /* Pods-SproutTime WatchKit App.modulemap */,
+				1AE67DEE1E9156900D42F56EA591EF9B /* Pods-SproutTime WatchKit App-acknowledgements.markdown */,
+				CEF4C37D5EF2DAE303DC3400D73C2EE1 /* Pods-SproutTime WatchKit App-acknowledgements.plist */,
+				5D27F2414D59F2F94EB5BC40DF8CBA14 /* Pods-SproutTime WatchKit App-dummy.m */,
+				81520B4D592E06C541E975334F259F02 /* Pods-SproutTime WatchKit App-Info.plist */,
+				E76ACB5F3EAAF17776B97DD98F6C1040 /* Pods-SproutTime WatchKit App-umbrella.h */,
+				707C6F57EF4EC49A640215BAC4D69D34 /* Pods-SproutTime WatchKit App.debug.xcconfig */,
+				A31B06D309BCCADEF223AE559BD4DB96 /* Pods-SproutTime WatchKit App.release.xcconfig */,
+			);
+			name = "Pods-SproutTime WatchKit App";
+			path = "Target Support Files/Pods-SproutTime WatchKit App";
+			sourceTree = "<group>";
+		};
+		26934B7F06D997EDFD7ED28417932AA3 /* CocoaLumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				B16CE299BE1C8AD93F3DFEC7AD933130 /* Core */,
+				8949B715FCEA45BB3E70AF96E968DFCB /* Support Files */,
+			);
+			name = CocoaLumberjack;
+			path = CocoaLumberjack;
+			sourceTree = "<group>";
+		};
+		2DA94A6761171F50D9D0E2CBC3D8BA24 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				26934B7F06D997EDFD7ED28417932AA3 /* CocoaLumberjack */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4249A3C42238847F5496717634B36D6C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C261436D14052AE3C35F240BCD155CAC /* CocoaLumberjack */,
+				815716219BBC5EC4884B36D8ACE6DAFB /* Pods-SproutTime */,
+				C41105FA86D68ED6A226765CD4957685 /* Pods-SproutTime WatchKit App */,
+				45203EAC570C34086D7F36DCE825FBBC /* Pods-SproutTime WatchKit Extension */,
+				977588E82A896C28AF85E6ABD4745161 /* Pods-SproutTimeTests */,
+				BC68B2DDB9F2A69B400D668C248A5510 /* Sprout */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		554301A1AC60B09333ACFB93F3586DF6 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				D96BFC10B97737836B9DD3416CCC0DFB /* LICENSE.txt */,
+				C47FBAD9C974E8965594A434D9E4E4D9 /* README.md */,
+				872DC5FABF3094D74FF5E093C0533842 /* Sprout.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		5CF220D25288EBED6D1E3B7AEE3E8274 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7ABCCF16C7D65D2D01670EF82A443DE5 /* watchOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		63DBCFB8051FC2A8465B3F610988D581 /* Pods-SproutTime WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				254380628DAAD36DE17F28ADBD50279C /* Pods-SproutTime WatchKit Extension.modulemap */,
+				32FEEE7FF6158FCB3837B0AD7F78A839 /* Pods-SproutTime WatchKit Extension-acknowledgements.markdown */,
+				1D7F6B2821D00C3074A534259C3B606F /* Pods-SproutTime WatchKit Extension-acknowledgements.plist */,
+				7E8284C2C5B591F9181B02EEF1298EBA /* Pods-SproutTime WatchKit Extension-dummy.m */,
+				B62001620A4890E73E321EE0E6B7EA76 /* Pods-SproutTime WatchKit Extension-Info.plist */,
+				BD7BA849478369AFC018EAE8DC5D5B61 /* Pods-SproutTime WatchKit Extension-umbrella.h */,
+				1A9EE4BFC81AC55C3B537A5C64C82B1B /* Pods-SproutTime WatchKit Extension.debug.xcconfig */,
+				850A4CBB65C6AFE83F53539FCD8D3857 /* Pods-SproutTime WatchKit Extension.release.xcconfig */,
+			);
+			name = "Pods-SproutTime WatchKit Extension";
+			path = "Target Support Files/Pods-SproutTime WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		65D93DE784C58CD0D3F047332B26EF59 /* Pods-SproutTimeTests */ = {
+			isa = PBXGroup;
+			children = (
+				279997A0602F13AF63E90C349504B510 /* Pods-SproutTimeTests.modulemap */,
+				8408907AD70AF489BF765A3A153E23AA /* Pods-SproutTimeTests-acknowledgements.markdown */,
+				A1D3676ABF4170B86F53BB6145658EE0 /* Pods-SproutTimeTests-acknowledgements.plist */,
+				05039DF60507693654887C487549DCC1 /* Pods-SproutTimeTests-dummy.m */,
+				874A5157A3FB014081DF0697C1E486AD /* Pods-SproutTimeTests-Info.plist */,
+				4722CC9EC4D365E84FFD0F5E7F393904 /* Pods-SproutTimeTests-umbrella.h */,
+				576AB527C7B796887E1472E35313E41A /* Pods-SproutTimeTests.debug.xcconfig */,
+				3DDC595D36D3A81711EDD03799BF05D6 /* Pods-SproutTimeTests.release.xcconfig */,
+			);
+			name = "Pods-SproutTimeTests";
+			path = "Target Support Files/Pods-SproutTimeTests";
+			sourceTree = "<group>";
+		};
+		7ABCCF16C7D65D2D01670EF82A443DE5 /* watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				46A003A25B2A7E6E95C30801E60AE0DD /* Foundation.framework */,
+			);
+			name = watchOS;
+			sourceTree = "<group>";
+		};
+		83F8E114792D8DCE675988BE5E112468 /* Pods-SproutTime */ = {
+			isa = PBXGroup;
+			children = (
+				2E62A03C65969D036FFBD266C107C7F0 /* Pods-SproutTime.modulemap */,
+				33F9FB5757B198F0974864891275CF58 /* Pods-SproutTime-acknowledgements.markdown */,
+				C3AF2398B346FF71DECA113C8CE5EADE /* Pods-SproutTime-acknowledgements.plist */,
+				428E02C006E0EA73E1FC5A5D4B22303A /* Pods-SproutTime-dummy.m */,
+				B14FE503D267340BB4B349753140C4C3 /* Pods-SproutTime-frameworks.sh */,
+				58DB18C9B6F358CA7E670BD37A880B5F /* Pods-SproutTime-Info.plist */,
+				5ED47A9E12A558084FDBAC5C14F8DF85 /* Pods-SproutTime-umbrella.h */,
+				C50A5FAC49781FA0D92DE05F75060C8A /* Pods-SproutTime.debug.xcconfig */,
+				B6F8CB0827A6F652B919B71EC589AADA /* Pods-SproutTime.release.xcconfig */,
+			);
+			name = "Pods-SproutTime";
+			path = "Target Support Files/Pods-SproutTime";
+			sourceTree = "<group>";
+		};
+		8949B715FCEA45BB3E70AF96E968DFCB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4DAC40787F11B147A88AD5BCCD15D9D9 /* CocoaLumberjack.modulemap */,
+				C1986DA53EB62EEEF8B275B42DA650E0 /* CocoaLumberjack-dummy.m */,
+				45B6AAD23DA6DF4064131FF5C7297CBA /* CocoaLumberjack-Info.plist */,
+				EC571037D261EF31BF508FF902E187CB /* CocoaLumberjack-prefix.pch */,
+				A82355695C815314119B2D5A9D48C9C5 /* CocoaLumberjack-umbrella.h */,
+				986006C8B2F87E378845C1CC5F130480 /* CocoaLumberjack.debug.xcconfig */,
+				BA60561FDB1464E693366F6D1D592C00 /* CocoaLumberjack.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CocoaLumberjack";
+			sourceTree = "<group>";
+		};
+		AABEDA61E4246D4A18EFDB94913F9026 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0B88F567A5D0084665297D81B5DEAC4 /* Sprout */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		B16CE299BE1C8AD93F3DFEC7AD933130 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5D7989B8DA6EDBBF67840B7D15EB44F0 /* CLIColor.h */,
+				56D8B5153009DE026E72AECBD9D0A5A1 /* CLIColor.m */,
+				56C1421643989BF67C01924553605F88 /* CocoaLumberjack.h */,
+				89CA6FEB3463AEB5D30787285320A689 /* DDAbstractDatabaseLogger.h */,
+				E399F541D0625F914667900007AEE3B1 /* DDAbstractDatabaseLogger.m */,
+				871CC5B48CDE55B01269A705112C0E2F /* DDASLLogCapture.h */,
+				467DA212D8B074C0B6E64440B416C01C /* DDASLLogCapture.m */,
+				27C177F848F4043B872535B5129E05E1 /* DDASLLogger.h */,
+				FE31881E04EAD84E06E0FF541A0AAB2C /* DDASLLogger.m */,
+				FA263D6ACE33F86DD39706916DC188B9 /* DDAssertMacros.h */,
+				C4AADEE9A3EBCB2ECF6B3EB28CC6BDD1 /* DDContextFilterLogFormatter.h */,
+				16B7674CA9F098B41422B379BEAD8502 /* DDContextFilterLogFormatter.m */,
+				74D57D508FB500C94D89B8888D42BC87 /* DDContextFilterLogFormatter+Deprecated.h */,
+				BCF5596CA06477AED49C93658F3CD555 /* DDContextFilterLogFormatter+Deprecated.m */,
+				718C6B63AC1A620D15D89174E9CF2000 /* DDDispatchQueueLogFormatter.h */,
+				C7FABE504B3BF380E82A34766C7D9152 /* DDDispatchQueueLogFormatter.m */,
+				038E7F5F37848E68BA9CBA1C4086374B /* DDFileLogger.h */,
+				39662E48CCC5CD4137FD9A736FAA0C03 /* DDFileLogger.m */,
+				928C053C89C4059B261EF78AA96A9225 /* DDFileLogger+Buffering.h */,
+				23BD83A12F404B4B6CD1F05A8FC3AEF6 /* DDFileLogger+Buffering.m */,
+				1A4C58D6989631F68F3E2E1AC36177A6 /* DDFileLogger+Internal.h */,
+				3A9101C4604CCD2511A417FC99F3ECF0 /* DDLegacyMacros.h */,
+				33333391B020170DE2DBC306CB659855 /* DDLog.h */,
+				01F3363C0DD1AF0D24373AC5F7A04703 /* DDLog.m */,
+				651F2F771449386D087D6634B7E71549 /* DDLog+LOGV.h */,
+				37E546E8470047EA3C4893BF3A11FE2A /* DDLoggerNames.h */,
+				2771DFEDB2113764717A3764CF2A2AF3 /* DDLoggerNames.m */,
+				94E44D3547B77A30057F38439AA7CD5B /* DDLogMacros.h */,
+				FF33001E1EEB84CA9B39AE80F04BF7AA /* DDMultiFormatter.h */,
+				92FF5A73F2E2BBC45587C08C55808055 /* DDMultiFormatter.m */,
+				B523CBD94C394BE5505805034A326838 /* DDOSLogger.h */,
+				D145D863C27615C77E5A304A54DA2290 /* DDOSLogger.m */,
+				644C0C6036D11DBA62C7D36038E25E7F /* DDTTYLogger.h */,
+				AC6CAFE5D544DC5562D320A01393AFF6 /* DDTTYLogger.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		B4F132EF3D3001ADEC3228ABDF847D77 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E99E44AFA768365C012D8B8874C43B76 /* Sprout.modulemap */,
+				6CC0BC7B33934F3DF1AFA88A523239C0 /* Sprout-dummy.m */,
+				9D1ED0DBC6FFFACAEF4E5E2DEE36121A /* Sprout-Info.plist */,
+				1BB54082301A29E688753C60AC9581C6 /* Sprout-prefix.pch */,
+				09CAF2E9CBA75B95B1040BD4CF6D629A /* Sprout-umbrella.h */,
+				FA3E17672F461D548C9E86FB07C0ADF0 /* Sprout.debug.xcconfig */,
+				2AE6B5007E9343FFA1792A8FC4E76F25 /* Sprout.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "SproutTime/Pods/Target Support Files/Sprout";
+			sourceTree = "<group>";
+		};
+		C0B88F567A5D0084665297D81B5DEAC4 /* Sprout */ = {
+			isa = PBXGroup;
+			children = (
+				1A64924E405137956601609BAD9D2054 /* Sprout.h */,
+				8C1ACC9DDF908CF2BDD3FC59873C2AE2 /* Sprout.m */,
+				A3AAA319302B858D49C0F43D9FA84FFC /* SproutCustomLogFormatter.h */,
+				F8D9F0D139D6433A5737866B77457E56 /* SproutCustomLogFormatter.m */,
+				72E4282641134CF35854002F21319428 /* SproutDDLogAdditions.h */,
+				554301A1AC60B09333ACFB93F3586DF6 /* Pod */,
+				B4F132EF3D3001ADEC3228ABDF847D77 /* Support Files */,
+			);
+			name = Sprout;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		C6C741C0733095C644A3B9918A7ECE9B /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				83F8E114792D8DCE675988BE5E112468 /* Pods-SproutTime */,
+				1FDADCBF801C7AE777A5A7C62BE44050 /* Pods-SproutTime WatchKit App */,
+				63DBCFB8051FC2A8465B3F610988D581 /* Pods-SproutTime WatchKit Extension */,
+				65D93DE784C58CD0D3F047332B26EF59 /* Pods-SproutTimeTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				AABEDA61E4246D4A18EFDB94913F9026 /* Development Pods */,
+				5CF220D25288EBED6D1E3B7AEE3E8274 /* Frameworks */,
+				2DA94A6761171F50D9D0E2CBC3D8BA24 /* Pods */,
+				4249A3C42238847F5496717634B36D6C /* Products */,
+				C6C741C0733095C644A3B9918A7ECE9B /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		111F8867EFC8A35E39F3ABA094AD3D85 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0495B73FE7B68E80C3C61E42643F135C /* CLIColor.h in Headers */,
+				744CE33F1AF21FA3AAA624A7FD1BB5F8 /* CocoaLumberjack.h in Headers */,
+				863D5DE35DA07D926D57DD5C8F0F8CBF /* CocoaLumberjack-umbrella.h in Headers */,
+				145F9EAD066F70BEFEBC7C472C8B6AE0 /* DDAbstractDatabaseLogger.h in Headers */,
+				82DB56367F2E6166E07A8136734BCACA /* DDASLLogCapture.h in Headers */,
+				BC773AA342E15112FC9C036D02C260CE /* DDASLLogger.h in Headers */,
+				78E29B800CBFC464BD87A00EC86B2124 /* DDAssertMacros.h in Headers */,
+				056E59D2228DB2B7182113172A55716A /* DDContextFilterLogFormatter.h in Headers */,
+				150459A10E3E74F597A9E90AAE18041C /* DDContextFilterLogFormatter+Deprecated.h in Headers */,
+				FF1025D99EEB3116FF164F9CA6D14467 /* DDDispatchQueueLogFormatter.h in Headers */,
+				4C6591071806A4EA9AE3DD851D22FBBF /* DDFileLogger.h in Headers */,
+				D391BD517219423EC666A9FDCE96B377 /* DDFileLogger+Buffering.h in Headers */,
+				07439036B0A624EB81BCAD84B4217A24 /* DDFileLogger+Internal.h in Headers */,
+				AE33DEF9A1E0CE07C541DF111FC5C7B2 /* DDLegacyMacros.h in Headers */,
+				B831BBE8F63D3E960949A34CF63DFBA0 /* DDLog.h in Headers */,
+				21E63F15EFA16AA2572497DA5DD78E44 /* DDLog+LOGV.h in Headers */,
+				C8EB66B26F0EB1D2DD674DEAE9D0D435 /* DDLoggerNames.h in Headers */,
+				8DDEB03BEEA3D8E20BD291D51BF73EBD /* DDLogMacros.h in Headers */,
+				D52C58748ACD4BCA3879D92115DEE3A7 /* DDMultiFormatter.h in Headers */,
+				1B879107498475A1E0DA60B0AE1E7066 /* DDOSLogger.h in Headers */,
+				06A339A54F282669190230987BC25F7F /* DDTTYLogger.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16B0CC5E440550697D80E675BBCFF864 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F10208D5907EF5544A13E160E4EBDE2B /* Pods-SproutTime WatchKit App-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B3CAC8BE152198549D7961D48287A49 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				735F7C24B72A4BA1F890D98C0DEE19A2 /* Pods-SproutTimeTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B380812475B9D52E5EF9FCE04B6D2373 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14B6202FE4FDCA8FEC7BE39BB8ACF1C3 /* Pods-SproutTime WatchKit Extension-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB586AE62A0F135FFC4CDB7090363EE8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				434C0DF239D749372CB6EC0C2A37AF37 /* Pods-SproutTime-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E159CE7FF8EE1A1F87E6F4FEF8B34978 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				376AEB2C580EA3EA6004FB12889B0AAC /* Sprout.h in Headers */,
+				CBC2B1C82511E18BDBEE4418E1192077 /* Sprout-umbrella.h in Headers */,
+				8E0B488DCA52CFA2343D6ECEE942D59B /* SproutCustomLogFormatter.h in Headers */,
+				6165468EE48C906F1781857AC9855447 /* SproutDDLogAdditions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2139A23462F3E4F5F051A10A9EA3F04C /* Sprout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F3ECBDB67F17DF3A78B8B87BA88F0CB /* Build configuration list for PBXNativeTarget "Sprout" */;
+			buildPhases = (
+				E159CE7FF8EE1A1F87E6F4FEF8B34978 /* Headers */,
+				07291831651969D81B94222E74C5C8A8 /* Sources */,
+				EF4800927296EC61171BD0E6B73BAAA2 /* Frameworks */,
+				96D4BFA1AA001C21350D00B0899E2118 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9D0DEC28CD16A6F6919AC69DF039EEC8 /* PBXTargetDependency */,
+			);
+			name = Sprout;
+			productName = Sprout;
+			productReference = BC68B2DDB9F2A69B400D668C248A5510 /* Sprout */;
+			productType = "com.apple.product-type.framework";
+		};
+		21AF71524CE01C3E77780AC66E6E955F /* Pods-SproutTimeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FB75E405CB1CD3646ED6CF0F4E9BA55 /* Build configuration list for PBXNativeTarget "Pods-SproutTimeTests" */;
+			buildPhases = (
+				9B3CAC8BE152198549D7961D48287A49 /* Headers */,
+				0C60AA6BC211D21F6E4CC2E8AEB8CA45 /* Sources */,
+				E7A2539BF37FCFCA473A17A5A2875180 /* Frameworks */,
+				F60EA9ABB41D9342325353B899B9DAE5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D769426FAA13D378C7EC714D1EA20249 /* PBXTargetDependency */,
+			);
+			name = "Pods-SproutTimeTests";
+			productName = Pods_SproutTimeTests;
+			productReference = 977588E82A896C28AF85E6ABD4745161 /* Pods-SproutTimeTests */;
+			productType = "com.apple.product-type.framework";
+		};
+		5C678CA1048FDA1579AE2A47ED34A717 /* Pods-SproutTime WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 11455A91BF7A837CB7BA1F57147DDA98 /* Build configuration list for PBXNativeTarget "Pods-SproutTime WatchKit App" */;
+			buildPhases = (
+				16B0CC5E440550697D80E675BBCFF864 /* Headers */,
+				30F2E8F6DA70B84DC5C1329740BA192F /* Sources */,
+				4B7E2C278CABBDE2F956D35B2C451FC3 /* Frameworks */,
+				FD2195B74014A62A24AFF2826A4C9B86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5AA7E3F0B57AC3910C65AA455D9A436A /* PBXTargetDependency */,
+			);
+			name = "Pods-SproutTime WatchKit App";
+			productName = Pods_SproutTime_WatchKit_App;
+			productReference = C41105FA86D68ED6A226765CD4957685 /* Pods-SproutTime WatchKit App */;
+			productType = "com.apple.product-type.framework";
+		};
+		7FB8CF2E857B63988CD2D1CC4C1E9B9F /* Pods-SproutTime */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 294B85CAB7E417BE82F3F549DD81B157 /* Build configuration list for PBXNativeTarget "Pods-SproutTime" */;
+			buildPhases = (
+				BB586AE62A0F135FFC4CDB7090363EE8 /* Headers */,
+				830529499CF45DB44727132C58A7A64E /* Sources */,
+				206AC8CF593D0351AD7B63A573D7C27E /* Frameworks */,
+				4089C5D48154CC273287E59D124EB78B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D01C42D58C764B193A77C4163678084A /* PBXTargetDependency */,
+				2DD688409098B3E78B1E26896886DEA8 /* PBXTargetDependency */,
+			);
+			name = "Pods-SproutTime";
+			productName = Pods_SproutTime;
+			productReference = 815716219BBC5EC4884B36D8ACE6DAFB /* Pods-SproutTime */;
+			productType = "com.apple.product-type.framework";
+		};
+		E95654B155D25890BE8E26081FCA8265 /* CocoaLumberjack */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C5DDE4F65A8DA448DB1958F8E884478 /* Build configuration list for PBXNativeTarget "CocoaLumberjack" */;
+			buildPhases = (
+				111F8867EFC8A35E39F3ABA094AD3D85 /* Headers */,
+				25A6CF6875B1124D7AD960EB42132CF1 /* Sources */,
+				6E6D3FFC1034AA9CA98B31C2A51CA0E9 /* Frameworks */,
+				F1C1C0F3ED8C9C430F57C6B3A5EAC5D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CocoaLumberjack;
+			productName = CocoaLumberjack;
+			productReference = C261436D14052AE3C35F240BCD155CAC /* CocoaLumberjack */;
+			productType = "com.apple.product-type.framework";
+		};
+		F9BBDA17C8A80A71C09294F06C8E852E /* Pods-SproutTime WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F6CC7AA817E46353D0FAB4C2879A859 /* Build configuration list for PBXNativeTarget "Pods-SproutTime WatchKit Extension" */;
+			buildPhases = (
+				B380812475B9D52E5EF9FCE04B6D2373 /* Headers */,
+				B19CF23D275517BB4F974A419F4CE865 /* Sources */,
+				9A0D01C4665DB2272A92414508BACE93 /* Frameworks */,
+				5708E75F981A3F50FA75A17CEE4366D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E7118CD3ABD98EF7A97D7D1127E0ECEC /* PBXTargetDependency */,
+			);
+			name = "Pods-SproutTime WatchKit Extension";
+			productName = Pods_SproutTime_WatchKit_Extension;
+			productReference = 45203EAC570C34086D7F36DCE825FBBC /* Pods-SproutTime WatchKit Extension */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 4249A3C42238847F5496717634B36D6C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E95654B155D25890BE8E26081FCA8265 /* CocoaLumberjack */,
+				7FB8CF2E857B63988CD2D1CC4C1E9B9F /* Pods-SproutTime */,
+				5C678CA1048FDA1579AE2A47ED34A717 /* Pods-SproutTime WatchKit App */,
+				F9BBDA17C8A80A71C09294F06C8E852E /* Pods-SproutTime WatchKit Extension */,
+				21AF71524CE01C3E77780AC66E6E955F /* Pods-SproutTimeTests */,
+				2139A23462F3E4F5F051A10A9EA3F04C /* Sprout */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4089C5D48154CC273287E59D124EB78B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5708E75F981A3F50FA75A17CEE4366D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96D4BFA1AA001C21350D00B0899E2118 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1C1C0F3ED8C9C430F57C6B3A5EAC5D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F60EA9ABB41D9342325353B899B9DAE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD2195B74014A62A24AFF2826A4C9B86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		07291831651969D81B94222E74C5C8A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				353DC20D392D4832996791E15D370D90 /* Sprout.m in Sources */,
+				8B84E8A433506CE439E7AC17B9CA2600 /* Sprout-dummy.m in Sources */,
+				7FB03913D2655FF2D66BC621FE0BCAED /* SproutCustomLogFormatter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C60AA6BC211D21F6E4CC2E8AEB8CA45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				587104B1F808C84525995BB4ABC3AF85 /* Pods-SproutTimeTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25A6CF6875B1124D7AD960EB42132CF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C10574AD49BE882AB861F391EF5E65F7 /* CLIColor.m in Sources */,
+				430ACE0BBF2BA1E545B1EC37AF36EDF3 /* CocoaLumberjack-dummy.m in Sources */,
+				6E82ADC8CDFD36151922AE49F97946E8 /* DDAbstractDatabaseLogger.m in Sources */,
+				3D36A7B67F64229436E40CC609CDA042 /* DDASLLogCapture.m in Sources */,
+				36E1A2438B42CB8E4AACC639FD33556D /* DDASLLogger.m in Sources */,
+				730895234875219C65F10FFEBF6E9B2F /* DDContextFilterLogFormatter.m in Sources */,
+				90FC53060C713E909D6DF8B827455BDF /* DDContextFilterLogFormatter+Deprecated.m in Sources */,
+				D769033D3D61D0E76073CC88469B019A /* DDDispatchQueueLogFormatter.m in Sources */,
+				6B0C52E8966658064BD40DFF11DF6C65 /* DDFileLogger.m in Sources */,
+				F6605CB4BA21163C9D3D7C6E4E62BF7B /* DDFileLogger+Buffering.m in Sources */,
+				03E0C16DFB7873B7E94D234AE6CE332D /* DDLog.m in Sources */,
+				472BE43B65B5605E349558899367C8FA /* DDLoggerNames.m in Sources */,
+				4C7C3C204D04C2AB8D931EFFE6416E52 /* DDMultiFormatter.m in Sources */,
+				DA07177C225F6ADC9271B98EDC37A1F8 /* DDOSLogger.m in Sources */,
+				CB7FEBAC9823242E5B01736C99F4D183 /* DDTTYLogger.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30F2E8F6DA70B84DC5C1329740BA192F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0B97E46EAB3C5EE2483EAD8D869A32A /* Pods-SproutTime WatchKit App-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		830529499CF45DB44727132C58A7A64E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83C0B648B7186D1E8957407D1B5235EB /* Pods-SproutTime-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B19CF23D275517BB4F974A419F4CE865 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7551733193E5652CC51FE5EEB52069DF /* Pods-SproutTime WatchKit Extension-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2DD688409098B3E78B1E26896886DEA8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Sprout;
+			target = 2139A23462F3E4F5F051A10A9EA3F04C /* Sprout */;
+			targetProxy = F98916C9B12191006B93D20A68D5B76D /* PBXContainerItemProxy */;
+		};
+		5AA7E3F0B57AC3910C65AA455D9A436A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SproutTime";
+			target = 7FB8CF2E857B63988CD2D1CC4C1E9B9F /* Pods-SproutTime */;
+			targetProxy = 8AC09AC384B6B5BCBFBA906696A27928 /* PBXContainerItemProxy */;
+		};
+		9D0DEC28CD16A6F6919AC69DF039EEC8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CocoaLumberjack;
+			target = E95654B155D25890BE8E26081FCA8265 /* CocoaLumberjack */;
+			targetProxy = A5E2456CB661A88CC5BDE37E583086D1 /* PBXContainerItemProxy */;
+		};
+		D01C42D58C764B193A77C4163678084A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CocoaLumberjack;
+			target = E95654B155D25890BE8E26081FCA8265 /* CocoaLumberjack */;
+			targetProxy = 9FABAAA166DB6C58EBA9166E50822CED /* PBXContainerItemProxy */;
+		};
+		D769426FAA13D378C7EC714D1EA20249 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SproutTime";
+			target = 7FB8CF2E857B63988CD2D1CC4C1E9B9F /* Pods-SproutTime */;
+			targetProxy = B0BD241162A04AB43C1B20A49A5896AC /* PBXContainerItemProxy */;
+		};
+		E7118CD3ABD98EF7A97D7D1127E0ECEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SproutTime";
+			target = 7FB8CF2E857B63988CD2D1CC4C1E9B9F /* Pods-SproutTime */;
+			targetProxy = 480B3A135628DE19DAC3AB1EB15A4F3D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1B9BDD44BB5BC9B6B6501BD0E7B98F6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 986006C8B2F87E378845C1CC5F130480 /* CocoaLumberjack.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CocoaLumberjack/CocoaLumberjack-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CocoaLumberjack/CocoaLumberjack-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CocoaLumberjack/CocoaLumberjack.modulemap";
+				PRODUCT_MODULE_NAME = CocoaLumberjack;
+				PRODUCT_NAME = CocoaLumberjack;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		246A23E7D633B676692F6E44D8DD1449 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AE6B5007E9343FFA1792A8FC4E76F25 /* Sprout.release.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Sprout/Sprout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Sprout/Sprout-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Sprout/Sprout.modulemap";
+				PRODUCT_MODULE_NAME = Sprout;
+				PRODUCT_NAME = Sprout;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
+		43628F421F53036F47415A4AE321BCCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C50A5FAC49781FA0D92DE05F75060C8A /* Pods-SproutTime.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SproutTime/Pods-SproutTime-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SproutTime/Pods-SproutTime.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		66F6A825EE94AA450338C6F63FD9E162 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3DDC595D36D3A81711EDD03799BF05D6 /* Pods-SproutTimeTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SproutTimeTests/Pods-SproutTimeTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SproutTimeTests/Pods-SproutTimeTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
+		7719EF360414EAEB4140F54C73791302 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
+		853CBB015B3E8FD1CF236FCC87A46D14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		92294E0EABC56FBB43B9734243BDA995 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A31B06D309BCCADEF223AE559BD4DB96 /* Pods-SproutTime WatchKit App.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SproutTime WatchKit App/Pods-SproutTime WatchKit App-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SproutTime WatchKit App/Pods-SproutTime WatchKit App.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
+		97AD33067A92101ECD08FDF717C6E803 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 576AB527C7B796887E1472E35313E41A /* Pods-SproutTimeTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SproutTimeTests/Pods-SproutTimeTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SproutTimeTests/Pods-SproutTimeTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		A11BFDDBEC511E75DB4A90A07D954072 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 850A4CBB65C6AFE83F53539FCD8D3857 /* Pods-SproutTime WatchKit Extension.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SproutTime WatchKit Extension/Pods-SproutTime WatchKit Extension-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SproutTime WatchKit Extension/Pods-SproutTime WatchKit Extension.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
+		A128AF41FE83794FDD68EA26FFC8D276 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA3E17672F461D548C9E86FB07C0ADF0 /* Sprout.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Sprout/Sprout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Sprout/Sprout-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Sprout/Sprout.modulemap";
+				PRODUCT_MODULE_NAME = Sprout;
+				PRODUCT_NAME = Sprout;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		A6461A92E09D7F9ED61A2FC4A9053D7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 707C6F57EF4EC49A640215BAC4D69D34 /* Pods-SproutTime WatchKit App.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SproutTime WatchKit App/Pods-SproutTime WatchKit App-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SproutTime WatchKit App/Pods-SproutTime WatchKit App.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		AEF3C710875C763BED89522AEBEA585B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A9EE4BFC81AC55C3B537A5C64C82B1B /* Pods-SproutTime WatchKit Extension.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SproutTime WatchKit Extension/Pods-SproutTime WatchKit Extension-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SproutTime WatchKit Extension/Pods-SproutTime WatchKit Extension.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		C0B97D5CB3C2EAAC3329D5B07B4DF851 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA60561FDB1464E693366F6D1D592C00 /* CocoaLumberjack.release.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CocoaLumberjack/CocoaLumberjack-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CocoaLumberjack/CocoaLumberjack-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CocoaLumberjack/CocoaLumberjack.modulemap";
+				PRODUCT_MODULE_NAME = CocoaLumberjack;
+				PRODUCT_NAME = CocoaLumberjack;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Release;
+		};
+		E7CB80C1C5E62DE1939288726E10AF3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6F8CB0827A6F652B919B71EC589AADA /* Pods-SproutTime.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SproutTime/Pods-SproutTime-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SproutTime/Pods-SproutTime.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0F6CC7AA817E46353D0FAB4C2879A859 /* Build configuration list for PBXNativeTarget "Pods-SproutTime WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEF3C710875C763BED89522AEBEA585B /* Debug */,
+				A11BFDDBEC511E75DB4A90A07D954072 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		11455A91BF7A837CB7BA1F57147DDA98 /* Build configuration list for PBXNativeTarget "Pods-SproutTime WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6461A92E09D7F9ED61A2FC4A9053D7E /* Debug */,
+				92294E0EABC56FBB43B9734243BDA995 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		294B85CAB7E417BE82F3F549DD81B157 /* Build configuration list for PBXNativeTarget "Pods-SproutTime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43628F421F53036F47415A4AE321BCCA /* Debug */,
+				E7CB80C1C5E62DE1939288726E10AF3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F3ECBDB67F17DF3A78B8B87BA88F0CB /* Build configuration list for PBXNativeTarget "Sprout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A128AF41FE83794FDD68EA26FFC8D276 /* Debug */,
+				246A23E7D633B676692F6E44D8DD1449 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				853CBB015B3E8FD1CF236FCC87A46D14 /* Debug */,
+				7719EF360414EAEB4140F54C73791302 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C5DDE4F65A8DA448DB1958F8E884478 /* Build configuration list for PBXNativeTarget "CocoaLumberjack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B9BDD44BB5BC9B6B6501BD0E7B98F6F /* Debug */,
+				C0B97D5CB3C2EAAC3329D5B07B4DF851 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FB75E405CB1CD3646ED6CF0F4E9BA55 /* Build configuration list for PBXNativeTarget "Pods-SproutTimeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97AD33067A92101ECD08FDF717C6E803 /* Debug */,
+				66F6A825EE94AA450338C6F63FD9E162 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

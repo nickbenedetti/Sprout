@@ -1,0 +1,6 @@
+framework module Pods_SproutTimeTests {
+  umbrella header "Pods-SproutTimeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
