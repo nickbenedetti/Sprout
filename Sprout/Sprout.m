@@ -219,19 +219,21 @@ void sproutSignalHandler(int signal)
         NSSetUncaughtExceptionHandler(&sproutExceptionHandler);
         
         //Register our handler for signals
-        
+		//Note: Skipped on watchOS where "sigaction on fatal signals is not supported"
+#if !TARGET_OS_WATCH
         //Create the signal action structure
         struct sigaction signalAction;
         //Initialize the signal action structure
         memset(&signalAction, 0, sizeof(signalAction));
         //Set 'signalHandler' as the handler in the signal action structure
         signalAction.sa_handler = &sproutSignalHandler;
-        //Set 'signalHandler' as the handlers for SIGABRT, SIGILL and SIGBUS
+        //Set 'signalHandler' as the handlers for SIGABRT, SIGILL, SIGBUS, and SIGSEGV
         sigaction(SIGABRT, &signalAction, NULL);
         sigaction(SIGILL, &signalAction, NULL);
         sigaction(SIGBUS, &signalAction, NULL);
         sigaction(SIGSEGV, &signalAction, NULL);
-        
+#endif
+		
         [self addDefaultLoggers];
 
         BOOL defaultLogLevel = YES;
