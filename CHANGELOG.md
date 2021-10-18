@@ -65,4 +65,9 @@
   * Incorporated PR from @gyratorycircus to "log always" app/device info at startup.
 * 3.2 - 2021-09-21
   * Updated AppCenter API use to 4.3. Using DDOSLogger instead of DDTTYLogger.
-  
+* 3.2.1 - 2021-09-21
+  * Updating macOS deployment target to 10.15.
+* 3.2.2 - 2021-10-11
+  * Adding support for WatchOS
+* 3.2.3 - 2021-10-17 - @gyratorycircus
+  * Skips install of fatal signal handlers which are not supported on watchOS
