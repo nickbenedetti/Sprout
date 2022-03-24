@@ -253,6 +253,7 @@ void sproutSignalHandler(int signal)
 		
 		[self addStartupMessageBlock:^{
 			SproutLogInfo(@"CocoaLumberjack loggers initialized!");
+            SproutLogInfo(@"Log location at: '%@'", self.fileLogger.logFileManager.logsDirectory);
 		}];
 		
 		if (completion)
